@@ -5,12 +5,21 @@ permalink: /about/
 ---
 
 
-Some information about you!
+Penetration tester based in Madrid, Spain
 
-### More Information
 
-A place to include any other types of information that you'd like to include about yourself.
 
-### Contact me
+# Contact information
 
 [ricardojruiz93@gmail.com](mailto:ricardojruiz93@gmail.com)
+
+
+
+
+
+
+
+
+
+
+
