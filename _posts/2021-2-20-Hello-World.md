@@ -1,9 +1,8 @@
 ---
 layout: post
-title: Mi primer post
+title: My first post
 ---
 
+This is just a test post
 
-<!-- ![_config.yml]({{ site.baseurl }}/images/config.png) -->
-
-Test
+![homers web page](https://i.giphy.com/media/fJKG1UTK7k64w/giphy.webp)
