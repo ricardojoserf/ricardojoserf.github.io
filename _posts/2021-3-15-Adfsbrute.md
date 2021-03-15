@@ -3,6 +3,9 @@ layout: post
 title: ADFSbrute - Test passwords against ADFS 
 ---
 
+
+<!-- ![_config.yml]({{ site.baseurl }}/images/config.png) -->
+
 ## ADFSbrute
 
 Adfsbrute is a script to test credentials against Active Directory Federation Services (ADFS), calculating the ADFS url of an organization and allowing password spraying or bruteforce attacks. In case the company does not use a custom ADFS sign-in page, it will carry out the attack against Office 365's Microsoft Server Active Sync url.
@@ -23,9 +26,12 @@ In real life, what I found is that many times the organizations use the same cre
 The syntax is:
 
 ```
-./adfsbrute.py -t TARGET [-u USER] [-U USER_LIST] [-p PASSWORD] [-P PASSWORD_LIST] [-UL userpassword_list]
-[-m MIN_TIME] [-M MAX_TIME] [-tp TOR_PASSWORD] [-pl PROXY_LIST] [-n NUMBER_OF_REQUESTS_PER_IP]
-[-s STOP_ON_SUCCESS] [-r RANDOM_COMBINATIONS] [-d DEBUG] [-l LOG_FILE]
+./adfsbrute.py -t TARGET [-u USER] [-U USER_LIST] 
+[-p PASSWORD] [-P PASSWORD_LIST] [-UL userpassword_list]
+[-m MIN_TIME] [-M MAX_TIME] [-tp TOR_PASSWORD] 
+[-pl PROXY_LIST] [-n NUMBER_OF_REQUESTS_PER_IP] 
+[-s STOP_ON_SUCCESS] [-r RANDOM_COMBINATIONS] 
+[-d DEBUG] [-l LOG_FILE]
 ```
 
 The parameters for the attacks are:
@@ -66,7 +72,8 @@ The parameters for the attacks are:
 Password spraying with password "Company123", tor password is "test123" and changing the IP every 3 requests:
 
 ```
-python3 adfsbrute.py -t company.com -U users.txt -p Company123 -tp test123 -n 3
+python3 adfsbrute.py -t company.com -U users.txt 
+-p Company123 -tp test123 -n 3
 ```
 
 ![image](https://raw.githubusercontent.com/ricardojoserf/adfsbrute/main/images/image1.png)
@@ -75,7 +82,8 @@ python3 adfsbrute.py -t company.com -U users.txt -p Company123 -tp test123 -n 3
 Password spraying with password "Company123", tor password is "test123", changing the IP for every request, random delay time between 10 and 20 seconds and do not randomize the order of users:
 
 ```
-python3 adfsbrute.py -t company.com -U users.txt -p Company123 -tp test123 -m 10 -M 20 -r False
+python3 adfsbrute.py -t company.com -U users.txt 
+-p Company123 -tp test123 -m 10 -M 20 -r False
 ```
 
 ![image](https://raw.githubusercontent.com/ricardojoserf/adfsbrute/main/images/image2.png)
