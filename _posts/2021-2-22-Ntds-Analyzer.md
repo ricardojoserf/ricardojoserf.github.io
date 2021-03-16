@@ -3,11 +3,6 @@ layout: post
 title: Ntds-Analyzer - Tool to analyze Ntds.dit files
 ---
 
-
-<!-- ![_config.yml]({{ site.baseurl }}/images/config.png) -->
-
-## Presentation
-
 Ntds-analyzer is a tool to extract and analyze the hashes in Ntds.dit files after cracking the LM and NTLM hashes in it. It offers relevant information about the Active Directory’s passwords, such as the most common used ones or which accounts use the username as password.
 Also, it offers an extra functionality: it calculates the NTLM hash value from the LM hash when only the latter has been cracked (we will explain this later!). 
 
