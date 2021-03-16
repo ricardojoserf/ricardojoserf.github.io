@@ -72,7 +72,7 @@ The parameters for the attacks are:
 Password spraying with password "Company123", tor password is "test123" and changing the IP every 3 requests:
 
 ```
-python3 adfsbrute.py -t company.com -U users.txt 
+python3 adfsbrute.py -t domain.com -U users.txt 
 -p Company123 -tp test123 -n 3
 ```
 
@@ -82,7 +82,7 @@ python3 adfsbrute.py -t company.com -U users.txt
 Password spraying with password "Company123", tor password is "test123", changing the IP for every request, random delay time between 10 and 20 seconds and do not randomize the order of users:
 
 ```
-python3 adfsbrute.py -t company.com -U users.txt 
+python3 adfsbrute.py -t domain.com -U users.txt 
 -p Company123 -tp test123 -m 10 -M 20 -r False
 ```
 
@@ -92,17 +92,18 @@ python3 adfsbrute.py -t company.com -U users.txt
 Finding ADFS url:
 
 ```
-python3 adfsbrute.py -t company.com
+python3 adfsbrute.py -t domain.com
 ```
 
 ![image](https://raw.githubusercontent.com/ricardojoserf/adfsbrute/main/images/image3.png)
 
 
+
 ## Using Tor
 
-The best and most tested option is to use Tor to change the IP for every of after some requests
+The best and most tested option is to use Tor to change the IP for every or after some requests you must:
 
-1 -  you must hash a password:
+1 - Hash a password:
 
 ```
 tor --hash-password test123
@@ -133,8 +134,9 @@ cd adfsbrute
 
 ## Conclusion
 
-This script is implemented to test in security audits, 
-DO NOT use without proper authorization from the company owning the ADFS or you will block accounts.
+This script can be very useful to carry out attacks against the ADFS of a company we are auditing. It allows to change the IP address and wait a random delay between requests, as much time as we want, which makes it more difficult to be detected as an active attack by the Blue Team, even more if we are changing the IP address after each request. The program can also stop once it finds correct credentials, so it is a good idea to run it in a VPS and let it work for some days while we are busy with other attack vectors. 
+However, it is important to notice that it is implemented to test in security audits, and it is not a good idea to use it without proper authorization from the company owning the ADFS or you will block accounts.
+
 
 ## References
 
