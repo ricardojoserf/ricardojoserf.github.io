@@ -18,7 +18,7 @@ It may be very useful in Red Team exercises once the team has collected a list o
 
 From [Wikipedia](https://en.wikipedia.org/wiki/Active_Directory_Federation_Services), "*Active Directory Federation Services (AD FS), a software component developed by Microsoft, can run on Windows Server operating systems to provide users with single sign-on access to systems and applications located across organizational boundaries. It uses a claims-based access-control authorization model to maintain application security and to implement federated identity. Claims-based authentication involves authenticating a user based on a set of claims about that user's identity contained in a trusted token. Such a token is often issued and signed by an entity that is able to authenticate the user by other means, and that is trusted by the entity doing the claims-based authentication.It is part of the Active Directory Services*".
 
-In real life, what I found is that many times the organizations use the same credentials in ADFS, Azure portal, Outlook... so once you get correct credentials using this tool, you can access a lot of information!
+In real life, what I found is that many times the organizations use the same credentials in ADFS, Azure portal, Outlook... (everything is connected!). So, once you get correct credentials using this tool, you probably can access a lot of information of the company!
 
 
 ## Usage and Parameters
