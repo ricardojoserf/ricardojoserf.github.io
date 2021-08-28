@@ -31,7 +31,7 @@ To reach our goal, we will create a code that will:
 - Get a handle to the lsass.exe process
 - Dump the process
 
-<br>
+
 
 ## Main function
 
