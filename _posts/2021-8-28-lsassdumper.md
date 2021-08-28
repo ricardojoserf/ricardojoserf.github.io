@@ -15,7 +15,7 @@ We will use C++ to create a program that dumps the lsass.exe process in the stea
 
 Without input arguments it creates a dump file with the hostname and date as name and the ".txt" extension (*hostname_DD-MM-YYYY-HHMM.txt*). With input arguments it will use the first one as path and name for the file.  
 
-To try to be stealthier, we will not use the "lsass" or "SeDebugPrivilege" strings and will try not to use the "minidump" string when possible. The final program is in [this link](https://github.com/ricardojoserf/LsassDumper).
+To try to be stealthier, we will not use the "lsass" or "SeDebugPrivilege" strings and will try not to use the "minidump" string when possible. The final program is in [this link](https://github.com/ricardojoserf/lsass-dumper).
 
 
 ## Usage
@@ -41,6 +41,7 @@ Then we can parse these dump files with Mimikatz, as it does not care about the 
 ![im5](https://github.com/ricardojoserf/ricardojoserf.github.io/blob/master/images/custom-lsass-dumper/image5.png?raw=true)
 
 ![im6](https://github.com/ricardojoserf/ricardojoserf.github.io/blob/master/images/custom-lsass-dumper/image6.png?raw=true)
+
 
 
 # Code
@@ -301,7 +302,7 @@ string getFileName(string hostname) {
 
 ## Final script
 
-The resulting script (which can be found also in [this Github repo](https://github.com/ricardojoserf/LsassDumper)) is:
+The resulting script (which can be found also in [this Github repository](https://github.com/ricardojoserf/lsass-dumper/blob/main/CustomDumper.cpp)) is:
 
 ```cpp
 #pragma comment (lib, "Dbghelp.lib")
