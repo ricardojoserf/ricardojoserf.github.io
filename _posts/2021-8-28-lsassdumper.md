@@ -17,7 +17,7 @@ Without input arguments it creates a dump file with the hostname and date as nam
 
 To try to be stealthier, we will not use the "lsass" or "SeDebugPrivilege" strings and will try not to use the "minidump" string when possible. The final program is in [this link](https://github.com/ricardojoserf/LsassDumper).
 
-<br><br>
+<br>
 
 # Code
 
@@ -31,6 +31,7 @@ To reach our goal, we will create a code that will:
 - Get a handle to the lsass.exe process
 - Dump the process
 
+<br>
 
 ## Main function
 
@@ -100,7 +101,7 @@ if (isDumped) {
 }
 ```
 
-<br><br>
+<br>
 
 ## Other functions
 
@@ -130,6 +131,7 @@ BOOL IsElevatedProcess()
 }
 ```
 
+<br>
 
 #### Get Lsass Process ID
 
@@ -162,6 +164,8 @@ DWORD getProcessPid()
 	return processPID;
 }
 ```
+
+<br>
 
 #### Set the SeDebugPrivilege privilege
 
@@ -215,6 +219,7 @@ EXIT:
 }
 ```
 
+<br>
 
 #### Create output file name
 
@@ -268,7 +273,7 @@ string getFileName(string hostname) {
 }
 ```
 
-<br><br>
+<br>
 
 ## Final script
 
