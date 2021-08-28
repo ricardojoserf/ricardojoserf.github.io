@@ -20,7 +20,7 @@ Link: https://ropemporium.com/challenge/write4.html
 
 First, we check the offset is still the same sending 41 "A" characters:
 
-![a](images/Screenshot_1.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/3_write432/images/Screenshot_1.jpg)
 
 
 
@@ -44,7 +44,7 @@ We can find all these gadgets using:
 python /root/tools/ROPgadget/ROPgadget.py --binary write432 | grep mov | grep "\["
 ```
 
-![a](images/Screenshot_2.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/3_write432/images/Screenshot_2.jpg)
 
 We have these *Write-What-Where* gadgets:
 
@@ -54,7 +54,7 @@ Then we search for gadgets that could control EDI and EBP:
 
 - *pop edi ; pop ebp ; ret* (0x080486da) -> **pop_edi_pop_ebp = 0x080486da**
 
-![a](images/Screenshot_3.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/3_write432/images/Screenshot_3.jpg)
 
 
 
@@ -62,7 +62,7 @@ Then we search for gadgets that could control EDI and EBP:
 
 Next we need to figure out where to write in memory. The best option would be the .data segment. Let’s get the address of the “.data” section in the binary. Also, the .bss section is writable:
 
-![a](images/Screenshot_4.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/3_write432/images/Screenshot_4.jpg)
 
 Let us take as writable memory address the address 0x804a028, where .data starts -> **writable_memory = 0x804a028**
 
@@ -126,7 +126,7 @@ p.interactive()
 
 And it works!:
 
-![a](images/Screenshot_5.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/3_write432/images/Screenshot_5.jpg)
 
 
 --------------
