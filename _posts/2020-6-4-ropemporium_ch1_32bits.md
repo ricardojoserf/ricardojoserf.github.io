@@ -19,14 +19,14 @@ Link: https://ropemporium.com/challenge/split.html
 
 First we check if the offset is different than in the previous challenge, "ret2win". It seems it is still 40, with 41 characters we see only one "41" in RIP registry:
 
-![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_1.jpg/Screenshot_1.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_1.jpg)
 
 
 ## 2. Studying the binary
 
 We can find the system address with objdump, located in "0x08048430" (the address of system in the .plt section):
 
-![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_1.jpg/Screenshot_3.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_3.jpg)
 
 Next, we need the address of the string "/bin/cat flag.txt". We can do this using GEF, and finding the address is "0x601060":
 
@@ -37,11 +37,11 @@ r
 grep "/bin/cat flag.txt"
 ``` 
 
-![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_1.jpg/Screenshot_4.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_4.jpg)
 
 We can find the address of this string with ROPgadget too:
 
-![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_1.jpg/Screenshot_5.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_5.jpg)
 
 
 ## 3. Calling system("/bin/cat flag.txt")
@@ -50,7 +50,7 @@ The idea is concatenating the addresses (system) + (exit) + (command), just like
 
 The problem is that there is not an exit function, so we will look for the instruction *leave*, I will take 0x080484e8:
 
-![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_1.jpg/Screenshot_2.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_2.jpg)
 
 So now we have the addresses of "system" in .plt section, an instruction for "exiting" and the string with the command, we can make a Python exploit:
 
@@ -81,7 +81,7 @@ p.interactive()
 
 The exploit works:
 
-![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_1.jpg/Screenshot_6.jpg)
+![a](https://raw.githubusercontent.com/ricardojoserf/rop-emporium-exploits/master/1_split32/images/Screenshot_6.jpg)
 
 Now we will change the calculation of some addresses making it automatic with Python:
 
