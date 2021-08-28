@@ -1,6 +1,6 @@
 ---
 layout: post
-title: ROP Emporium Challenge 0: ret2win (64 bits)
+title: ROP Emporium Challenge 0 - ret2win (64 bits)
 excerpt_separator: <!--more-->
 ---
 
