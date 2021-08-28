@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Customizing Lsass dumps with C++
+title: Customizing Lsass Dumps with C++
 excerpt_separator: <!--more-->
 ---
 
@@ -9,7 +9,7 @@ Dumping the Lsass process to get the passwords stored in memory in a Windows mac
 <!--more-->
 
 
-## Goal
+## TL;DR
 
 We will use C++ to create a program that dumps the lsass.exe process in the stealthier way we can.  
 
@@ -17,7 +17,7 @@ Without input arguments it creates a dump file with the hostname and date as nam
 
 To try to be stealthier, we will not use the "lsass" or "SeDebugPrivilege" strings and will try not to use the "minidump" string when possible. The final program is in [this link](https://github.com/ricardojoserf/LsassDumper).
 
-<br>
+
 
 # Code
 
