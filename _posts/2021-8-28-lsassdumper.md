@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Dumping Lsass with C++ (and style)
+title: Customizing Lsass dumps with C++
 excerpt_separator: <!--more-->
 ---
 
