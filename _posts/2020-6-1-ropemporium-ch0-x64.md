@@ -4,12 +4,12 @@ title: ROP Emporium Challenge 0 - ret2win (64 bits)
 excerpt_separator: <!--more-->
 ---
 
-Link: https://ropemporium.com/challenge/ret2win.html
+Description: *Locate a method within the binary that you want to call and do so by overwriting a saved return address on the stack.*
 <!--more-->
 
 # ret2win
 
-Description: *Locate a method within the binary that you want to call and do so by overwriting a saved return address on the stack.*
+Link: https://ropemporium.com/challenge/ret2win.html
 
 --------------------------
 
