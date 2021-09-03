@@ -1,3 +1,12 @@
+---
+layout: post
+title: Wifi Pentesting Guide
+excerpt_separator: <!--more-->
+---
+
+This is a WiFi Pentesting guide I wrote some time ago after years carrying out WiFi pentests (and a BSc thesis about this topic). I received many questions from colleagues so I decided to share most of my knowledge and prepared VMs for some specific attacks. <!--more--> You can find it too in [this Github repository](https://github.com/ricardojoserf/wifi-pentesting-guide) (and hey, you can also hit the star button in it ;) ).
+
+
 # WiFi Penetration Testing Guide
 
 ## Index
