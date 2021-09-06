@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Abusing SSPR to control a Global Admin in Azure
+title: Abusing SSPR in Azure to get a Domain Admin
 excerpt_separator: <!--more-->
 ---
 
-In this post I will explain a simplified scenario of how we could abuse SSPR in Azure in a Red Team assessment. Knowing the expired password of a Domain Admin of the AD, I could update its password by updating the Azure AD password as the Active Directory and Azure AD were synchronized.
+In this post I will explain a simplified scenario in which we could abuse the SSPR functionality in Azure in a Red Team assessment. Knowing the expired password of a "Domain Admin" of the local AD, it is possible to update its password by updating the Azure AD password with SSPR (as far as the AD and the Azure AD are synchronized). 
 
 <!--more-->
 
