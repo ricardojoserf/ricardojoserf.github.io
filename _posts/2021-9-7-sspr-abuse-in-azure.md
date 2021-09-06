@@ -4,12 +4,12 @@ title: Abusing SSPR in Azure to get a Domain Admin
 excerpt_separator: <!--more-->
 ---
 
-In this post I will explain a simplified scenario in which we could abuse the SSPR functionality in Azure in a Red Team assessment. Knowing the expired password of a "Domain Admin" of the local AD, it is possible to update its password by updating the Azure AD password with SSPR (as far as the AD and the Azure AD are synchronized). 
+In this post I will explain a simplified scenario in which we could abuse the SSPR functionality in Azure in a Red Team assessment.
 
 <!--more-->
 
 
-#### TL;DR
+## TL;DR
 
 1. The Active Directory and Azure AD were synced
 
@@ -27,7 +27,7 @@ In this post I will explain a simplified scenario in which we could abuse the SS
 
 
 
-#### Initial attack scenario
+## Initial attack scenario
 
 In order to exploit this scenario, we had first achieved these goals:
 
@@ -54,7 +54,7 @@ However, when we try to dump the credentials we have a bad new:
 
 
 
-#### Recon phase in Azure
+## Recon phase in Azure
 
 Accessing the Azure Portal using the email account o365admin@spain_domain.com, we see the account has Global Administrator privileges:
 
@@ -74,7 +74,7 @@ However, this only works for non-privileged users, so we will not be able to upd
 
 
 
-#### Abusing SSPR
+## Abusing SSPR
 
 Using just the O365Admin account (o365admin@spain_domain.com), it seemed impossible to get access to a privileged account of GLOBAL_ADMIN, and *GLOBAL_DOMAIN\john.doe* was expired in the (local) Active Directory. However, what about Azure portal? 
 
