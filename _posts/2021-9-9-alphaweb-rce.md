@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CVE-2021-40845 - AlphaWeb XE Authenticated RCE
+title: CVE-2021-40845 - AlphaWeb Authenticated RCE
 excerpt_separator: <!--more-->
 ---
 
