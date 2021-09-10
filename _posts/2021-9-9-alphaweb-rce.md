@@ -54,8 +54,7 @@ The path of these files is /cmd/$FILE$. Knowing the path, as there is not any re
 V. REFERENCES
 -------------------------
 https://wiki.zenitel.com/wiki/AlphaWeb
+
 https://wiki.zenitel.com/wiki/AlphaWeb_Custom_Scripts
+
 https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-40845
-
-
-
