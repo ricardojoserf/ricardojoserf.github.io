@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Abusing SSPR in Azure to get a Domain Admin
+title: Abusing SSPR in Azure to get Domain Admins
 excerpt_separator: <!--more-->
 ---
 
-In this post I will explain a simplified scenario in which we could abuse the SSPR functionality in Azure in a Red Team assessment.
+In this post I will explain a simplified scenario in which we could abuse the SSPR functionality of Azure in a Red Team assessment.
 
 <!--more-->
 
