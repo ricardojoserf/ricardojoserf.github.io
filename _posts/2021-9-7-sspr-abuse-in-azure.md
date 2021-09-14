@@ -4,7 +4,7 @@ title: Abusing SSPR in Azure to get Domain Admins
 excerpt_separator: <!--more-->
 ---
 
-In this post I will explain a simplified scenario in which we could abuse the SSPR functionality of Azure in a Red Team assessment.
+In this post I will explain a simplified scenario in which we could abuse the SSPR functionality of Azure to update the password of an expired "Domain Admin" user account in the Windows AD.
 
 <!--more-->
 
