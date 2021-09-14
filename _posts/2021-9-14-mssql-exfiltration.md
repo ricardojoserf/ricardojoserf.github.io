@@ -4,7 +4,7 @@ title: Exfiltrating files using MSSQL
 excerpt_separator: <!--more-->
 ---
 
-A scenario where we have to upload files to a server whose MSSQL credentials we know, having remote code execution, but the server is in other network.
+A scenario where we have to upload files to a server whose MSSQL credentials we know (so we have remote code execution) but the server is in other network. For that, we will transfer the base64-encoded file line by line.
 
 <!--more-->
 
@@ -21,7 +21,7 @@ However, the firewall rules make it impossible to download files from the jump s
 
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/mssql-exfiltration/image3.png)
 
-We have a foothold in the netwotk but the firewalls and network segmentation makes it a little difficult to continue. However, privilege escalation in this machine would be easy, as the account running the MSSQL server is a service account with the *SeImpersonatePrivilege* privilege and the OS is Windows Server 2016, being possible to escalate to SYSTEM with the Juicy Potato exploit:
+We have a foothold in the netwotk but the firewalls configutaion and network segmentation make it a little difficult to continue. However, privilege escalation in this machine would be easy, as the account running the MSSQL server is a service account with the *SeImpersonatePrivilege* privilege and the OS is Windows Server 2016, being possible to escalate to SYSTEM with the Juicy Potato exploit:
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/mssql-exfiltration/image4.png)
 
