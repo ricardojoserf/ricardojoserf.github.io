@@ -1,3 +1,5 @@
+
+// Esto hace que el código no se quede bien dentro de un recuadro
 /*
 .highlight {
   background-color: #efefef;
@@ -9,14 +11,10 @@
   margin: 20px 0 20px 0;
   overflow: scroll;
 }
-
-
 */
-code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
-}
 
-code.highlighter-rouge {
+//code.highlighter-rouge {
+.highlight {
   background: rgba(0,0,0,0.9);
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0px 3px;
@@ -24,6 +22,13 @@ code.highlighter-rouge {
   color: #aa759f;
   border-radius: 2px;
 }
+
+// Esto hace que se vea el código con letra rara
+code {
+  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+}
+
+
 
 .highlight .c { color: #586E75 } /* Comment */
 .highlight .err { color: #93A1A1 } /* Error */
