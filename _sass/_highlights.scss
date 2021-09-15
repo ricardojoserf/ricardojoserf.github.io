@@ -1,48 +1,13 @@
-
-// Esto hace que el código no se quede bien dentro de un recuadro
-/*
-.highlight {
-  background-color: #efefef;
-  padding: 7px 7px 7px 10px;
-  border: 1px solid #ddd;
-  -moz-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  -webkit-box-shadow: 3px 3px rgba(0,0,0,0.1);
-  box-shadow: 3px 3px rgba(0,0,0,0.1);
-  margin: 20px 0 20px 0;
-  overflow: scroll;
-}
-*/
-
-/*
-//code.highlighter-rouge {
-.highlight {
-  background: rgba(0,0,0,0.9);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0px 3px;
-  margin: 0px -3px;
-  color: #aa759f;
-  border-radius: 2px;
-}
-
-// Esto hace que se vea el código con letra rara
-code {
-  font-family:'Bitstream Vera Sans Mono','Courier', monospace;
-}
-*/
-
-
 pre {
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -o-pre-wrap;
-  // word-wrap: break-word;
   border: 1px solid #999;
   border-radius: 5px;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   // margin: 1em 0;
-  
-  // overflow: scroll;
+  // word-wrap: break-word;
   overflow-x: scroll;
   overflow-y: auto;
   display: block;
@@ -52,18 +17,11 @@ pre {
 }
 
 code {
+  // font-family:'Bitstream Vera Sans Mono','Courier', monospace;
   font-family: Courier, 'New Courier', monospace;
   margin: 20px 0 20px 0;
 }
 
-/*
-#codeStyler {
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  margin: 1em 0;
-}
-*/
 
 .highlight .c { color: #586E75 } /* Comment */
 .highlight .err { color: #93A1A1 } /* Error */
