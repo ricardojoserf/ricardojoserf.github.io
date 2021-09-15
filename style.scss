@@ -19,7 +19,9 @@ html {
 
 body {
   // background: $white;  
-  background: blue;
+  background-image: url("background.jpg");
+  background-repeat: repeat;
+
   font: 18px/1.4 $helvetica;
   color: $darkGray;
 }
