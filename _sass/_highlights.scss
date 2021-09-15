@@ -41,10 +41,10 @@ pre {
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   // margin: 1em 0;
-  margin: 20px 20px 20px 20px;
+  
   // overflow: scroll;
   overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: auto;
   display: block;
   line-height: 1.6em;
   background-color: #000000;
@@ -53,8 +53,7 @@ pre {
 
 code {
   font-family: Courier, 'New Courier', monospace;
-  //background-color: #eee;
-  
+  margin: 20px 0 20px 0;
 }
 
 /*
