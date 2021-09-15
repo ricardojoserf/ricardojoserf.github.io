@@ -1,4 +1,4 @@
-
+/*
 .highlight {
   background-color: #efefef;
   padding: 7px 7px 7px 10px;
@@ -12,6 +12,16 @@
 
 code {
   font-family:'Bitstream Vera Sans Mono','Courier', monospace;
+}
+*/
+
+code.highlighter-rouge {
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0px 3px;
+  margin: 0px -3px;
+  color: #aa759f;
+  border-radius: 2px;
 }
 
 .highlight .c { color: #586E75 } /* Comment */
