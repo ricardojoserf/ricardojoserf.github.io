@@ -9,13 +9,6 @@ A program to control systems remotely by uploading videos to Youtube using Pytho
 <!--more-->
 
 
-## Motivation
-
-Lately I have been reading about malware using Youtube for controlling their setting remotely. For example, Casbaneiro abuses YouTube to store its C&C server domains. Each video on the channels used by the threat actor contains a description and at the end of these there is a link to a bogus Facebook or Instagram url containing the C&C server domain ([Welivesecurity blog](https://www.welivesecurity.com/2019/10/03/casbaneiro-trojan-dangerous-cooking/)). A second example is Numando, which abuses it by encrypting the data in the title of the Youtube videos ([other Welivesecurity blog](https://www.welivesecurity.com/2021/09/17/numando-latam-banking-trojan/)). 
-
-Knowing this I decided to create a PoC to test the control of remote systems uploading videos to Youtube but, instead of using the title or the description, using the content of the video. It allows to execute any command, but it could be used to change some settings remotely. So this is just a PoC, use it for educational purposes!
-
-
 ## Usage
 
 ### Create a video
@@ -47,6 +40,14 @@ We can see the output from the commands:
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/covert-tube/image4.png)
 
+--------------------------------------------------------------------------------------
+
+## Installation
+
+```
+git clone https://github.com/ricardojoserf/covert-tube
+cd covert-tube
+```
 
 ### Configuration
 
@@ -72,15 +73,6 @@ Update the *config.py* file:
 - **downloaded_video_path** (Optional. Default: "/tmp/test.mp4"): Path where the new video will be downloaded.
 
 - **temp_folder** (Optional. Default: "/tmp/"): Path where images of every frame from the video are stored, with the format *image_*X*.png*.
-
---------------------------------------------------------------------------------------
-
-## Installation
-
-```
-git clone https://github.com/ricardojoserf/covert-tube
-cd covert-tube
-```
 
 ### Installing dependencies
 
@@ -115,3 +107,11 @@ cp dist/main covert-tube
 rm -rf dist build
 rm main.spec
 ```
+
+--------------------------------------------------------------------------------------
+
+## Motivation
+
+Lately I have been reading about malware using Youtube for controlling their setting remotely. For example, Casbaneiro abuses YouTube to store its C&C server domains. Each video on the channels used by the threat actor contains a description and at the end of these there is a link to a bogus Facebook or Instagram url containing the C&C server domain ([Welivesecurity blog](https://www.welivesecurity.com/2019/10/03/casbaneiro-trojan-dangerous-cooking/)). A second example is Numando, which abuses it by encrypting the data in the title of the Youtube videos ([other Welivesecurity blog](https://www.welivesecurity.com/2021/09/17/numando-latam-banking-trojan/)). 
+
+Knowing this I decided to create a PoC to test the control of remote systems uploading videos to Youtube but, instead of using the title or the description, using the content of the video. It allows to execute any command, but it could be used to change some settings remotely. So this is just a PoC, use it for educational purposes!
