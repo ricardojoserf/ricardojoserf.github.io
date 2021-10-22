@@ -5,9 +5,18 @@ excerpt_separator: <!--more-->
 ---
 
 
-Use the HTTP protocol version to send a file bit by bit ("HTTP/1.0" is a 0 and "HTTP/1.1" is a 1). It uses GET requests so the Blue Team would only see the requests to your IP address.<!--more--> However, it takes a long time to send bigger files, for example it needs 1 hour to send 200 KB, and the amount of requests would be very high (8 times the number of bytes of the file).
+Releasing http-protocol-exfil, a tool that uses the HTTP protocol version to send a file bit by bit ("HTTP/1.0" is a 0 and "HTTP/1.1" is a 1). It uses GET requests so the Blue Team would only see the requests to your IP address.<!--more--> However, it takes a long time to send bigger files, for example it needs 1 hour to send 200 KB, and the amount of requests would be very high (8 times the number of bytes of the file).
 
 ![memillo](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/http_protocol_exfil/memillo.png)
+
+
+
+## Download repository
+
+```
+git clone https://github.com/ricardojoserf/http-protocol-exfil
+cd http-protocol-exfil
+```
 
 
 ## Create listener 
