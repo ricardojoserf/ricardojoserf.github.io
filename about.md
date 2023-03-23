@@ -5,13 +5,21 @@ permalink: /about/
 ---
 
 
-Penetration tester based in Madrid, Spain
+Hello there! My name is Ricardo and I am a penetration tester based in Madrid, Spain, with 7 years and a half of work experience. 
+
+I studied Telecommunications Engineering Degree and a Master's Degree in Universidad Politécnica de Madrid, where I worked 2 years as researcher. After that I have worked 5 years as penetration tester/red teamer in Indra, Innotec and now Siemens Smart Infrastructure (Siemens SI).
+
+I have cybersecurity certificates such as OSCP, OSCE, OSCE-3, CRTE, PACES, CRTO, CRTL and the five HackTheBox Pro Labs; and network and cloud certificates such as CCNA Router & Switching, Azure Fundamentals (AZ-900), Azure Security Engineer Associate (AZ-500) and AWS Certified Cloud Practitioner.
 
 
 
 # Contact information
 
-[ricardojruiz93@gmail.com](mailto:ricardojruiz93@gmail.com)
+LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/in/ricardojoserf/)
+
+Twitter: [https://twitter.com/ricardojoserf](https://twitter.com/ricardojoserf)
+
+Or [send me an e-mail](mailto:ricardojruiz93@gmail.com)
 
 
 
