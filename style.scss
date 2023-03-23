@@ -19,10 +19,10 @@ html {
 
 body {
   // background: $white;  
-  background:#34568B;
+  // background:#34568B;
   // background-image: url("images/background.jpg");
   // background-repeat: repeat;
-
+  background: $white;
   font: 18px/1.4 $helvetica;
   color: $darkGray;
 }
@@ -281,7 +281,8 @@ nav {
   margin-top: 50px;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  /// background-color: $lightGray;
+  background-color: $white;
 }
 
 footer {
