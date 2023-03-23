@@ -4,17 +4,18 @@ title: Avoiding EDRs creating a new process
 excerpt_separator: <!--more-->
 ---
 
-Code snippet to create a process using the "PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON" flag, which blocks 3rd party DLLs to be injected in it (such as EDR DLLs), allowing only Microsoft DLLs to be injected.
+Code snippet to create a process using the "PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON" flag, which blocks 3rd party DLLs to be injected in it (such as EDR DLLs).
 
 <!--more-->
 
 
-Then it injects shellcode in the spawned process using (*VirtualAllocEx* + *WriteProcessMemory* + *VirtualProtectEx* + *CreateRemoteThread* + *QueueUserAPC*):
+So, it only allows Microsoft DLLs to be injected. After creating the process, the code injects shellcode in it using (*VirtualAllocEx* + *WriteProcessMemory* + *VirtualProtectEx* + *CreateRemoteThread* + *QueueUserAPC*).
 
-- [calc](https://github.com/ricardojoserf/non-ms-binaries/tree/main/calc): It creates Notepad process and the hardcoded payload spawns the calculator.
+There are two versions:
+
+- [calc](https://github.com/ricardojoserf/non-ms-binaries/tree/main/calc): It creates Notepad process and the hardcoded payload spawns the calculator. You can check if this generates alerts by itself.
 
 - [dropper](https://github.com/ricardojoserf/non-ms-binaries/tree/main/dropper): It creates Notepad process and downloads the payload from a remote server.
-
 
 Github repository: [non-ms-binaries](https://github.com/ricardojoserf/non-ms-binaries)
 
