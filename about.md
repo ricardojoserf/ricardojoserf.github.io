@@ -16,7 +16,7 @@ I have cybersecurity certificates such as OSCP, OSCE, OSCE-3, CRTE, PACES, CRTO,
 
 I decided to start a blog some years ago so I created one using AdminLTE and AngularJS and hosted it in Heroku, you can read the code [here](https://github.com/ricardojoserf/ricardojoserf.herokuapp.com) but the page is now down. Github pages is easier to manage so I moved all the posts to this new site and it works quite fine. 
 
-I will write mostly about public tools I release in [my Github](https://github.com/ricardojoserf) or hacking techniques I use in my daily work, most of the times to have a reference of how I did what in the future.
+I will write mostly about public tools I release in [my Github](https://github.com/ricardojoserf) or hacking techniques I use in my daily work, most of the times to have a reference of how I did it in the future.
 
 
 # Contact information
