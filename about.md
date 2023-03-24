@@ -25,7 +25,9 @@ LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/
 
 Twitter: [https://twitter.com/ricardojoserf](https://twitter.com/ricardojoserf)
 
+That's all... Happy hacking! :)
 
+![i](https://giphy.com/embed/13HBDT4QSTpveU)
 
 
 
