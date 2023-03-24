@@ -15,6 +15,7 @@
 
 html {
   font-size: 100%;
+  color: $white;
 }
 
 body {
@@ -73,7 +74,7 @@ h3 {
 
 h4 {
   font-size: 18px;
-  color: $gray;
+  color: $white;
 }
 
 p {
@@ -83,12 +84,12 @@ p {
 
 a {
   ///color: $blue;
-  color: #966fd6;
+  color: #230046;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
     /// color: $blue;
-    color: #230046;
+    color: #966fd6;
   }
 }
 
@@ -217,7 +218,7 @@ img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $gray;
+  color: $white;
   font-size: 16px;
 
   @include mobile {
@@ -241,7 +242,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: $white;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -259,7 +260,8 @@ nav {
 
 .posts > .post {
   padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  // border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid "#230046";	
 }
 
 .posts > .post:last-child {
