@@ -260,8 +260,7 @@ nav {
 
 .posts > .post {
   padding-bottom: 2em;
-  // border-bottom: 1px solid $lightGray;
-  border-bottom: 1px solid #230046;	
+  border-bottom: 1px solid $lightGray;
 }
 
 .posts > .post:last-child {
@@ -295,14 +294,14 @@ nav {
   border-bottom: 1px solid #ddd;
   /// background-color: $lightGray;
   /// background-color: $white;
-  background-color: #280137;
+  background-color: #121212;
   color: $white;	
 }
 
 footer {
   padding: 20px 0;
   text-align: center;
-  background-color: #280137;
+  background-color: #121212;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
