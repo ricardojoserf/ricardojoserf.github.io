@@ -4,7 +4,7 @@ title: Avoiding EDRs creating a new process
 excerpt_separator: <!--more-->
 ---
 
-Code snippet to create a process using the "PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON" flag, which blocks 3rd party DLLs to be injected in it (such as EDR DLLs).
+Code snippet to create a process using the PROCESS_CREATION_MITIGATION_POLICY_BLOCK_NON_MICROSOFT_BINARIES_ALWAYS_ON flag, which blocks 3rd party DLLs to be injected in it (such as EDR DLLs).
 
 <!--more-->
 
