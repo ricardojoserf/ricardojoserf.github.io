@@ -15,7 +15,7 @@
 
 html {
   font-size: 100%;
-  color: $white;
+
 }
 
 body {
@@ -45,7 +45,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
   /// color: $darkerGray;
-  color: $white;
+  color: #DEFFFFFF;
   font-weight: bold;
 
   line-height: 1.7;
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 30px;
   a {
-    color: $white;
+    color: #DEFFFFFF;
   }
 }
 
@@ -74,12 +74,12 @@ h3 {
 
 h4 {
   font-size: 18px;
-  color: $white;
+  color: #DEFFFFFF;
 }
 
 p {
   margin: 15px 0;
-  color: $white;
+  color: #DEFFFFFF;
 }
 
 a {
@@ -218,7 +218,7 @@ img {
 
 .site-description {
   margin: -5px 0 0 0;
-  color: $white;
+  color: #DEFFFFFF;
   font-size: 16px;
 
   @include mobile {
@@ -231,7 +231,7 @@ nav {
   margin-top: 23px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 18px;
-  color: $white;
+  color: #DEFFFFFF;
 	
   @include mobile {
     float: none;
@@ -242,7 +242,7 @@ nav {
 
   a {
     margin-left: 20px;
-    color: $white;
+    color: #DEFFFFFF;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
@@ -295,7 +295,7 @@ nav {
   /// background-color: $lightGray;
   /// background-color: $white;
   background-color: #121212;
-  color: $white;	
+  color: #DEFFFFFF;	
 }
 
 footer {
