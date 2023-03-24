@@ -27,7 +27,7 @@ Twitter: [https://twitter.com/ricardojoserf](https://twitter.com/ricardojoserf)
 
 That's all... Happy hacking! :)
 
-![i](https://giphy.com/embed/13HBDT4QSTpveU)
+![i](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjliNTk4NTM3MjExZGQ4YzVlOGQ0MmQzNTFjYTFkNjYyMjYzNTVkOSZjdD1n/13HBDT4QSTpveU/giphy.gif)
 
 
 
