@@ -59,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 30px;
   a {
-    color: inherit;
+    color: $white;
   }
 }
 
@@ -78,11 +78,12 @@ h4 {
 
 p {
   margin: 15px 0;
+  color: $white;
 }
 
 a {
   ///color: $blue;
-  color: #320064;
+  color: #966fd6;
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
@@ -229,7 +230,8 @@ nav {
   margin-top: 23px; // @TODO: Vertically middle align
   font-family: $helveticaNeue;
   font-size: 18px;
-
+  color: $white;
+	
   @include mobile {
     float: none;
     margin-top: 9px;
@@ -298,9 +300,7 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
-  
-  
-	
+  background-color: #230046;
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
