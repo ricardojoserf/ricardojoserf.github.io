@@ -27,13 +27,13 @@ body {
   background: #121212;
   font: 18px/1.4 $helvetica;
   /// color: $darkGray;
-  color: $white;
+  color: #DEFFFFFF;
 }
 
 .container {
   /// background: $white;
   background: #121212;
-  color: $white;
+  color: #DEFFFFFF;
 	
   margin: 0 auto;
   //max-width: 740px;
@@ -89,7 +89,7 @@ a {
 	cursor: pointer;
   &:hover, &:active {
     /// color: $blue;
-    color: #230046;
+    color: #cab7eb;
   }
 }
 
