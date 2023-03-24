@@ -22,13 +22,18 @@ body {
   // background:#34568B;
   // background-image: url("images/background.jpg");
   // background-repeat: repeat;
-  background: $white;
+  /// background: $white;
+  background: "$black";
   font: 18px/1.4 $helvetica;
-  color: $darkGray;
+  /// color: $darkGray;
+  color: $white;
 }
 
 .container {
-  background: $white;
+  /// background: $white;
+  background: "$black";
+  color: $white;
+	
   margin: 0 auto;
   //max-width: 740px;
   max-width: 800px;
@@ -38,7 +43,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaNeue;
-  color: $darkerGray;
+  /// color: $darkerGray;
+  color: "#230046";
   font-weight: bold;
 
   line-height: 1.7;
@@ -75,11 +81,13 @@ p {
 }
 
 a {
-  color: $blue;
+  ///color: $blue;
+  color: "#230046";
   text-decoration: none;
 	cursor: pointer;
   &:hover, &:active {
-    color: $blue;
+    /// color: $blue;
+    color: "#320064";
   }
 }
 
@@ -282,12 +290,17 @@ nav {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
   /// background-color: $lightGray;
-  background-color: $white;
+  /// background-color: $white;
+  background-color: "#230046";
+  color: "$white";	
 }
 
 footer {
   padding: 20px 0;
   text-align: center;
+  
+  
+	
 }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
