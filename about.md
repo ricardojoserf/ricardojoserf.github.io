@@ -25,8 +25,6 @@ LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/
 
 Twitter: [https://twitter.com/ricardojoserf](https://twitter.com/ricardojoserf)
 
-Or [send me an e-mail](mailto:ricardojruiz93@gmail.com)
-
 
 
 
