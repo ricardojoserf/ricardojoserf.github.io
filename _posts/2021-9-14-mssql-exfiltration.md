@@ -21,7 +21,7 @@ However, the firewall rules make it impossible to download files from the jump s
 
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/mssql-exfiltration/image3.png)
 
-We have a foothold in the netwotk but the firewalls configutaion and network segmentation make it a little difficult to continue. However, privilege escalation in this machine would be easy, as the account running the MSSQL server is a service account with the *SeImpersonatePrivilege* privilege and the OS is Windows Server 2016, being possible to escalate to SYSTEM with the Juicy Potato exploit:
+We have a foothold in the netwotk but the firewalls configuration and network segmentation make it a little difficult to continue. However, privilege escalation in this machine would be easy, as the account running the MSSQL server is a service account with the *SeImpersonatePrivilege* privilege and the OS is Windows Server 2016, being possible to escalate to SYSTEM with the Juicy Potato exploit:
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/mssql-exfiltration/image4.png)
 
@@ -60,7 +60,7 @@ After copying all the content of the file and pasting it in the command line wit
 xp_cmdshell certutil -decode c:\windows\tasks\nc.txt c:\windows\tasks\nc.exe
 ```
 
-Luckily, after uploading this file I realized that there was not any antivirus in the machine and the Windows firewall was disabled, so it was as easy as uploading the file using bind shells insted of reverse shells. So in the compromised server the command was:
+Luckily, after uploading this file I realized that there was not any antivirus in the machine and the Windows firewall was disabled, so it was as easy as uploading the file using bind shells instead of reverse shells. So in the compromised server the command was:
 
 ```
 xp_cmdshell c:\windows\tasks\nc.exe -lvp 8888 > c:\windows\tasks\juicypotato.exe
