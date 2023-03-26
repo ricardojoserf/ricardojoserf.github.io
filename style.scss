@@ -262,8 +262,14 @@ nav {
 
     @include mobile {
       margin: 0 10px;
-      color: $blue;
+      //color: $blue;
     }
+	  
+    a:hover, a:active {
+      color: #3700b3;
+      text-decoration: underline;
+    }
+	  
   }
 }
 
