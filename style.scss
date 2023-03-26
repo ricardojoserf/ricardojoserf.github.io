@@ -66,6 +66,9 @@ h1 {
 
 h2 {
   font-size: 24px;
+  a {
+    color: #EDFFFFFF;
+  }
 }
 
 h3 {
@@ -89,7 +92,9 @@ a {
 	cursor: pointer;
   &:hover, &:active {
     /// color: $blue;
-    color: #cab7eb;
+    /// color: #cab7eb;
+    color: #3700b3;
+    text-decoration: underline;
   }
 }
 
