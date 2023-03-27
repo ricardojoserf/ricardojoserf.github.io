@@ -29,7 +29,7 @@ Github repository: [non-ms-binaries](https://github.com/ricardojoserf/non-ms-bin
 
 ### Code
 
-```
+```c
 using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
