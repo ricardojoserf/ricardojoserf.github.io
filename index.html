@@ -20,16 +20,16 @@ layout: default
   {% if paginator.total_pages > 1 %}
   <div class="posts" style="width:100%;text-align: center">
     {% if paginator.previous_page %}
-      <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+      <a style="margin-left:5px; margin-right:5px;" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
     {% else %}
       <span>&laquo; Prev</span>
     {% endif %}
 
     {% for page in (1..paginator.total_pages) %}
       {% if page == paginator.page %}
-        <span class="webjeda" style="margin-left:20px; margin-right:20px; ">{{ page }}</span>
+        <span class="webjeda" style="margin-left:5px; margin-right:5px;">{{ page }}</span>
       {% elsif page == 1 %}
-        <a href="/">{{ page }}</a>
+        <a style="margin-left:5px; margin-right:5px;" href="/">{{ page }}</a>
       {% else %}
         <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% endif %}
