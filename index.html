@@ -20,25 +20,25 @@ layout: default
   {% if paginator.total_pages > 1 %}
   <div class="posts" style="width:100%;text-align: center">
     {% if paginator.previous_page %}
-      <a style="margin-left:5px; margin-right:5px;" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+      <a style="margin-left:3px; margin-right:3px;" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
     {% else %}
-      <span style="margin-left:5px; margin-right:5px;">&laquo; Prev</span>
+      <span style="margin-left:3px; margin-right:3px;">&laquo; Prev</span>
     {% endif %}
 
     {% for page in (1..paginator.total_pages) %}
       {% if page == paginator.page %}
-        <span class="webjeda" style="margin-left:5px; margin-right:5px;">{{ page }}</span>
+        <span class="webjeda" style="margin-left:3px; margin-right:3px;">{{ page }}</span>
       {% elsif page == 1 %}
-        <a style="margin-left:5px; margin-right:5px;" href="/">{{ page }}</a>
+        <a style="margin-left:3px; margin-right:3px;" href="/">{{ page }}</a>
       {% else %}
-        <a style="margin-left:5px; margin-right:5px;" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+        <a style="margin-left:3px; margin-right:3px;" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% endif %}
     {% endfor %}
 
     {% if paginator.next_page %}
-      <a style="margin-left:5px; margin-right:5px;" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+      <a style="margin-left:3px; margin-right:3px;" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
     {% else %}
-      <span style="margin-left:5px; margin-right:5px;">Next &raquo;</span>
+      <span style="margin-left:3px; margin-right:3px;">Next &raquo;</span>
     {% endif %}
   </div>
   {% endif %}
