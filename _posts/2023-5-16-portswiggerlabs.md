@@ -9,6 +9,8 @@ I solved and created writeups for each Apprentice and Practitioner-level Portswi
 <!--more-->
 
 
+You can find the labs here: [https://portswigger.net/web-security/all-labs](https://portswigger.net/web-security/all-labs)
+
 The detailed writeups are in this repository: [https://github.com/ricardojoserf/Portswigger-Labs](https://github.com/ricardojoserf/Portswigger-Labs)
 
 Regarding the payloads, these are the sections:
