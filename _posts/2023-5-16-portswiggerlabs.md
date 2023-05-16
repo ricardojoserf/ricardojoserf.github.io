@@ -1862,7 +1862,7 @@ callback=alert(34)
 
 #### WCACH.09 - URL normalization
 
-Use the URL-encoded version of "/<script>alert(35)</script>" (they have the same cache key)
+Use the URL-encoded version of \/\<script\>alert(35)\<\/script\> (they have the same cache key)
 
 ```
 /%3c%73%63%72%69%70%74%3e%61%6c%65%72%74%28%31%29%3c%2f%73%63%72%69%70%74%3e
