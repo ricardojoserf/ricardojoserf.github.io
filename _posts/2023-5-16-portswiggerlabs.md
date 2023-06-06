@@ -2478,7 +2478,7 @@ POST /my-account/change-address HTTP/2
 
 ```
 
-## <a name="26"></a>Exam steps
+## <a name="26"></a>Exam steps 
 
 Source: [https://micahvandeusen.com/burp-suite-certified-practitioner-exam-review/](https://micahvandeusen.com/burp-suite-certified-practitioner-exam-review/)
 
