@@ -4,7 +4,7 @@ title: jeringuilla - Process injection framework in C#
 excerpt_separator: <!--more-->
 ---
 
-[jeringuilla](https://github.com/ricardojoserf/jeringuilla) is a tool for easy process injection. It implements several types of process injection and uses dynamic function loading using delegates and AES to encrypt payloads and strings, so the function names are not easiliy retrievable.
+jeringuilla is a tool for easy process injection. It implements several types of process injection and uses dynamic function loading using delegates and AES to encrypt payloads and strings, so the function names are not easiliy retrievable.
 
 <!--more-->
 
