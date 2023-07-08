@@ -11,7 +11,7 @@ GetProcAddress implementation in C# using only the ReadProcessMemory API call.
 
 Link: [https://github.com/ricardojoserf/GetProcAddress](https://github.com/ricardojoserf/GetProcAddress)
 
-This function takes a DLL handle and a function name, walks the PEB and returns the function address. 
+This function takes a DLL handle and a function name or ordinal, walks the PEB and returns the function address. 
 
 It works like the [GetProcAddress](https://learn.microsoft.com/en-us/windows/win32/api/libloaderapi/nf-libloaderapi-getprocaddress) function so it is useful if you want to avoid using it. This implementation uses only the ReadProcessMemory API call.
 
@@ -21,6 +21,8 @@ There is a binary to test the functionality:
 
 ![img](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/getProcAddress/Screenshot_1.png)
 
+
+This is the code:
 
 ```cs
 using System;
