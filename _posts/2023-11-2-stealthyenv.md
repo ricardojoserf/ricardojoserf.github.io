@@ -12,6 +12,8 @@ Alternative to whoami.exe or other well-known binaries to get the environment va
 Repository: [https://github.com/ricardojoserf/StealthyEnv](https://github.com/ricardojoserf/StealthyEnv)
 
 
+<br>
+
 It works like this:
 
 - Function [NtQueryInformationProcess](https://learn.microsoft.com/en-us/windows/win32/api/winternl/nf-winternl-ntqueryinformationprocess) returns a "PROCESS_BASIC_INFORMATION" structure containing a pointer to the PEB base address.
