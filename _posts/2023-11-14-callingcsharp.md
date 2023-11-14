@@ -46,8 +46,7 @@ The C# code has been defined inside the "code1" variable, and we add the Microso
 
 If we execute this, the result is the following:
 
-![1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_1.png)
-
+![1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/callingcsharp/Screenshot_1.png)
 
 However, it is important to notice that the function does not need to be called "Main" and it may have input arguments. As you can see in the following example, we are calling the function "RandomName" and now the message in console is sent as an input argument to this function:
 
@@ -69,7 +68,7 @@ Add-Type $code2
 
 If we execute it, the result is very similar to the previous one:
 
-![2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_2.png)
+![2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/callingcsharp/Screenshot_2.png)
 
 
 It is not even necessary to use a namespace, you can define a class directly and call it, doing this the first example would become:
@@ -273,7 +272,7 @@ Add-Type $code3
 
 ## <a name="4"></a> Extra: Getting username with NamedPipe in Powershell
 
-Now that we know how to do it, we can "prepare" and execute any C# code we have created. In the following code snippet, you can see the result of executing the code in [https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/NamedPipe/Program.cs](https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/NamedPipe/Program.cs):
+Now that we know how to do it, we can "prepare" and execute any C# code. In the following code snippet, you can see the result of executing the code in [this link](https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/NamedPipe/Program.cs), which also gets the current username:
 
 ```
 $code4 = @"
