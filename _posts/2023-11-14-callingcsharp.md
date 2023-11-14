@@ -29,18 +29,20 @@ A very simple C# example code is using Console.Writeline() to write any message 
 ```
 $code1 = @"
 using System;
-public class Class1 {
-	public static void Main()
-	{
-		Console.WriteLine("Hello World!");
-	}
+namespace TestProject{
+	public class Class1 {
+		public static void Main()
+		{
+			Console.WriteLine("Hello World!");
+		}
+	}	
 }
 "@
 Add-Type $code1
-[Class1]::Main()
+[TestProject.Class1]::Main()
 ```
 
-The C# code has been defined inside the "code1" variable, and we add the Microsoft .NET class to the PowerShell session using the [Add-Type function](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-7.3). After adding it, we can call the functions of the class as [Class]::Function(Arguments).
+The C# code has been defined inside the "code1" variable, and we add the Microsoft .NET class to the PowerShell session using the [Add-Type function](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/add-type?view=powershell-7.3). After adding it, we can call the functions of the class as [Namespace.Class]::Function(Arguments).
 
 If we execute this, the result is the following:
 
@@ -52,21 +54,41 @@ However, it is important to notice that the function does not need to be called 
 ```
 $code2 = @"
 using System;
-public class Class2 {
-	public static void RandomName(string message)
-	{
-		Console.WriteLine(message);
+namespace TestProject{
+	public class Class2 {
+		public static void RandomName(string message)
+		{
+			Console.WriteLine(message);
+		}
 	}
 }
 "@
 Add-Type $code2
-[Class2]::RandomName("Test text.")
+[TestProject.Class2]::RandomName("Test text.")
 ```
 
 If we execute it, the result is very similar to the previous one:
 
 ![2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_2.png)
 
+
+It is not even necessary to use a namespace, you can define a class directly and call it, doing this the first example would become:
+
+```
+$code1 = @"
+using System;
+public class Class1 {
+	public static void Main()
+	{
+		Console.WriteLine("Hello World!");
+	}
+}
+"@
+Add-Type $code1
+[Class1]::Main()
+``` 
+
+Note that in this case, the nomenclature is [Class]::Function(Arguments).
 
 -----------------------------------------------------
 
@@ -103,7 +125,7 @@ namespace PRTL_USER_PROCESS_PARAMETERS
 ```
 
 
-First of all, we will delete the "namespace" declaration and leave the class "Program", as we are adding a .NET class and not a namespace. 
+First of all, we can delete the "namespace" declaration and leave the class "Program", as we are adding a .NET class and not a namespace. You do not need to, but I like to do it this way :)
 
 Also, we need to make the class Public or it will not be possible to call it from Powershell.
 
