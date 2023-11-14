@@ -88,6 +88,8 @@ Add-Type $code1
 [Class1]::Main()
 ``` 
 
+![6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_6.png)
+
 Note that in this case, the nomenclature is [Class]::Function(Arguments).
 
 -----------------------------------------------------
