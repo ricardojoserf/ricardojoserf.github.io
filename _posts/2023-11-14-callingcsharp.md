@@ -104,7 +104,7 @@ First of all, we will delete the "namespace" declaration and leave the class "Pr
 
 Also, we need to make the class Public or it will not be possible to call it from Powershell.
 
-So the code will look something like this now:
+So the skeleton code will look something like this now:
 
 ```
 using System;
@@ -124,7 +124,7 @@ Then, we find the declaration in .NET of the Main function is like this:
 static void Main(string[] args) 
 ```
 
-We will have to remove the "string[] args" part as it generate an error, and we will make the both functions public as in the first example, getting a code like this:
+We will have to remove the "string[] args" part as it generates an error, and we will make the two functions public as in the first example, getting a skeleton code:
 
 ```
 using System;
