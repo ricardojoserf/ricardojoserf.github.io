@@ -20,6 +20,8 @@ Index:
 - [Extra: Getting username with NamedPipe in Powershell](#4)
 
 
+-----------------------------------------------------
+
 ## <a name="1"></a> Calling C# code from Powershell basic examples
 
 A very simple C# example code is using Console.Writeline() to write any message in the console inside a Main() function. As we can see, both the class and the function are public, and the function as no input arguments:
@@ -66,6 +68,7 @@ If we execute it, the result is very similar to the previous one:
 ![2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_2.png)
 
 
+-----------------------------------------------------
 
 ## <a name="2"></a> Preparing our custom C# code for Powershell
 
@@ -153,7 +156,7 @@ public class Program
 
 If we try to add this class to Powershell with the Add-Type function, we will still get an error:
 
-![3]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_3.png
+![3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_3.png)
 
 The problem are the output variables defined with the underscore character "\_". It is not possible to use this character so we have to define the output variables explicitly (even if we will not use them at all). So a code like this...
 
@@ -167,6 +170,8 @@ ReadProcessMemory(Process.GetCurrentProcess().Handle, allocated_address, data, d
 IntPtr a = IntPtr.Zero;
 ReadProcessMemory(Process.GetCurrentProcess().Handle, allocated_address, data, data.Length, out a);
 ```
+
+-----------------------------------------------------
 
 ## <a name="3"></a> Final code: getting username with PRTL_USER_PROCESS_PARAMETERS in Powershell
 
@@ -238,7 +243,9 @@ Add-Type $code3
 [PrtlUserProcessParameters]::Main()
 ```
 
-![4]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_4.png
+![4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_4.png)
+
+-----------------------------------------------------
 
 ## <a name="4"></a> Extra: Getting username with NamedPipe in Powershell
 
@@ -388,4 +395,4 @@ Add-Type $code4
 [NamedPipe]::Main()
 ```
 
-![5]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_5.png
+![5](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_5.png)
