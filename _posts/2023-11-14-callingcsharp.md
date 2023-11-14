@@ -9,7 +9,18 @@ One of the reasons why I like programming some PoCs using C# is the possibility 
 <!--more-->
 
 
-## Calling C# code from Powershell basic examples
+Index:
+
+- [Calling C# code from Powershell basic examples](#1)
+
+- [Preparing our custom C# code for Powershell](#2)
+
+- [Final code: getting username with PRTL_USER_PROCESS_PARAMETERS in Powershell](#3)
+
+- [Extra: Getting username with NamedPipe in Powershell](#4)
+
+
+## <a name="1"></a> Calling C# code from Powershell basic examples
 
 A very simple C# example code is using Console.Writeline() to write any message in the console inside a Main() function. As we can see, both the class and the function are public, and the function as no input arguments:
 
@@ -31,7 +42,7 @@ The C# code has been defined inside the "code1" variable, and we add the Microso
 
 If we execute this, the result is the following:
 
-[1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_1.png)
+![1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_1.png)
 
 
 However, it is important to notice that the function does not need to be called "Main" and it may have input arguments. As you can see in the following example, we are calling the function "RandomName" and now the message in console is sent as an input argument to this function:
@@ -52,11 +63,11 @@ Add-Type $code2
 
 If we execute it, the result is very similar to the previous one:
 
-[2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_2.png)
+![2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_2.png)
 
 
 
-## Preparing our custom C# code for Powershell
+## <a name="2"></a> Preparing our custom C# code for Powershell
 
 We will try to update the code in [this link](https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/PRTL_USER_PROCESS_PARAMETERS/Program.cs) to run it using Powershell. The structure of this code is:
 
@@ -142,7 +153,7 @@ public class Program
 
 If we try to add this class to Powershell with the Add-Type function, we will still get an error:
 
-[3]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_3.png
+![3]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_3.png
 
 The problem are the output variables defined with the underscore character "\_". It is not possible to use this character so we have to define the output variables explicitly (even if we will not use them at all). So a code like this...
 
@@ -157,7 +168,7 @@ IntPtr a = IntPtr.Zero;
 ReadProcessMemory(Process.GetCurrentProcess().Handle, allocated_address, data, data.Length, out a);
 ```
 
-## Final code: getting username with PRTL_USER_PROCESS_PARAMETERS in Powershell
+## <a name="3"></a> Final code: getting username with PRTL_USER_PROCESS_PARAMETERS in Powershell
 
 Finally, we get no errors and can execute the code like this:
 
@@ -227,11 +238,9 @@ Add-Type $code3
 [PrtlUserProcessParameters]::Main()
 ```
 
-[4]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_4.png
+![4]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_4.png
 
-
-
-## Extra: Getting username with NamedPipe in Powershell
+## <a name="4"></a> Extra: Getting username with NamedPipe in Powershell
 
 Now that we know how to do it, we can "prepare" and execute any C# code we have created. In the following code snippet, you can see the result of executing the code in [https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/NamedPipe/Program.cs](https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/NamedPipe/Program.cs):
 
@@ -379,4 +388,4 @@ Add-Type $code4
 [NamedPipe]::Main()
 ```
 
-[5]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_5.png
+![5]https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_5.png
