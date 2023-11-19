@@ -19,6 +19,7 @@ Index:
 
 - [Extra: Getting username with NamedPipe in Powershell](#4)
 
+<br>
 
 -----------------------------------------------------
 
@@ -90,6 +91,8 @@ Add-Type $code1
 ![6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/callingcsharp/Screenshot_6.png)
 
 Note that in this case, the nomenclature is [Class]::Function(Arguments).
+
+<br>
 
 -----------------------------------------------------
 
@@ -194,6 +197,8 @@ IntPtr a = IntPtr.Zero;
 ReadProcessMemory(Process.GetCurrentProcess().Handle, allocated_address, data, data.Length, out a);
 ```
 
+<br>
+
 -----------------------------------------------------
 
 ## <a name="3"></a> Final code: getting username with PRTL_USER_PROCESS_PARAMETERS in Powershell
@@ -267,6 +272,8 @@ Add-Type $code3
 ```
 
 ![4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/184a3e9dbdeb2474227f5526c33e1a0daceed5c5/images/callingcsharp/Screenshot_4.png)
+
+<br>
 
 -----------------------------------------------------
 
