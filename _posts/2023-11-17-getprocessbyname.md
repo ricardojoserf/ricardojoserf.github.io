@@ -1,10 +1,10 @@
 ---
 layout: post
-title: GetProcessByName - Get process handles from process name in C# 
+title: Get process handles from process name in C# 
 excerpt_separator: <!--more-->
 ---
 
-Get process(es) from the process name using NtGetNextProcess and GetProcessImageFileName API calls. 
+Get process(es) from the process name using NtGetNextProcess and GetProcessImageFileName API calls, a stealthier alternative and written in C#.
 
 <!--more-->
 
