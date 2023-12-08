@@ -15,7 +15,7 @@ Repository: [https://github.com/ricardojoserf/GetProcessByName](https://github.c
 
 -----------------------
 
-It returns a list of process handlers which you can use later, for example to get the PID using the GetProcessId API call:
+It returns a list of process handles which you can use for example to get the PIDs using [GetProcessId](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getprocessid):
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/getprocessbyname/Screenshot_1.png)
 
