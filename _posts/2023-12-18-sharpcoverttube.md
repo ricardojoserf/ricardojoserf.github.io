@@ -22,7 +22,7 @@ Run the listener in your Windows system:
 
 It will check the Youtube channel every 120 seconds (by default) until a new video is uploaded. In this case, we upload "whoami.avi" from the folder [example-videos](https://github.com/ricardojoserf/SharpCovertTube/tree/main/example-videos):
 
-<img src="https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_2.png" width=45%>
+![img2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_2.png)
 
 After finding there is a [new video](https://www.youtube.com/shorts/-JcDf4pF0qA) in the channel, it decodes the QR code from the video thumbnail, executes the command and the response is base64-encoded and exfiltrated using DNS:
 
@@ -96,3 +96,5 @@ python generate_video.py -t qr_aes -f c:\temp\dirtemp_aes.avi -c "dir c:\windows
 - File must be 64 bits. This is due to the code used for QR decoding, which is from [Stefangansevles](https://github.com/Stefangansevles)'s project [QR-Capture](https://github.com/Stefangansevles/QR-Capture)
 
 - This project is a port from [covert-tube](https://github.com/ricardojoserf/covert-tube), a project I developed in 2021 using just Python, which was inspired by Welivesecurity blogs about [Casbaneiro](https://www.welivesecurity.com/2019/10/03/casbaneiro-trojan-dangerous-cooking/) and [Numando](https://www.welivesecurity.com/2021/09/17/numando-latam-banking-trojan/) malwares.
+
+<br>
