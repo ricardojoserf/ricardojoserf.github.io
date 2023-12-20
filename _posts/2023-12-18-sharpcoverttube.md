@@ -13,6 +13,7 @@ A program to control Windows systems remotely by uploading videos to Youtube, us
 
 Repository: [https://github.com/ricardojoserf/SharpCovertTube](https://github.com/ricardojoserf/SharpCovertTube)
 
+<br>
 
 ## Usage
 
@@ -20,7 +21,7 @@ Run the listener in your Windows system:
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_1.png)
 
-It will check the Youtube channel every 120 seconds (by default) until a new video is uploaded. In this case, we upload "whoami.avi" from the folder [example-videos](https://github.com/ricardojoserf/SharpCovertTube/tree/main/example-videos):
+It will check the Youtube channel every a specific amount of time (10 minutes by default) until a new video is uploaded. In this case, we upload "whoami.avi" from the folder [example-videos](https://github.com/ricardojoserf/SharpCovertTube/tree/main/example-videos):
 
 ![img2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_2.png)
 
@@ -32,16 +33,28 @@ This works also for QR codes with AES-encrypted payloads and longer command resp
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_4.png)
 
+<br>
+
 -------------------
 
 ## Configuration
+
+There are some values you can change, you can find them in line 17 of [Program.cs file](https://github.com/ricardojoserf/SharpCovertTube/blob/main/SharpCovertTube/Program.cs) for the regular binary and in [SharpCovertTube.cs file](https://github.com/ricardojoserf/SharpCovertTube/blob/main/SharpCovertTube_Service/SharpCovertTube.cs) for the service binary. Only the first two ones need to be updated:
 
 - **channel_id** (Mandatory!!!): Get your Youtube channel ID from [here](https://www.youtube.com/account_advanced).
 - **api_key** (Mandatory!!!): To get the API key create an application and generate the key from [here](https://console.cloud.google.com/apis/credentials).
 - **payload_aes_key** (Optional. Default: "0000000000000000"): AES key for decrypting QR codes (if using AES). It must be a 16-characters string.
 - **payload_aes_iv** (Optional. Default: "0000000000000000"): IV key for decrypting QR codes (if using AES). It must be a 16-characters string.
-- **seconds_delay** (Optional. Default: 120): Seconds delay until checking if a new video has been uploaded.
+- **seconds_delay** (Optional. Default: 600): Seconds delay until checking if a new video has been uploaded.
+- **debug_console** (Optional. Default: true): Show debug messages in console or not.
+- **log_to_file** (Optional. Default: true): Write debug messages in log file or not.
+- **log_file** (Optional. Default: true): Log file.
+- **dns_exfiltration** (Optional. Default: true): Exfiltrate command responses through DNS or not.
 - **dns_hostname** (Optional. Default: ".test.org"): DNS hostname to exfiltrate the response from commands executed in the system.
+
+![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_6.png)
+
+<br>
 
 ----------------------------------
 
@@ -88,12 +101,33 @@ python generate_video.py -t qr_aes -f c:\temp\dirtemp_aes.avi -c "dir c:\windows
 ![img5](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_5.png)
 
 
+<br>
+
 ---------------------------
 
+## Running it as a service
+
+It is also possible to run it as a service with the code in the [SharpCovertTube_Service folder](https://github.com/ricardojoserf/SharpCovertTube/tree/main/SharpCovertTube_Service). It possible to install it with InstallUtil, it is prepared to run as SYSTEM so you need to run it as administrator:
+
+```
+InstallUtil.exe SharpCovertTube_Service.exe
+```
+
+You can then start it with:
+
+```
+net start "SharpCovertTube Service"
+```
+
+![img7](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpcoverttube/Screenshot_7.png)
+
+<br>
+
+---------------------------
 
 ## Notes
 
-- File must be 64 bits. This is due to the code used for QR decoding, which is from [Stefangansevles](https://github.com/Stefangansevles)'s project [QR-Capture](https://github.com/Stefangansevles/QR-Capture)
+- **File must be 64 bits!!!** This is due to the code used for QR decoding, which is borrowed from Stefan Gansevles's [QR-Capture](https://github.com/Stefangansevles/QR-Capture) project, who borrowed part of it from Uzi Granot's [QRCode](https://github.com/Uzi-Granot/QRCode) project, who at the same time borrowed part of it from Zakhar Semenov's [Camera_Net](https://github.com/free5lot/Camera_Net) project (then I lost track). So thanks to all of them!
 
 - This project is a port from [covert-tube](https://github.com/ricardojoserf/covert-tube), a project I developed in 2021 using just Python, which was inspired by Welivesecurity blogs about [Casbaneiro](https://www.welivesecurity.com/2019/10/03/casbaneiro-trojan-dangerous-cooking/) and [Numando](https://www.welivesecurity.com/2021/09/17/numando-latam-banking-trojan/) malwares.
 
