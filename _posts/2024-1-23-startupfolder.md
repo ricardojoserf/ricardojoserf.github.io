@@ -38,7 +38,7 @@ For this specific case, we find a laptop where there are shortcuts to open some 
 
 ## Executing a EXE without a window popping up
 
-##### Failed approach: Powershell's window style hidden
+#### Failed approach: Powershell's window style hidden
 
 First, I created a Batch file in the path:
 
@@ -57,7 +57,7 @@ What is the biggest problem with this approach? Even if you run this in an good,
 Could we encode the Powershell command? Of course, but it is even better if we avoid the window appearing even for half a second.
 
 
-##### Changing Powershell for VBScript
+#### Changing Powershell for VBScript
 
 To avoid any windows appearing in the screen, we will use a VBScript file. For example, the following script will execute an encoded powershell command which will call "c:\ProgramData\Outlook\OutlookUpdate.exe". If we create this file in the Startup folder, the program will get executed and there will be no window popping the user could ever see:
 
@@ -67,7 +67,7 @@ objShell.Run(""powershell -e YwA6AFwAUAByAG8AZwByAGEAbQBEAGEAdABhAFwATwB1AHQAbAB
 ```
 
 
-##### Shortcut files
+#### Shortcut files
 
 But, knowing the folder contains mostly shortcuts, maybe it makes more sense if the VBScript file is generated in other folder and we just leave a shortcut to it in the Startup folder. 
 
@@ -82,7 +82,7 @@ $Shortcut.IconLocation = "$Dir\$IcoFile"
 $Shortcut.Save()
 ```
 
-##### Hidden files
+#### Hidden files
 
 Finally, now we know we will need four files:
 
@@ -177,7 +177,7 @@ Before deleting these files the program must be stopped if it is already running
 
 ```
 tasklist | findstr notmalicious.exe
-taskkill /f /pid PID
+taskkill /f /pid <PID>
 ```
 
 <br>
