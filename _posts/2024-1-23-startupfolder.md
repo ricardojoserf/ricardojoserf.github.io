@@ -32,6 +32,7 @@ This file can be an executable program (".exe" extension) but it can also be a B
 
 From a non-attacker perspective, it is common to see big organizations using this and other similar techniques to make all the employee laptops to launch specific programs when the Operating System (usually Windows) starts. In this case, one approach is using shortcuts to open each of these programs: Teams, Outlook, Chrome...
 
+<br>
 
 ## Executing a EXE without a window popping up
 
@@ -101,6 +102,7 @@ attrib -h C:\ProgramData\Outlook\OutlookUpdate.exe
 
 It is important to notice that the shortcut file can not be "hidden", but the icon, VBScript and EXE files can.
 
+<br>
 
 ## Final scripts
 
