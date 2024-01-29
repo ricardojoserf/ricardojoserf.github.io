@@ -27,7 +27,7 @@ Index:
 
 A very simple C# example code is using Console.Writeline() to write any message in the console inside a Main() function. As we can see, both the class and the function are public, and the function as no input arguments:
 
-```
+```cs
 $code1 = @"
 using System;
 namespace TestProject{
@@ -51,7 +51,7 @@ If we execute this, the result is the following:
 
 However, it is important to notice that the function does not need to be called "Main" and it may have input arguments. As you can see in the following example, we are calling the function "RandomName" and now the message in console is sent as an input argument to this function:
 
-```
+```cs
 $code2 = @"
 using System;
 namespace TestProject{
@@ -74,7 +74,7 @@ If we execute it, the result is very similar to the previous one:
 
 It is not even necessary to use a namespace, you can define a class directly and call it, doing this the first example would become:
 
-```
+```cs
 $code1 = @"
 using System;
 public class Class1 {
@@ -100,7 +100,7 @@ Note that in this case, the nomenclature is [Class]::Function(Arguments).
 
 We will try to update the code in [this link](https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/PRTL_USER_PROCESS_PARAMETERS/Program.cs) to run it using Powershell. The structure of this code is:
 
-```
+```cs
 using System;
 using System.Text;
 using System.Diagnostics;
@@ -135,7 +135,7 @@ Also, we need to make the class Public or it will not be possible to call it fro
 
 So the skeleton code will look something like this now:
 
-```
+```cs
 using System;
 using System.Text;
 using System.Diagnostics;
@@ -149,13 +149,13 @@ public class Program
 
 Then, we find the declaration in .NET of the Main function is like this:
 
-```
+```cs
 static void Main(string[] args) 
 ```
 
 We will have to remove the "string[] args" part as it generates an error, and we will make the two functions public as in the first example, getting a skeleton code:
 
-```
+```cs
 using System;
 using System.Text;
 using System.Diagnostics;
@@ -186,13 +186,13 @@ If we try to add this class to Powershell with the Add-Type function, we will st
 
 The problem are the output variables defined with the underscore character "\_". It is not possible to use this character so we have to define the output variables explicitly (even if we will not use them at all). So a code like this...
 
-```
+```cs
 ReadProcessMemory(Process.GetCurrentProcess().Handle, allocated_address, data, data.Length, out _);
 ```
 
 ... will become this:
 
-```
+```cs
 IntPtr a = IntPtr.Zero;
 ReadProcessMemory(Process.GetCurrentProcess().Handle, allocated_address, data, data.Length, out a);
 ```
@@ -205,7 +205,7 @@ ReadProcessMemory(Process.GetCurrentProcess().Handle, allocated_address, data, d
 
 Finally, we get no errors and can execute the code like this:
 
-```
+```cs
 $code3 = @"
 using System;
 using System.Text;
@@ -281,7 +281,7 @@ Add-Type $code3
 
 Now that we know how to do it, we can "prepare" and execute any C# code. In the following code snippet, you can see the result of executing the code in [this link](https://github.com/ricardojoserf/WhoamiAlternatives/blob/main/NamedPipe/Program.cs), which also gets the current username:
 
-```
+```cs
 $code4 = @"
 using System;
 using System.Text;
