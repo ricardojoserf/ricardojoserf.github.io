@@ -25,7 +25,7 @@ It returns a list of process handles which you can use for example to get the PI
 
 The code:
 
-```
+```go
 package main
 
 import "os"
