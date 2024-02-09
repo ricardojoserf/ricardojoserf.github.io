@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SharpNtdllOverwrite -  
+title: SharpNtdllOverwrite -  API Unhooking overwriting ntdll.dll
 excerpt_separator: <!--more-->
 ---
 
