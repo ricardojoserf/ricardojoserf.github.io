@@ -1,6 +1,6 @@
 ---
 layout: post
-title: [p-invoke.net](https://www.p-invoke.net/)
+title: p-invoke.net - Website with P/Invoke definitions
 excerpt_separator: <!--more-->
 ---
 
