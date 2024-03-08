@@ -4,7 +4,7 @@ title: C# implementation of GetModuleHandle for remote processes
 excerpt_separator: <!--more-->
 ---
 
-GetModuleHandle implementation in C# using only the NTAPIs: NtQueryInformationProcess, NtReadVirtualMemory and (optionally) NtOpenProcess.
+GetModuleHandle implementation for remote processes in C# using only NTAPIs: NtQueryInformationProcess, NtReadVirtualMemory and NtOpenProcess.
 
 
 <!--more-->
@@ -15,12 +15,13 @@ This is useful to get the base address of a DLL in the system which is not loade
 
 It uses the [NtQueryInformationProcess](https://learn.microsoft.com/en-us/windows/win32/api/winternl/nf-winternl-ntqueryinformationprocess) and [NtReadVirtualMemory](http://undocumented.ntinternals.net/index.html?page=UserMode%2FUndocumented%20Functions%2FMemory%20Management%2FVirtual%20Memory%2FNtReadVirtualMemory.html) NTAPIs to get the base address and [NtOpenProcess](https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntddk/nf-ntddk-ntopenprocess) to open the process handle. However, NtOpenProcess code is outside the function in case you want to use process handles directly.
 
+
+<br>
+
 Repository: [https://github.com/ricardojoserf/GetModuleHandleRemote](https://github.com/ricardojoserf/GetModuleHandleRemote)
 
 
 <br>
-
--------------------------------------------
 
 Usage of the compiled binary:
 
