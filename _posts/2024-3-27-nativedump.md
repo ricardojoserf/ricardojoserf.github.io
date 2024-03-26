@@ -17,11 +17,11 @@ Repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ric
 
 ![esquema](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/nativedump_esquema.png)
 
-- NTOpenProcessToken and NtAdjustPrivilegeToken to get the "SeDebugPrivilege" privilege.
-- RtlGetVersion to get the Operating System version details (Major version, minor version and build number). This is necessary for the SystemInfo stream.
-- NtQueryInformationProcess and NtReadVirtualMemory to get the lsasrv.dll address. This is the only modules necessary for the ModuleList stream.
-- NtOpenProcess to get a handle for the lsass process.
-- NtQueryVirtualMemory and NtReadVirtualMemory to loop through the memory regions and dump all possible ones. At the same time it populates the Memory64List stream.
+- NTOpenProcessToken and NtAdjustPrivilegeToken to get the "SeDebugPrivilege" privilege
+- RtlGetVersion to get the Operating System version details (Major version, minor version and build number). This is necessary for the SystemInfo stream
+- NtQueryInformationProcess and NtReadVirtualMemory to get the lsasrv.dll address. This is the only modules necessary for the ModuleList stream
+- NtOpenProcess to get a handle for the lsass process
+- NtQueryVirtualMemory and NtReadVirtualMemory to loop through the memory regions and dump all possible ones. At the same time it populates the Memory64List stream
 
 The tool has been tested against Windows 10 and 11 devices with the most common security solutions (Microsoft Defender for Endpoints, Crowdstrike...) and is for now undetected. However, it does not work if PPL is enabled in the system.
 
@@ -33,7 +33,7 @@ The tool has been tested against Windows 10 and 11 devices with the most common 
 
 Some benefits of this technique are:
 - The well-known dbghelp!MinidumpWriteDump function is not used
-- It only uses functions from Ntdll.dll, so it is possible to bypass API hooking by remapping the library.dll
+- It only uses functions from Ntdll.dll, so it is possible to bypass API hooking by remapping the library
 - File does not have to be written to disk, you can transfer the bytes (encoded or encrypted) to a remote machine
 
 There are probably alternatives that could make the program more "OPSEC" but I wanted to use only ntdll.dll functions:
@@ -42,9 +42,7 @@ There are probably alternatives that could make the program more "OPSEC" but I w
 - Obtain the "SeDebugPrivilege" permission previous to executing the program
 - Using "handle theft" to avoid using ntdll!NtOpenProcess
 
-There project contains three branches at the moment:
-
-- [main](https://github.com/ricardojoserf/NativeDump/tree/main) - Basic technique
+The project has two branches at the moment apart from the main one:
 
 - [ntdlloverwrite](https://github.com/ricardojoserf/NativeDump/tree/ntdlloverwrite) - Overwrite ntdll.dll's ".text" section using a clean version from the DLL file already on disk ("C:\Windows\System32\ntdll.dll"). You can use other techniques from [SharpNtdllOverwrite](https://github.com/ricardojoserf/SharpNtdllOverwrite/)
 
@@ -60,16 +58,16 @@ After developing [SharpProcessDump](https://github.com/ricardojoserf/SharpProces
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpprocessdump/Screenshot_4.png)
 
-But it is not possible to parse this file using Mimikatz or Pypykatz: it is necessary to understand the Minidump file structure and create a valid file.
+But it is not possible to parse this file using Mimikatz or Pypykatz: it is necessary to create a valid Minidump file.
 
-After reading about Minidump undocumented structures and trying to undestand its format, it can be summed up to something like this:
+After reading Minidump undocumented structures, its structure can be summed up to:
 
-![estructura](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/minidump_structure.png)
-
-- Header: Crucial information like the Signature ("MDMP"), the location of the Stream Directory and the number of streams. 
-- Stream Directory: One entry for each stream, containing the type, total size and location in the file of each stream. 
+- Header: Information like the Signature ("MDMP"), the location of the Stream Directory and the number of streams. 
+- Stream Directory: One entry for each stream, containing the type, total size and location in the file of each one. 
 - Streams: Every stream contains different information related to the process and has its own format.
 - Regions: The actual bytes from the process from each memory region which can be read. 
+
+![estructura](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/minidump_structure.png)
 
 This is a list of common Stream ID numbers:
 
