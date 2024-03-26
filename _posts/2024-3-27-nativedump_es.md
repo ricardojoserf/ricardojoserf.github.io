@@ -36,8 +36,8 @@ Branches:
 
 Some benefits of this technique are:
 - The well-known dbghelp!MinidumpWriteDump function is not used
-- It only uses functions from Ntdll.dll, so it is possible to bypass API hooking by remapping the library.dll in the process with a clean version of it
-- File does not have to be written to disk, you can transfer the bytes (encoded or encrypted) to a remote machine via HTTP, HTTPS, DNS...
+- It only uses functions from Ntdll.dll, so it is possible to bypass API hooking by remapping the library.dll
+- File does not have to be written to disk, you can transfer the bytes (encoded or encrypted) to a remote machine
 
 There are probably alternatives that could make the program more "OPSEC" but I wanted to use only ntdll.dll functions:
 - Process ID can be hardcoded, be a program argument or use kernel32!GetModuleBaseName
@@ -118,7 +118,7 @@ I created a tool which can parse most of them: [MinidumpParser](https://github.c
 We will focus on creating a valid file with only the necessary values for the header, stream directory and the only 3 streams needed for a Minidump file to be parsed by Mimikatz/Pypykatz: SystemInfo, ModuleList and Memory64List.
 
 
-#### Header
+#### 4.1 Header
 
 The header is a 32-bytes structure which can be defined in C# as:
 
@@ -142,7 +142,7 @@ The required values are:
 - StreamDirectoryRVA: Fixed value 0x20 or 32 bytes, the size of the header
 
 
-#### Stream Directory
+#### 4.2 Stream Directory
 
 Each entry in the Stream Directory is a 12-bytes structure so having 3 entries the size is 36 bytes. The C# struct definition for an entry is:
 
@@ -156,7 +156,7 @@ public struct MinidumpStreamDirectoryEntry
 ```
 
 
-#### SystemInformation Stream
+#### 4.3 SystemInformation Stream
 
 First stream is a SystemInformation Stream, with ID 7. The size is 56 bytes and will be located at offset 68 (0x44), right after the StreamDirectory. It definition:
 
@@ -187,7 +187,7 @@ The required values are:
 - Major version, Minor version and the BuildNumber: Hardcoded or obtained through kernel32!GetVersionEx or ntdll!RtlGetVersion (we will use the latter).
 
 
-#### ModuleList Stream
+#### 4.4 ModuleList Stream
 
 Second stream is a ModuleList stream, with ID 4. It is located at offset 124 (0x7C) after the SystemInformation stream and it will also have a fixed size, of 112 bytes, since it will have the entry of a single module, the only one needed for the parse to be correct: "lsasrv.dll". 
 
@@ -232,7 +232,7 @@ The required values are:
 - PointerToName: Unicode string structure for the "C:\Windows\System32\lsasrv.dll" string, located after the stream itself at offset 236 (0xEC)
 
 
-#### Memory64List Stream
+#### 4.5 Memory64List Stream
 
 Third stream is a Memory64List stream, with ID 9. It is located at offset 298 (0x12A) and the size depends on the number of modules.
 
@@ -261,7 +261,7 @@ The required values are:
 - Address and Size: Obtained for each valid region while looping them
 
 
-#### Looping memory regions
+#### 4.6 Looping memory regions
 
 There are pre-requisites to loop the memory regions of the lsass.exe process which can be solved using only NTAPIs:
 
@@ -276,5 +276,3 @@ With this it is possible to traverse process memory by calling:
 - ntdll!NtReadVirtualMemory: Add bytes of that region to the Minidump file after the Memory64List Stream
 
 <br>
-
-------------------------------------------
