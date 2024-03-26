@@ -1,12 +1,21 @@
 ---
 layout: post
-title: Dumping lsass without MinidumpWriteDump using only NTAPIs by hand-crafting Minidump files
+title: Dumping lsass using only NTAPIs by hand-crafting Minidump files
 excerpt_separator: <!--more-->
 ---
 
 NativeDump allows to dump the lsass process using only NTAPIs generating a Minidump file with only the streams needed to be parsed by tools like Mimikatz or Pypykatz (SystemInfo, ModuleList and Memory64List stream).
 
 <!--more-->
+Repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ricardojoserf/NativeDump)
+
+<br>
+
+------------------------------------------
+
+## 0. How it works
+
+![esquema](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/nativedump_esquema.png)
 
 - NTOpenProcessToken and NtAdjustPrivilegeToken to get the "SeDebugPrivilege" privilege.
 - RtlGetVersion to get the Operating System version details (Major version, minor version and build number). This is necessary for the SystemInfo stream.
@@ -14,19 +23,7 @@ NativeDump allows to dump the lsass process using only NTAPIs generating a Minid
 - NtOpenProcess to get a handle for the lsass process.
 - NtQueryVirtualMemory and NtReadVirtualMemory to loop through the memory regions and dump all possible ones. At the same time it populates the Memory64List stream.
 
-
-![esquema](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/nativedump_esquema.png)
-
-
 The tool has been tested against Windows 10 and 11 devices with the most common security solutions (Microsoft Defender for Endpoints, Crowdstrike...) and is for now undetected. However, it does not work if PPL is enabled in the system.
-
-Repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ricardojoserf/NativeDump)
-
-Branches:
-
-- [ntdlloverwrite](https://github.com/ricardojoserf/NativeDump/tree/ntdlloverwrite) - Overwrite ntdll.dll's ".text" section using a clean version from the DLL file already on disk ("C:\Windows\System32\ntdll.dll"). You can use other techniques from [SharpNtdllOverwrite](https://github.com/ricardojoserf/SharpNtdllOverwrite/)
-
-- [delegates](https://github.com/ricardojoserf/NativeDump/tree/delegates) - Overwrite ntdll.dll + Dynamic function resolution + String encryption using AES
 
 <br>
 
@@ -57,7 +54,7 @@ There project contains three branches at the moment:
 
 ------------------------------------------
 
-## 2. Motivation
+## 2. Minidump file structure
 
 After developing [SharpProcessDump](https://github.com/ricardojoserf/SharpProcessDump/) I found the size between the dump file created using Process Hacker and this tool have almost the same size:
 
@@ -65,16 +62,9 @@ After developing [SharpProcessDump](https://github.com/ricardojoserf/SharpProces
 
 But it is not possible to parse this file using Mimikatz or Pypykatz: it is necessary to understand the Minidump file structure and create a valid file.
 
-<br>
-
-------------------------------------------
-
-## 3. Minidump file structure
-
 After reading about Minidump undocumented structures and trying to undestand its format, it can be summed up to something like this:
 
 ![estructura](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/minidump_structure.png)
-
 
 - Header: Crucial information like the Signature ("MDMP"), the location of the Stream Directory and the number of streams. 
 - Stream Directory: One entry for each stream, containing the type, total size and location in the file of each stream. 
@@ -113,12 +103,12 @@ I created a tool which can parse most of them: [MinidumpParser](https://github.c
 
 ------------------------------------------
 
-## 4. Creating a minimal Minidump file
+## 3. Technique in detail: Creating a minimal Minidump file
 
 We will focus on creating a valid file with only the necessary values for the header, stream directory and the only 3 streams needed for a Minidump file to be parsed by Mimikatz/Pypykatz: SystemInfo, ModuleList and Memory64List.
 
 
-#### 4.1 Header
+#### 3.1 Header
 
 The header is a 32-bytes structure which can be defined in C# as:
 
@@ -142,7 +132,7 @@ The required values are:
 - StreamDirectoryRVA: Fixed value 0x20 or 32 bytes, the size of the header
 
 
-#### 4.2 Stream Directory
+#### 3.2 Stream Directory
 
 Each entry in the Stream Directory is a 12-bytes structure so having 3 entries the size is 36 bytes. The C# struct definition for an entry is:
 
@@ -156,7 +146,7 @@ public struct MinidumpStreamDirectoryEntry
 ```
 
 
-#### 4.3 SystemInformation Stream
+#### 3.3 SystemInformation Stream
 
 First stream is a SystemInformation Stream, with ID 7. The size is 56 bytes and will be located at offset 68 (0x44), right after the StreamDirectory. It definition:
 
@@ -187,7 +177,7 @@ The required values are:
 - Major version, Minor version and the BuildNumber: Hardcoded or obtained through kernel32!GetVersionEx or ntdll!RtlGetVersion (we will use the latter).
 
 
-#### 4.4 ModuleList Stream
+#### 3.4 ModuleList Stream
 
 Second stream is a ModuleList stream, with ID 4. It is located at offset 124 (0x7C) after the SystemInformation stream and it will also have a fixed size, of 112 bytes, since it will have the entry of a single module, the only one needed for the parse to be correct: "lsasrv.dll". 
 
@@ -232,7 +222,7 @@ The required values are:
 - PointerToName: Unicode string structure for the "C:\Windows\System32\lsasrv.dll" string, located after the stream itself at offset 236 (0xEC)
 
 
-#### 4.5 Memory64List Stream
+#### 3.5 Memory64List Stream
 
 Third stream is a Memory64List stream, with ID 9. It is located at offset 298 (0x12A) and the size depends on the number of modules.
 
@@ -261,7 +251,7 @@ The required values are:
 - Address and Size: Obtained for each valid region while looping them
 
 
-#### 4.6 Looping memory regions
+#### 3.6 Looping memory regions
 
 There are pre-requisites to loop the memory regions of the lsass.exe process which can be solved using only NTAPIs:
 
