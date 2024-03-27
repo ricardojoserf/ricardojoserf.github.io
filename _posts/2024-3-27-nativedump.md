@@ -4,109 +4,74 @@ title: Dumping lsass using only NTAPIs by hand-crafting Minidump files
 excerpt_separator: <!--more-->
 ---
 
-NativeDump allows to dump the lsass process using only NTAPIs generating a Minidump file with only the streams needed to be parsed by tools like Mimikatz or Pypykatz (SystemInfo, ModuleList and Memory64List stream).
+NativeDump allows to dump the lsass process using only NTAPIs generating a Minidump file with only the streams needed to be parsed by tools like Mimikatz or Pypykatz (SystemInfo, ModuleList and Memory64List Streams).
 
 <!--more-->
+
+
+![esquema](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/nativedump_esquema.png)
+
+- NTOpenProcessToken and NtAdjustPrivilegeToken to get the "SeDebugPrivilege" privilege
+- RtlGetVersion to get the Operating System version details (Major version, minor version and build number). This is necessary for the SystemInfo Stream
+- NtQueryInformationProcess and NtReadVirtualMemory to get the lsasrv.dll address. This is the only module necessary for the ModuleList Stream
+- NtOpenProcess to get a handle for the lsass process
+- NtQueryVirtualMemory and NtReadVirtualMemory to loop through the memory regions and dump all possible ones. At the same time it populates the Memory64List Stream
+
 Repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ricardojoserf/NativeDump)
 
 <br>
 
 ------------------------------------------
 
-## 0. How it works
+## Usage
 
-![esquema](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/nativedump_esquema.png)
+```
+NativeDump.exe [DUMP_FILE]
+```
 
-- NTOpenProcessToken and NtAdjustPrivilegeToken to get the "SeDebugPrivilege" privilege
-- RtlGetVersion to get the Operating System version details (Major version, minor version and build number). This is necessary for the SystemInfo stream
-- NtQueryInformationProcess and NtReadVirtualMemory to get the lsasrv.dll address. This is the only modules necessary for the ModuleList stream
-- NtOpenProcess to get a handle for the lsass process
-- NtQueryVirtualMemory and NtReadVirtualMemory to loop through the memory regions and dump all possible ones. At the same time it populates the Memory64List stream
+The default file name is "proc_<PID>.dmp":
+
+![poc](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/Screenshot_1.png)
 
 The tool has been tested against Windows 10 and 11 devices with the most common security solutions (Microsoft Defender for Endpoints, Crowdstrike...) and is for now undetected. However, it does not work if PPL is enabled in the system.
 
-<br>
-
-------------------------------------------
-
-## 1. Benefits, alternatives and branches
-
 Some benefits of this technique are:
-- The well-known dbghelp!MinidumpWriteDump function is not used
+- It does not use the well-known dbghelp!MinidumpWriteDump function
 - It only uses functions from Ntdll.dll, so it is possible to bypass API hooking by remapping the library
-- File does not have to be written to disk, you can transfer the bytes (encoded or encrypted) to a remote machine
+- The Minidump file does not have to be written to disk, you can transfer its bytes (encoded or encrypted) to a remote machine
 
-There are probably alternatives that could make the program more "OPSEC" but I wanted to use only ntdll.dll functions:
-- Process ID can be hardcoded, be a program argument or use kernel32!GetModuleBaseName
-- BuildNumber value can be hardcoded or be a program argument
-- Obtain the "SeDebugPrivilege" permission previous to executing the program
-- Using "handle theft" to avoid using ntdll!NtOpenProcess
+The project has three branches at the moment (apart from the main branch with the basic technique):
 
-The project has two branches at the moment apart from the main one:
+- [ntdlloverwrite](https://github.com/ricardojoserf/NativeDump/tree/ntdlloverwrite) - Overwrite ntdll.dll's ".text" section using a clean version from the DLL file already on disk
 
-- [ntdlloverwrite](https://github.com/ricardojoserf/NativeDump/tree/ntdlloverwrite) - Overwrite ntdll.dll's ".text" section using a clean version from the DLL file already on disk ("C:\Windows\System32\ntdll.dll"). You can use other techniques from [SharpNtdllOverwrite](https://github.com/ricardojoserf/SharpNtdllOverwrite/)
+- [delegates](https://github.com/ricardojoserf/NativeDump/tree/delegates) - Overwrite ntdll.dll + Dynamic function resolution + String encryption with AES  + XOR-encoding
 
-- [delegates](https://github.com/ricardojoserf/NativeDump/tree/delegates) - Overwrite ntdll.dll + Dynamic function resolution + String encryption using AES
+- [remote](https://github.com/ricardojoserf/NativeDump/tree/remote) - Overwrite ntdll.dll + Dynamic function resolution + String encryption with AES + Send file to remote machine + XOR-encoding
 
 <br>
 
 ------------------------------------------
 
-## 2. Minidump file structure
-
-After developing [SharpProcessDump](https://github.com/ricardojoserf/SharpProcessDump/) I found the size between the dump file created using Process Hacker and this tool have almost the same size:
-
-![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpprocessdump/Screenshot_4.png)
-
-But it is not possible to parse this file using Mimikatz or Pypykatz: it is necessary to create a valid Minidump file.
+## Technique in detail: Creating a minimal Minidump file
 
 After reading Minidump undocumented structures, its structure can be summed up to:
 
-- Header: Information like the Signature ("MDMP"), the location of the Stream Directory and the number of streams. 
-- Stream Directory: One entry for each stream, containing the type, total size and location in the file of each one. 
-- Streams: Every stream contains different information related to the process and has its own format.
-- Regions: The actual bytes from the process from each memory region which can be read. 
+- Header: Information like the Signature ("MDMP"), the location of the Stream Directory and the number of streams
+- Stream Directory: One entry for each stream, containing the type, total size and location in the file of each one 
+- Streams: Every stream contains different information related to the process and has its own format
+- Regions: The actual bytes from the process from each memory region which can be read
 
-![estructura](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/minidump_structure.png)
+![estructure](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/minidump_structure.png)
 
-This is a list of common Stream ID numbers:
+I created a parsing tool which can be helpful: [MinidumpParser](https://github.com/ricardojoserf/MinidumpParser).
 
-| ID | Stream Type |
-| :-------- | :------- |
-| 0x00 | UnusedStream | 
-| 0x01 | ReservedStream0 | 
-| 0x02 | ReservedStream1 | 
-| 0x03 | ThreadListStream | 
-| 0x04 | ModuleListStream | 
-| 0x05 | MemoryListStream | 
-| 0x06 | ExceptionStream | 
-| 0x07 | SystemInfoStream | 
-| 0x08 | ThreadExListStream | 
-| 0x09 | Memory64ListStream | 
-| 0x0A | CommentStreamA | 
-| 0x0B | CommentStreamW | 
-| 0x0C | HandleDataStream | 
-| 0x0D | FunctionTableStream | 
-| 0x0E | UnloadedModuleListStream | 
-| 0x0F | MiscInfoStream | 
-| 0x10 | MemoryInfoListStream | 
-| 0x11 | ThreadInfoListStream | 
-| 0x12 | HandleOperationListStream | 
-| 0x13 | TokenStream | 
-| 0x16 | HandleOperationListStream | 
-
-I created a tool which can parse most of them: [MinidumpParser](https://github.com/ricardojoserf/MinidumpParser).
+We will focus on creating a valid file with only the necessary values for the header, stream directory and the only 3 streams needed for a Minidump file to be parsed by Mimikatz/Pypykatz: SystemInfo, ModuleList and Memory64List Streams.
 
 <br>
 
 ------------------------------------------
 
-## 3. Technique in detail: Creating a minimal Minidump file
-
-We will focus on creating a valid file with only the necessary values for the header, stream directory and the only 3 streams needed for a Minidump file to be parsed by Mimikatz/Pypykatz: SystemInfo, ModuleList and Memory64List.
-
-
-#### 3.1 Header
+#### A. Header
 
 The header is a 32-bytes structure which can be defined in C# as:
 
@@ -130,7 +95,11 @@ The required values are:
 - StreamDirectoryRVA: Fixed value 0x20 or 32 bytes, the size of the header
 
 
-#### 3.2 Stream Directory
+<br>
+
+------------------------------------------
+
+#### B. Stream Directory
 
 Each entry in the Stream Directory is a 12-bytes structure so having 3 entries the size is 36 bytes. The C# struct definition for an entry is:
 
@@ -144,12 +113,16 @@ public struct MinidumpStreamDirectoryEntry
 ```
 
 
-#### 3.3 SystemInformation Stream
+<br>
 
-First stream is a SystemInformation Stream, with ID 7. The size is 56 bytes and will be located at offset 68 (0x44), right after the StreamDirectory. It definition:
+------------------------------------------
+
+#### C. SystemInformation Stream
+
+First stream is a SystemInformation Stream, with ID 7. The size is 56 bytes and will be located at offset 68 (0x44), after the Stream Directory. Its C# definition is:
 
 ```
-public struct SystemInfoStream
+public struct SystemInformationStream
 {
     public ushort ProcessorArchitecture;
     public ushort ProcessorLevel;
@@ -172,10 +145,13 @@ public struct SystemInfoStream
 
 The required values are:
 - ProcessorArchitecture: 9 for 64-bit and 0 for 32-bit Windows systems
-- Major version, Minor version and the BuildNumber: Hardcoded or obtained through kernel32!GetVersionEx or ntdll!RtlGetVersion (we will use the latter).
+- Major version, Minor version and the BuildNumber: Hardcoded or obtained through kernel32!GetVersionEx or ntdll!RtlGetVersion (we will use the latter)
 
+<br>
 
-#### 3.4 ModuleList Stream
+------------------------------------------
+
+#### D. ModuleList Stream
 
 Second stream is a ModuleList stream, with ID 4. It is located at offset 124 (0x7C) after the SystemInformation stream and it will also have a fixed size, of 112 bytes, since it will have the entry of a single module, the only one needed for the parse to be correct: "lsasrv.dll". 
 
@@ -219,10 +195,13 @@ The required values are:
 - Size: Obtained adding all memory region sizes since BaseAddress until one with a size of 4096 bytes (0x1000), the .text section of other library
 - PointerToName: Unicode string structure for the "C:\Windows\System32\lsasrv.dll" string, located after the stream itself at offset 236 (0xEC)
 
+<br>
 
-#### 3.5 Memory64List Stream
+------------------------------------------
 
-Third stream is a Memory64List stream, with ID 9. It is located at offset 298 (0x12A) and the size depends on the number of modules.
+#### E. Memory64List Stream
+
+Third stream is a Memory64List stream, with ID 9. It is located at offset 298 (0x12A), after the ModuleList stream and the Unicode string, and its size depends on the number of modules.
 
 ```
 public struct Memory64ListStream
@@ -248,13 +227,16 @@ The required values are:
 - MemoryRegionsBaseAddress: Location of the start of memory regions bytes, calculated after adding the size of all 16-bytes memory entries
 - Address and Size: Obtained for each valid region while looping them
 
+<br>
 
-#### 3.6 Looping memory regions
+------------------------------------------
+
+#### F. Looping memory regions
 
 There are pre-requisites to loop the memory regions of the lsass.exe process which can be solved using only NTAPIs:
 
-1. Obtain the "SeDebugPrivilege" permission. Instead of the typical Advapi!OpenProcessToken, Advapi!LookupPrivilegeValue and Advapi!AdjustTokenPrivilege use ntdll!NtOpenProcessToken, ntdll!NtAdjustPrivilegesToken and the hardcoded value of 20 for the Luid (constant in all latest Windows versions afaik)
-2. Obtain the process ID. For example, loop all processes using ntdll!NtGetNextProcess, obtain the PEB address with ntdll!NtQueryInformationProcess and use ntdll!NtReadVirtualMemory to read the ImagePathName field inside ProcessParameters
+1. Obtain the "SeDebugPrivilege" permission. Instead of the typical Advapi!OpenProcessToken, Advapi!LookupPrivilegeValue and Advapi!AdjustTokenPrivilege, we will use ntdll!NtOpenProcessToken, ntdll!NtAdjustPrivilegesToken and the hardcoded value of 20 for the Luid (which is constant in all latest Windows versions)
+2. Obtain the process ID. For example, loop all processes using ntdll!NtGetNextProcess, obtain the PEB address with ntdll!NtQueryInformationProcess and use ntdll!NtReadVirtualMemory to read the ImagePathName field inside ProcessParameters. To avoid overcomplicating the PoC, we will use .NET's Process.GetProcessesByName(<PROCESS_NAME>)
 3. Open a process handle. Use ntdll!OpenProcess with permissions PROCESS_QUERY_INFORMATION (0x0400) to retrieve process information and PROCESS_VM_READ (0x0010) to read the memory bytes
 
 With this it is possible to traverse process memory by calling:
@@ -262,5 +244,13 @@ With this it is possible to traverse process memory by calling:
     - If the memory protection is not PAGE_NOACCESS (0x01) and the memory state is MEM_COMMIT (0x1000), meaning it is accessible and committed, the base address and size populates one entry of the Memory64List stream and bytes can be added to the file
     - If the base address equals lsasrv.dll base address, it is used to calculate the size of lsasrv.dll in memory
 - ntdll!NtReadVirtualMemory: Add bytes of that region to the Minidump file after the Memory64List Stream
+
+<br>
+
+------------------------------------------
+
+#### G. Creating Minidump file
+
+After previous steps we have all that is necessary to create the Minidump file. We can create a file locally or send the bytes to a remote machine, with the possibility of encoding or encrypting the bytes before. Some of these possibilities are coded in the [delegates branch](https://github.com/ricardojoserf/NativeDump/tree/delegates), where the file created locally can be encoded with XOR, and in the [remote branch](https://github.com/ricardojoserf/NativeDump/tree/remote), where the file can be encoded with XOR before being sent to a remote machine.
 
 <br>
