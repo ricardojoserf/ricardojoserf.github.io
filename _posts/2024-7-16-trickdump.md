@@ -9,7 +9,7 @@ TrickDump allows to dump the lsass process without generating a Minidump file, g
 <!--more-->
 
 
-Repository: [TrickDump](https://github.com/ricardojoserf/TrickDump)
+Repository: [https://github.com/ricardojoserf/TrickDump](https://github.com/ricardojoserf/TrickDump)
 
 It has three steps:
 
@@ -86,7 +86,7 @@ Then the Minidump file is generated:
 
 # Python port - "python-flavour" branch
 
-Code: [python-flavour](https://github.com/ricardojoserf/TrickDump/tree/python-flavour)
+Repository: [https://github.com/ricardojoserf/TrickDump/tree/python-flavour](https://github.com/ricardojoserf/TrickDump/tree/python-flavour)
 
 This branch implements the same functionality as the main branch but using Python3. You can run the files as scripts:
 
@@ -137,7 +137,7 @@ python3 create_dump.py [-l LOCK_JSON] [-s SHOCK_JSON] [-b BARREL_JSON] [-z BARRE
 
 # Golang port - "golang-flavour" branch
 
-Code: [golang-flavour](https://github.com/ricardojoserf/TrickDump/tree/golang-flavour)
+Repository: [https://github.com/ricardojoserf/TrickDump/tree/golang-flavour](https://github.com/ricardojoserf/TrickDump/tree/golang-flavour)
 
 This branch implements the same functionality as the main branch but using Golang:
 
