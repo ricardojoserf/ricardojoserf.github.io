@@ -13,9 +13,9 @@ NativeDump allows to dump the lsass process using only NTAPIs. The original proj
 
 --------------------------
 
-# "python-flavour" branch
+# Python port - "python-flavour" branch
 
-Code: [python-flavour](https://github.com/ricardojoserf/NativeDump/tree/python-flavour)
+Repository: [https://github.com/ricardojoserf/NativeDump/tree/python-flavour](https://github.com/ricardojoserf/NativeDump/tree/python-flavour)
 
 This branch implements the same functionality as the main branch using Python3: 
 
@@ -67,9 +67,9 @@ The Netcat listener receives the file correctly:
 
 --------------------------
 
-# "golang-flavour" branch
+# Golang port - "golang-flavour" branch
 
-Code: [golang-flavour](https://github.com/ricardojoserf/NativeDump/tree/golang-flavour)
+Respository: [https://github.com/ricardojoserf/NativeDump/tree/golang-flavour](https://github.com/ricardojoserf/NativeDump/tree/golang-flavour)
 
 This branch implements the same functionality as the main branch using Golang: 
 
