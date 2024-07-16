@@ -9,7 +9,7 @@ Overwrite ntdll.dll's ".text" section using a clean version of the DLL using Pyt
 
 <!--more-->
 
-Repository: [pyNtdllOverwrite](https://github.com/ricardojoserf/pyNtdllOverwrite)
+Repository: [https://github.com/ricardojoserf/pyNtdllOverwrite](https://github.com/ricardojoserf/pyNtdllOverwrite)
 
 
 It can help to evade security measures that install API hooks such as EDRs. 
