@@ -63,9 +63,13 @@ The programs are executed in the victim system, creating three JSON files (with 
 Lock.exe [disk/knowndlls/debugproc]
 ```
 
+<br>
+
 ```
 Shock.exe [disk/knowndlls/debugproc]
 ```
+
+<br>
 
 ```
 Barrel.exe [disk/knowndlls/debugproc]
@@ -97,9 +101,15 @@ This branch implements the same functionality as the main branch but using Pytho
 ```
 python lock.py [-o OPTION] [-p PATH]
 ```
+
+<br>
+
 ```
 python shock.py [-o OPTION] [-p PATH]
 ```
+
+<br>
+
 ```
 python barrel.py [-o OPTION] [-p PATH]
 ```
@@ -150,9 +160,15 @@ This branch implements the same functionality as the main branch but using Golan
 ```
 go run lock.go [-o OPTION] [-p PATH]
 ```
+
+<br>
+
 ```
 go run shock.go [-o OPTION] [-p PATH]
 ```
+
+<br>
+
 ```
 go run barrel.go [-o OPTION] [-p PATH]
 ```
