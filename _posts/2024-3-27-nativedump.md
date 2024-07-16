@@ -9,6 +9,8 @@ NativeDump allows to dump the lsass process using only NTAPIs generating a Minid
 <!--more-->
 
 
+Repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ricardojoserf/NativeDump)
+
 ![esquema](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/nativedump_esquema.png)
 
 - NTOpenProcessToken and NtAdjustPrivilegeToken to get the "SeDebugPrivilege" privilege
