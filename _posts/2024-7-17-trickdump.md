@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 
+title: TrickDump - Dump lsass without generating a Minidump file
 excerpt_separator: <!--more-->
 ---
 
