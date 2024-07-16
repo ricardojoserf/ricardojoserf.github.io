@@ -9,7 +9,7 @@ Overwrite ntdll.dll's ".text" section using a clean version of the DLL using Gol
 
 <!--more-->
 
-Repository: [goNtdllOverwrite](https://github.com/ricardojoserf/goNtdllOverwrite)
+Repository: [https://github.com/ricardojoserf/goNtdllOverwrite](https://github.com/ricardojoserf/goNtdllOverwrite)
 
 
 It can help to evade security measures that install API hooks such as EDRs. 
