@@ -17,36 +17,37 @@ NativeDump allows to dump the lsass process using only NTAPIs generating a Minid
 - NtOpenProcess to get a handle for the lsass process
 - NtQueryVirtualMemory and NtReadVirtualMemory to loop through the memory regions and dump all possible ones. At the same time it populates the Memory64List Stream
 
-Repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ricardojoserf/NativeDump)
 
 <br>
 
-------------------------------------------
-
-## Usage
+The program has one optional argument for the output file, the default file name is "proc_\<PID\>.dmp":
 
 ```
 NativeDump.exe [DUMP_FILE]
 ```
 
-The default file name is "proc_<PID>.dmp":
-
 ![poc](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/Screenshot_1.png)
 
-The tool has been tested against Windows 10 and 11 devices with the most common security solutions (Microsoft Defender for Endpoints, Crowdstrike...) and is for now undetected. However, it does not work if PPL is enabled in the system.
+The tool has been tested against Windows 10 and 11 devices with the most common security solutions (Microsoft Defender for Endpoints, Crowdstrike...) and is for now undetected. However, it does not work if PPL is enabled or PEB structure is not readable.
 
 Some benefits of this technique are:
 - It does not use the well-known dbghelp!MinidumpWriteDump function
 - It only uses functions from Ntdll.dll, so it is possible to bypass API hooking by remapping the library
 - The Minidump file does not have to be written to disk, you can transfer its bytes (encoded or encrypted) to a remote machine
 
-The project has three branches at the moment (apart from the main branch with the basic technique):
+The project has six branches:
 
-- [ntdlloverwrite](https://github.com/ricardojoserf/NativeDump/tree/ntdlloverwrite) - Overwrite ntdll.dll's ".text" section using a clean version from the DLL file already on disk
+- [main](https://github.com/ricardojoserf/NativeDump/tree/main) - This branch, with the basic implementation in .NET
 
-- [delegates](https://github.com/ricardojoserf/NativeDump/tree/delegates) - Overwrite ntdll.dll + Dynamic function resolution + String encryption with AES  + XOR-encoding
+- [ntdlloverwrite](https://github.com/ricardojoserf/NativeDump/tree/ntdlloverwrite) - Overwrite ntdll.dll library using a clean version from a DLL file already on disk
 
-- [remote](https://github.com/ricardojoserf/NativeDump/tree/remote) - Overwrite ntdll.dll + Dynamic function resolution + String encryption with AES + Send file to remote machine + XOR-encoding
+- [remote](https://github.com/ricardojoserf/NativeDump/tree/remote) - Overwrite ntdll.dll + Dynamic function resolution + String AES encryption + XOR-encoding + Exfiltrate to remote machine
+
+- [all-modules](https://github.com/ricardojoserf/NativeDump/tree/all-modules) - Get the information for all modules (not only lsasrv.dll)
+
+- [python-flavour](https://github.com/ricardojoserf/NativeDump/tree/python-flavour) - Python implementation with 3 ntdll.dll overwrite methods + Exfiltrate to remote machine 
+
+- [golang-flavour](https://github.com/ricardojoserf/NativeDump/tree/golang-flavour) - Golang implementation with 3 ntdll.dll overwrite methods + Exfiltrate to remote machine 
 
 <br>
 
