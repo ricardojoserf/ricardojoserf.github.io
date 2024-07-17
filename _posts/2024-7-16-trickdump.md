@@ -86,7 +86,9 @@ Then the Minidump file is generated:
 
 Repository: [https://github.com/ricardojoserf/TrickDump/tree/python-flavour](https://github.com/ricardojoserf/TrickDump/tree/python-flavour)
 
-This branch implements the same functionality as the main branch but using Python3. You can run the files as scripts:
+This branch implements the same functionality as the main branch but using Python3. As an addition, it allows to create the zip file with a password.
+
+You can run the files as scripts:
 
 ```
 python lock.py [-o OPTION] [-p PATH]
@@ -121,7 +123,7 @@ nuitka --onefile lock.py && nuitka --onefile shock.py && nuitka --onefile barrel
 Then use the *create_dump.py* script to generate the Minidump file in the attack system:
 
 ```
-python3 create_dump.py [-l LOCK_JSON] [-s SHOCK_JSON] [-b BARREL_JSON] [-z BARREL_ZIP] [-o OUTPUT_FILE]
+python3 create_dump.py [-l LOCK_JSON] [-s SHOCK_JSON] [-b BARREL_JSON] [-z BARREL_ZIP] [-zp ZIP_PASSWORD] [-o OUTPUT_FILE]
 ```
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/trickdump/Screenshot_py4.png)
@@ -135,7 +137,9 @@ python3 create_dump.py [-l LOCK_JSON] [-s SHOCK_JSON] [-b BARREL_JSON] [-z BARRE
 
 Repository: [https://github.com/ricardojoserf/TrickDump/tree/golang-flavour](https://github.com/ricardojoserf/TrickDump/tree/golang-flavour)
 
-This branch implements the same functionality as the main branch but using Golang:
+This branch implements the same functionality as the main branch but using Golang. As an addition, it allows to create the zip file with a password.
+
+You can run the files as scripts:
 
 ```
 go run lock.go [-o OPTION] [-p PATH]
@@ -163,7 +167,7 @@ go build lock.go && go build shock.go && go build barrel.go
 Then use the *create_dump.py* script to generate the Minidump file in the attack system:
 
 ```
-python3 create_dump.py [-l LOCK_JSON] [-s SHOCK_JSON] [-b BARREL_JSON] [-z BARREL_ZIP] [-o OUTPUT_FILE]
+python3 create_dump.py [-l LOCK_JSON] [-s SHOCK_JSON] [-b BARREL_JSON] [-z BARREL_ZIP] [-zp ZIP_PASSWORD] [-o OUTPUT_FILE]
 ```
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/trickdump/Screenshot_go4.png)
