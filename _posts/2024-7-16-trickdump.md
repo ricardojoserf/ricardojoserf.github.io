@@ -4,21 +4,20 @@ title: TrickDump - Dump lsass without generating a Minidump file
 excerpt_separator: <!--more-->
 ---
 
-TrickDump allows to dump the lsass process without generating a Minidump file, generating instead three JSON files and one zip file with memory regions dumps.
+TrickDump allows to dump the lsass process without generating a Minidump file, generating instead three JSON files and one zip file with memory regions' dumps.
 
 <!--more-->
 
 
 Repository: [https://github.com/ricardojoserf/TrickDump](https://github.com/ricardojoserf/TrickDump)
 
-It has three steps:
+In three steps:
 
 - **Lock**: Get OS information using RtlGetVersion.
 
-- **Shock**: Get process handle with NtGetNextProcess and GetProcessImageFileName, get SeDebugPrivilege privilege with NtOpenProcessToken and NtAdjustPrivilegeToken, open a handle with NtOpenProcess and then get modules information using NtQueryInformationProcess and NtReadVirtualMemory.
+- **Shock**: Get SeDebugPrivilege privilege with NtOpenProcessToken and NtAdjustPrivilegeToken, open a handle with NtGetNextProcess and NtQueryInformationProcess and then get modules information using NtQueryInformationProcess and NtReadVirtualMemory.
 
-- **Barrel**: Get process handle, get SeDebugPrivilege privilege, open a handle and then get information and dump memory regions using NtQueryVirtualMemory and NtReadVirtualMemory. 
-
+- **Barrel**: Get SeDebugPrivilege privilege, open a handle and then get information and dump memory regions using NtQueryVirtualMemory and NtReadVirtualMemory.
 
 ![img](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/trickdump/trickdump.drawio.png)
 
@@ -37,6 +36,8 @@ The benefits of this technique are:
 	- Also if you have information about the OS of the target machine you can skip the first step ("Lock").
 
 - The programs only use NTAPIS (this project is a variant of [NativeDump](https://github.com/ricardojoserf/NativeDump)).
+
+- It does not use OpenProcess or NtOpenProcess to get the lsass process handle with (PROCESS_VM_OPERATION | PROCESS_VM_WRITE) access rights.
 
 - Each program allows to overwrite the ntdll.dll library ".text" section to bypass API hooking:
   - **disk**: Using a DLL already on disk. If a second argument is not used the path is "C:\Windows\System32\ntdll.dll".
