@@ -5,11 +5,11 @@ permalink: /about/
 ---
 
 
-Hello there! My name is Ricardo and I am a penetration tester based in Madrid, Spain, with 7 years and a half of work experience. 
+Hello there! My name is Ricardo and I am a penetration tester based in Madrid, Spain, with 9 years of experience. 
 
-I studied Telecommunications Engineering Degree and a Master's Degree in Universidad Politécnica de Madrid, where I worked 2 years as researcher. After that I have worked 5 years as penetration tester/red teamer in Indra, Innotec and now Siemens Smart Infrastructure (Siemens SI).
+I studied Telecommunications Engineering Degree and a Master's Degree in Universidad Politécnica de Madrid, where I worked 2 years as researcher. After that I have worked 5 years as penetration tester/red teamer in Indra, then Entelgy Innotec and now Siemens Smart Infrastructure (Siemens SI).
 
-I have cybersecurity certificates such as OSCP, OSCE, OSCE-3, CRTE, PACES, CRTO, CRTL and the five HackTheBox Pro Labs; and network and cloud certificates such as CCNA Router & Switching, Azure Fundamentals (AZ-900), Azure Security Engineer Associate (AZ-500) and AWS Certified Cloud Practitioner.
+I have cybersecurity certificates such as OSCP, OSCE, OSCE-3, CRTE, PACES, CRTO, CRTL, GXPN and the five HackTheBox Pro Labs; and network and cloud certificates such as CCNA Router & Switching, Azure Fundamentals (AZ-900), Azure Security Engineer Associate (AZ-500) and AWS Certified Cloud Practitioner.
 
 
 ## About this blog
