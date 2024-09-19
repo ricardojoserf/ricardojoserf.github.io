@@ -11,7 +11,19 @@ I studied Telecommunications Engineering Degree and a Master's Degree in Univers
 
 I will write about open-source tools from [my Github](https://github.com/ricardojoserf) or hacking techniques I learn... most of the times to have a reference in the future... because I forget.
 
-<br>
+-------------------------------
+
+## Contact information
+
+LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/in/ricardojoserf/)
+
+Twitter: [https://twitter.com/ricardojoserf](https://twitter.com/ricardojoserf)
+
+Feel free to contact me!
+
+![i](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjliNTk4NTM3MjExZGQ4YzVlOGQ0MmQzNTFjYTFkNjYyMjYzNTVkOSZjdD1n/13HBDT4QSTpveU/giphy.gif)
+
+-------------------------------
 
 ##  My certs
 
@@ -53,15 +65,3 @@ I will write about open-source tools from [my Github](https://github.com/ricardo
 | - Hybrid Multi-Cloud Red Team - CyberWarFare Labs |
 | - Multi-Cloud Red Team Analyst - CyberWarFare Labs | 
 | - Practical Industrial Control Systems Penetration Testing - Udemy | 
-
-<br>
-
-## Contact information
-
-LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/in/ricardojoserf/)
-
-Twitter: [https://twitter.com/ricardojoserf](https://twitter.com/ricardojoserf)
-
-Feel free to contact me!
-
-![i](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjliNTk4NTM3MjExZGQ4YzVlOGQ0MmQzNTFjYTFkNjYyMjYzNTVkOSZjdD1n/13HBDT4QSTpveU/giphy.gif)
