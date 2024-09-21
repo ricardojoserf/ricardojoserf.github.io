@@ -9,7 +9,7 @@ Hello there! My name is Ricardo and I am a penetration tester based in Madrid, S
 
 I studied Telecommunications Engineering Degree and a Master's Degree in Universidad Politécnica de Madrid, where I worked 2 years as researcher. After that I have worked ~8 years as penetration tester/red teamer in Indra, then Entelgy Innotec and now Siemens Smart Infrastructure (Siemens SI).
 
-I will write about open-source tools from [my Github](https://github.com/ricardojoserf) or hacking techniques I learn... most of the times to have a reference in the future... because I forget.
+I will write about open-source tools from [my Github](https://github.com/ricardojoserf) or hacking techniques I learn, to have a reference in the future... because I always forget :)
 
 -------------------------------
 
@@ -25,7 +25,7 @@ Feel free to contact me!
 
 -------------------------------
 
-##  My certs
+##  My certs (most of them)
 
 |  |
 |----------------|
