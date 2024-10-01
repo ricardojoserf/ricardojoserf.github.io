@@ -85,10 +85,10 @@ execute_bof nativedump_bof.o --format-string zzz <OVERWRITE_TECHNIQUE> <FILENAME
 
 ![bof4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/Screenshot_BOF4.png)
 
---------------------------
+<br>
+<br>
 
-<br>
-<br>
+--------------------------
 
 # NativeDump - "c-flavour" branch
 
