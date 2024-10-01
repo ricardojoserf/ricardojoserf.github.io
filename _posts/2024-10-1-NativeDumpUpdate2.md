@@ -122,3 +122,5 @@ Decoder.exe salaries.xlsx file.dmp NativeDump2024
 ```
 
 ![c4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/Screenshot_C4.png)
+
+<br>
