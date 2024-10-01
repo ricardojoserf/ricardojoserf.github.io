@@ -9,6 +9,10 @@ Updating TrickDump and creating a BOF File.
 <!--more-->
 
 
+<br>
+
+------------------------------
+
 # Trickdump - "bof-flavour" branch
 
 This branch implements the same functionality as the main branch but using BOFs (Beacon Object Files).
