@@ -9,7 +9,7 @@ Updating TrickDump and creating a BOF File.
 <!--more-->
 
 
-# # Trickdump - "bof-flavour" branch
+# Trickdump - "bof-flavour" branch
 
 This branch implements the same functionality as the main branch but using BOFs (Beacon Object Files).
 
@@ -130,10 +130,10 @@ execute_bof trick_bof.o --format-string z <OVERWRITE_TECHNIQUE>
 ![img16](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/trickdump/Screenshot_BOF16.png)
 
 
---------------------------
+<br>
+<br>
 
-<br>
-<br>
+--------------------------
 
 # TrickDump - "c-flavour" branch
 
@@ -142,15 +142,17 @@ This branch implements the same functionality as the main branch but using C/C++
 ```
 Lock.exe [disk/knowndlls/debugproc]
 ```
+<br>
 
 ```
 Shock.exe [disk/knowndlls/debugproc]
 ```
+<br>
 
 ```
 Barrel.exe [disk/knowndlls/debugproc]
 ```
-
+<br>
 You can execute the programs directly without overwriting the ntdll.dll library:
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/trickdump/Screenshot_C1.png)
@@ -185,3 +187,6 @@ It creates the ZIP file locally, optionally using a ntdll.dll overwrite method:
 With a ZIP file like this, unzip it and create the Minidump file using *create_dump.py*:
 
 ![img7](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/trickdump/Screenshot_7.png)
+
+
+<br>
