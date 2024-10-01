@@ -9,6 +9,10 @@ Updating NativeDump and creating a BOF File for the first time.
 <!--more-->
 
 
+<br>
+
+------------------------------
+
 # NativeDump - "bof-flavour" branch
 
 This branch implements the same functionality as the main branch using BOF files: 
