@@ -137,7 +137,9 @@ execute_bof trick_bof.o --format-string z <OVERWRITE_TECHNIQUE>
 
 # TrickDump - "c-flavour" branch
 
-This branch implements the same functionality as the main branch but using C/C++.
+This branch implements the same functionality as the main branch but using C/C++:
+
+<br>
 
 ```
 Lock.exe [disk/knowndlls/debugproc]
