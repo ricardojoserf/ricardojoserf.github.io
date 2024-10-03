@@ -4,7 +4,7 @@ title: NativeDump update - BOF File and C/C++ ports
 excerpt_separator: <!--more-->
 ---
 
-Updating NativeDump and creating a BOF File for the first time.
+Updating NativeDump and creating a BOF File.
 
 <!--more-->
 
