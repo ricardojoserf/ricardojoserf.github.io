@@ -11,6 +11,8 @@ I studied Telecommunications Engineering Degree and a Master's Degree in Univers
 
 I will write about open-source tools from [my Github](https://github.com/ricardojoserf) or hacking techniques I learn, to have a reference in the future... because I always forget :)
 
+<br>
+
 -------------------------------
 
 ## Contact information
@@ -23,9 +25,9 @@ Feel free to contact me!
 
 ![i](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjliNTk4NTM3MjExZGQ4YzVlOGQ0MmQzNTFjYTFkNjYyMjYzNTVkOSZjdD1n/13HBDT4QSTpveU/giphy.gif)
 
--------------------------------
-
 <br>
+
+-------------------------------
 
 ##  Some of my certs :)
 
