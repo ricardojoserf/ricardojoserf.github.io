@@ -15,6 +15,8 @@ Updating NativeDump and creating a BOF File.
 
 # NativeDump - "bof-flavour" branch
 
+Repository: [https://github.com/ricardojoserf/NativeDump/tree/bof-flavour](https://github.com/ricardojoserf/NativeDump/tree/bof-flavour)
+
 This branch implements the same functionality as the main branch using BOF files: 
 
 - Minidump file generation using only NTAPIS
@@ -94,7 +96,10 @@ execute_bof nativedump_bof.o --format-string zzz <OVERWRITE_TECHNIQUE> <FILENAME
 
 --------------------------
 
+
 # NativeDump - "c-flavour" branch
+
+Repository: [https://github.com/ricardojoserf/NativeDump/tree/c-flavour](https://github.com/ricardojoserf/NativeDump/tree/c-flavour)
 
 This branch implements the same functionality as the main branch using C/C++: 
 
