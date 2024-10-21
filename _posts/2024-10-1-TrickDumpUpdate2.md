@@ -15,6 +15,8 @@ Updating TrickDump and creating a BOF File.
 
 # Trickdump - "bof-flavour" branch
 
+Repository: [https://github.com/ricardojoserf/TrickDump/tree/bof-flavour](https://github.com/ricardojoserf/TrickDump/tree/bof-flavour)
+
 This branch implements the same functionality as the main branch but using BOFs (Beacon Object Files).
 
 You can execute the files using Cobalt Strike, TrustedSec's [COFFLoader](https://github.com/trustedsec/COFFLoader) or Meterpreter's [bofloader module](https://docs.metasploit.com/docs/using-metasploit/advanced/meterpreter/meterpreter-executebof-command.html).
@@ -137,9 +139,12 @@ execute_bof trick_bof.o --format-string z <OVERWRITE_TECHNIQUE>
 <br>
 <br>
 
+
 --------------------------
 
 # TrickDump - "c-flavour" branch
+
+Repository: [https://github.com/ricardojoserf/TrickDump/tree/c-flavour](https://github.com/ricardojoserf/TrickDump/tree/c-flavour)
 
 This branch implements the same functionality as the main branch but using C/C++:
 
