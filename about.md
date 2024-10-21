@@ -25,6 +25,8 @@ Feel free to contact me!
 
 -------------------------------
 
+<br>
+
 ##  Some of my certs :)
 
 |  |
