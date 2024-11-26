@@ -4,14 +4,14 @@ title: FakeRebootAlert - Deceive users to reboot a system upon login
 excerpt_separator: <!--more-->
 ---
 
-This is a basic Windows Forms App designed to display a popup asking users to reboot their machine. It can be useful in scenarios where a system restart is necessary for changes to take effect, such as when modifications have been made to registry keys (e.g., Protected Process Light (PPL) settings).
+Windows Forms App designed to display a popup asking users to reboot their machine. It can be useful in scenarios where a system restart is necessary for changes to take effect, such as when modifications have been made to registry keys (e.g., Protected Process Light (PPL) settings).
 
 <!--more-->
 
 
-Repository: [https://github.com/ricardojoserf/FakeRebootAlert](https://github.com/ricardojoserf/FakeRebootAlert)
-
 To make it look legitimate, the popup message includes the system's hostname and the icon of a program installed in the machine. The icon is included as a base64 blob and can be updated for the icon of any other program using the variable "*base64Icon*" in *Program.cs* file.
+
+Repository: [https://github.com/ricardojoserf/FakeRebootAlert](https://github.com/ricardojoserf/FakeRebootAlert)
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/fakerebootalert/Screenshot_1.png)
 
@@ -45,6 +45,6 @@ Or use the System-wide Startup folder, which would make the message prompt for a
 C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
 ```
 
-Similar techniques such as using registry keys are documented in the MITRE ATT&CK framework under [technique T1547.001](https://attack.mitre.org/techniques/T1547/001/).
+Similar mechanisms are documented in the MITRE ATT&CK framework under [technique T1547](https://attack.mitre.org/techniques/T1547/).
 
 <br>
