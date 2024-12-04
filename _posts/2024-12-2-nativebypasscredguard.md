@@ -1,6 +1,6 @@
 ---
 layout: post
-title: NativeBypassCredGuard - Bypassing Credential Guard in 2024
+title: NativeBypassCredGuard - Bypass Credential Guard using only NTAPIs
 excerpt_separator: <!--more-->
 ---
 
