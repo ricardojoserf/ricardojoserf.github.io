@@ -11,9 +11,9 @@ These days I decided to explore the Crystal programming language, a high-perform
 
 Repositories: 
 
-- [NativeDump](https://github.com/ricardojoserf/NativeDump/tree/crystal-flavour)
+- NativeDump - Crystal branch: [NativeDump](https://github.com/ricardojoserf/NativeDump/tree/crystal-flavour)
 
-- [TrickDump](https://github.com/ricardojoserf/TrickDump/tree/crystal-flavour)
+- TrickDump - Crystal branch: [TrickDump](https://github.com/ricardojoserf/TrickDump/tree/crystal-flavour)
 
 <br>
 
@@ -21,11 +21,9 @@ Repositories:
 
 # Motivation
 
-Crystal can execute Windows API calls, including NTAPI calls, by leveraging its C bindings and low-level system capabilities.
+Crystal can execute Windows API calls, including NTAPI calls, by leveraging its C bindings and low-level system capabilities. 
 
-Crystal provides the lib keyword, which allows defining bindings to shared libraries or system APIs written in C. This includes the Windows API and NTAPI.
-
-Using lib declarations, you can map the Windows API functions from kernel32.dll, user32.dll, or NTAPI functions from ntdll.dll into your Crystal code. 
+It provides the lib keyword, which allows defining these bindings. Using it, you can map the Windows API functions from kernel32.dll, user32.dll, or NTAPI functions from ntdll.dll into your Crystal code. 
 
 The @[Link] annotation is typically required when you want to explicitly link with a specific library that is not automatically linked by the system. For example, when calling functions from ntdll.dll or other custom shared libraries.
 
@@ -44,8 +42,7 @@ lib Ntdll
 end
 ```
 
-
-Then you can call it, for example to get the Info Class PROCESS_BASIC_INFORMATION (value 0) from the current process (value -1): 
+Then you can call NtQueryInformationProcess, for example to get the "Info Class" PROCESS_BASIC_INFORMATION (value 0) from the current process (value -1): 
 
 ```
 status = Ntdll::NtQueryInformationProcess(Pointer(Void).new(-1), 0, Pointer(Void).null, 0, Pointer(UInt32).null)
