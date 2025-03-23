@@ -1,6 +1,6 @@
 ---
 layout: post
-title: p-invoke.net - Website with P/Invoke definitions
+title: Porting pinvoke.net - A gitbook for P/Invoke definitions
 excerpt_separator: <!--more-->
 ---
 
@@ -9,9 +9,9 @@ This website contains most of the P/Invoke definitions from the now offline pinv
 <!--more-->
 
 
-The Gitbook is available at [https://www.p-invoke.net/](https://www.p-invoke.net/).
+The Gitbook is available at [https://ricardojoserf.gitbook.io/pinvoke](https://ricardojoserf.gitbook.io/pinvoke).
 
-The Github repository is [https://github.com/ricardojoserf/pinvoke.net](https://github.com/ricardojoserf/pinvoke.net).
+The Github repository is [https://github.com/ricardojoserf/p-invoke.net](https://github.com/ricardojoserf/p-invoke.net).
 
 <br>
 
