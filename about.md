@@ -29,7 +29,7 @@ Feel free to contact me!
 
 -------------------------------
 
-##  Some of my certs :)
+##  Some of my certs ...
 
 |  |
 |----------------|
@@ -65,9 +65,13 @@ Feel free to contact me!
 | - Microsoft Certified: Azure AI (AI-900) - Microsoft | 
 | - Microsoft Certified: Azure Data (DP-900) - Microsoft | 
 | - AWS Certified Cloud Practitioner - Amazon Web Services (AWS) | 
-| - Red Team Operator – Windows Persistence, Windows Evasion, Malware Development Essentials and Malware Development Intermediate - Sektor7 | 
+| - Red Team Operator – Windows Persistence and Windows Evasion - Sektor7 | 
+| - Red Team Operator – Malware Development Essentials and Intermediate - Sektor7 | 
 | - Malware Development Course - MalDev Academy | 
 | - CyberWarFare Labs Red Team Specialist (CRTS) - CyberWarFare Labs | 
 | - Hybrid Multi-Cloud Red Team - CyberWarFare Labs |
 | - Multi-Cloud Red Team Analyst - CyberWarFare Labs | 
 | - Practical Industrial Control Systems Penetration Testing - Udemy | 
+
+
+##  ... some of them were even useful!
