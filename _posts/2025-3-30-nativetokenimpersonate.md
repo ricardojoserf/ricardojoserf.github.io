@@ -40,6 +40,7 @@ It uses other NTAPI functions for other tasks:
 
 - **NtClose**: Close object handles.
 
+<br>
 
 Please note that:
 
@@ -57,11 +58,7 @@ Please note that:
 
 --------------------------
 
-## Usage
-
-<br>
-
-### Steal token (creating a new process)
+## Steal token (creating a new process)
 
 ```
 NativeTokenImpersonate.exe -pid <PID> [-bin <BINARY>] [-args <ARGUMENTS>] [-remap] [-system]
@@ -110,9 +107,7 @@ NativeTokenImpersonate.exe -pid 16172 -remap -bin c:\Windows\System32\WindowsPow
 
 ---------------------------
 
-<br>
-
-### Steal token (using the same thread)
+## Steal token (using the same thread)
 
 ```
 NativeTokenImpersonate.exe -thread -pid <PID> [-remap] [-system] [-rev2self]
@@ -148,11 +143,10 @@ NativeTokenImpersonate.exe -rev2self
 
 <br>
 
+
 ---------------------------
 
-<br>
-
-### List processes
+## List processes
 
 ```
 NativeTokenImpersonate.exe -proc [-filter <FILTER>] [-remap]
@@ -182,14 +176,11 @@ NativeTokenImpersonate.exe -proc -filter winlo -remap
 
 ![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/nativetokenstealer/Screenshot_6.png)
 
-
 <br>
 
 ---------------------------
 
-<br>
-
-### List SIDs 
+## List SIDs 
 
 ```
 NativeTokenImpersonate.exe -sids [-filter <FILTER>] [-remap]
@@ -222,8 +213,6 @@ NativeTokenImpersonate.exe -sids -filter S-1-5-9 -remap
 
 ---------------------------
 
-<br>
-
 ## Common errors
 
 If you are not running as administrator you might find this error:
@@ -239,8 +228,6 @@ As an alternative, you can try the second type of impersonation (using the *-thr
 <br>
 
 ---------------------------
-
-<br>
 
 ## References
 
