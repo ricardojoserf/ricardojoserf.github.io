@@ -15,24 +15,21 @@ Repository: [https://github.com/ricardojoserf/NativeNtdllRemap](https://github.c
 
 The NTAPI functions used by the tool are:
 
-- `NtCreateUserProcess`: Create a process in suspended state
+- **NtCreateUserProcess**: Create a process in suspended state
 
-- `NtProtectVirtualMemory`: Change memory protection
+- **NtProtectVirtualMemory**: Change memory protection
 
-- `NtQueryInformationProcess`: Retrieve process information 
+- **NtQueryInformationProcess**: Retrieve process information 
 
-- `NtReadVirtualMemory`: Read memory content
+- **NtReadVirtualMemory**: Read memory content
 
-- `NtClose` and `NtTerminateProcess`: Close object handles and processes
+- **NtClose** and **NtTerminateProcess**: Close object handles and processes
 
-- `RtlCreateProcessParametersEx` and `RtlDestroyProcessParameters`: Manage Process Parameters
+- **RtlCreateProcessParametersEx** and **RtlDestroyProcessParameters**: Manage Process Parameters
 
-- `RtlAllocateHeap` and `RtlFreeHeap`: Manage heap memory
+- **RtlAllocateHeap** and **RtlFreeHeap**: Manage heap memory
 
-- `RtlInitUnicodeString` and `RtlUnicodeStringToAnsiString`: Manage strings
-
-
-**NOTE**: Comment lines 451 and 453 in the *ReplaceNtdllTxtSection* function to prevent the program from pausing until a key is pressed.
+- **RtlInitUnicodeString** and **RtlUnicodeStringToAnsiString**: Manage strings
 
 <br>
 
@@ -59,5 +56,9 @@ Click "Re-read" to find the ".text" section has been replaced with the content o
 Finally, press any key so the ".text" section protections are restored and the program finishes: 
 
 ![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/nativedllremap/Screenshot_6.png)
+
+<br>
+
+**NOTE**: Comment lines 451 and 453 in the *ReplaceNtdllTxtSection* function to prevent the program from pausing until a key is pressed.
 
 <br>

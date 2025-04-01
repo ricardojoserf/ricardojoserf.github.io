@@ -30,15 +30,15 @@ And for listing processes or SIDs:
 
 It uses other NTAPI functions for other tasks:
 
-- `NtOpenProcessToken` and `NtAdjustPrivilegesToken`: Enable privileges.
+- **NtOpenProcessToken** and **NtAdjustPrivilegesToken**: Enable privileges.
 
-- `RtlInitUnicodeString`, `RtlUnicodeStringToAnsiString` and `RtlConvertSidToUnicodeString` : Manage strings.
+- **RtlInitUnicodeString**, **RtlUnicodeStringToAnsiString** and **RtlConvertSidToUnicodeString** : Manage strings.
 
-- `RtlAllocateHeap` and `RtlFreeHeap`: Manage heap memory.
+- **RtlAllocateHeap** and **RtlFreeHeap**: Manage heap memory.
 
-- `RtlCreateProcessParametersEx` and `RtlDestroyProcessParameters`: Manage Process Parameters.
+- **RtlCreateProcessParametersEx** and **RtlDestroyProcessParameters**: Manage Process Parameters.
 
-- `NtClose`: Close object handles.
+- **NtClose**: Close object handles.
 
 
 Please note that:
@@ -58,6 +58,8 @@ Please note that:
 --------------------------
 
 ## Usage
+
+<br>
 
 ### Steal token (creating a new process)
 
@@ -108,6 +110,8 @@ NativeTokenImpersonate.exe -pid 16172 -remap -bin c:\Windows\System32\WindowsPow
 
 ---------------------------
 
+<br>
+
 ### Steal token (using the same thread)
 
 ```
@@ -146,6 +150,8 @@ NativeTokenImpersonate.exe -rev2self
 
 ---------------------------
 
+<br>
+
 ### List processes
 
 ```
@@ -181,6 +187,8 @@ NativeTokenImpersonate.exe -proc -filter winlo -remap
 
 ---------------------------
 
+<br>
+
 ### List SIDs 
 
 ```
@@ -214,6 +222,8 @@ NativeTokenImpersonate.exe -sids -filter S-1-5-9 -remap
 
 ---------------------------
 
+<br>
+
 ## Common errors
 
 If you are not running as administrator you might find this error:
@@ -229,6 +239,8 @@ As an alternative, you can try the second type of impersonation (using the *-thr
 <br>
 
 ---------------------------
+
+<br>
 
 ## References
 
