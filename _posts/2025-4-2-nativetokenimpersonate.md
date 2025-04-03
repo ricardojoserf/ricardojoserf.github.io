@@ -4,7 +4,7 @@ title: NativeTokenImpersonate - Token Impersonation using only NTAPIs
 excerpt_separator: <!--more-->
 ---
 
-Impersonate users by stealing tokens to create new processes using only NTAPI functions. It supports two types of impersonation, one similar to CreateProcessWithToken and the other to ImpersonateLoggedOnUser.
+Tool to impersonate users by stealing their tokens using only NTAPI functions. It supports two types of impersonation, one similar to CreateProcessWithToken and the other to ImpersonateLoggedOnUser.
 
 
 <!--more-->
