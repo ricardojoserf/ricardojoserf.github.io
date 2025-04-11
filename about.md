@@ -27,18 +27,6 @@ Feel free to contact me!
 
 <br>
 
--------------------------------
-
-
-## Github Stars
-
-<div align="center">
-
-  ![test2](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=ricardojoserf&theme=tokyonight)
-
-</div>
-
-<br>
 
 -------------------------------
 
