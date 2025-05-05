@@ -4,14 +4,14 @@ title: NimDump - Stealthy LSASS Dumping Using Only NTAPIs in Nim
 excerpt_separator: <!--more-->
 ---
 
-NimDump is a port of NativeDump written in Nim, designed to dump the lsass process using only NTAPI functions.
+NimDump is a port of NativeDump written in Nim, designed to dump the LSASS process using only NTAPI functions.
 
 <!--more-->
 
 
-NimDump repository: [https://github.com/ricardojoserf/NativeDump/tree/nim-flavour](https://github.com/ricardojoserf/NativeDump/tree/nim-flavour)
+- NimDump repository: [https://github.com/ricardojoserf/NativeDump/tree/nim-flavour](https://github.com/ricardojoserf/NativeDump/tree/nim-flavour)
 
-NativeDump repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ricardojoserf/NativeDump)
+- NativeDump repository: [https://github.com/ricardojoserf/NativeDump](https://github.com/ricardojoserf/NativeDump)
 
 
 ![esquema](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/nativedump/crystal_esquema.png)
