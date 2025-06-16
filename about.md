@@ -36,6 +36,7 @@ Feel free to contact me!
 |----------------|
 | - GIAC Exploit Researcher and Advanced Penetration Tester (GXPN) - GIAC | 
 | - GIAC Red Team Professional (GRTP) - GIAC |
+| - GIAC Web Application Penetration Tester (GWAPT) - GIAC |
 | - GIAC Certified Incident Handler Certification (GCIH) - GIAC |
 | - GIAC Cloud Penetration Tester (GCPN) - GIAC |
 | - Offensive Security Certified Expert 3 (OSCE3) - Offensive Security | 
