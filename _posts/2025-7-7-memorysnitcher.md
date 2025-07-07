@@ -492,11 +492,13 @@ To test this, first the address is leaked using the dummy program with the heap 
 ![nbcg0](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/memorysnitcher/nbcg_0.png)
 
 
-Next, we compile it and attempt to run it using the address, finding it still works:
+Next, we compile it: 
 
 ```
 cl /Fe:NativeBypassCredGuard_Updated.exe NativeBypassCredGuard_Updated.cpp
 ```
+
+Attempt to run it using the address and find it still works:
 
 ```
 NativeBypassCredGuard_Updated.exe <NtReadVirtualMemory_Address> <check/patch>
@@ -510,7 +512,6 @@ Finally, analyze it with PE-Bear to find *GetProcAddress*, *GetModuleHandle* and
 ![nbcg2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/memorysnitcher/nbcg_2.png)
 
 <br>
-
 
 ## Conclusion
 
