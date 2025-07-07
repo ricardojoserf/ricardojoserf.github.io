@@ -23,9 +23,6 @@ Repository: [https://github.com/ricardojoserf/MemorySnitcher](https://github.com
 
 - Using an application with a vulnerability which leaks memory addresses (on purpose) may be stealthier.
 
-
-----------------------------------------------------------
-
 <br>
 
 ## Index
