@@ -11,8 +11,6 @@ Creating vulnerable (on purpose) programs to leak the NtReadVirtualMemory addres
 
 Repository: [https://github.com/ricardojoserf/MemorySnitcher](https://github.com/ricardojoserf/MemorySnitcher)
 
----------------------------------
-
 <br>
 
 ## TL;DR
@@ -368,7 +366,6 @@ cl /Fe:taskmanager_stack_overread.exe taskmanager_stack_overread.cpp /Od /Zi /RT
 
 <br>
 
-
 ### Leak 3: Heap override
 
 The code in [this snippet](https://github.com/ricardojoserf/MemorySnitcher/blob/main/snippets/heap_overread_example.c) should leak the 0xAAAAAAAAAA and 0xBBBBBBBBBB values in the "leakme1" and "leakme2" variables:
@@ -443,7 +440,6 @@ cl /Fe:taskmanager_heap_overread.exe taskmanager_heap_overread.cpp /Od /Zi /RTC1
 ![tm4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/memorysnitcher/task_manager_4.png)
 
 <br>
-
 
 ## Putting it into practice: NativeBypassCredGuard example
 
