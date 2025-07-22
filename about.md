@@ -60,7 +60,12 @@ Feel free to contact me!
 | - eLearnSecurity Certified Penetration Tester Extreme (eCPTX) - eLearnSecurity | 
 | - Certified Red Team Operator (CRTO) - Zero-Point Security | 
 | - Certified Red Team Lead (CRTL) - Zero-Point Security | 
-| - Hack The Box Pro Labs: APTLabs, Cybernetics, Rastalabs, Offshore, Dante and Zephyr - Hack The Box | 
+| - Hack The Box Pro Labs: Alchemy - Hack The Box | 
+| - Hack The Box Pro Labs: APTLabs - Hack The Box | 
+| - Hack The Box Pro Labs: Cybernetics - Hack The Box | 
+| - Hack The Box Pro Labs: Dante - Hack The Box | 
+| - Hack The Box Pro Labs: Offshore - Hack The Box | 
+| - Hack The Box Pro Labs: Rastalabs - Hack The Box | 
 | - Microsoft Certified: Azure Security Engineer Associate (AZ-500) - Microsoft | 
 | - Microsoft Certified: Azure Fundamentals (AZ-900) - Microsoft | 
 | - Microsoft Certified: Security, compliance and identity (SC-900) - Microsoft | 
