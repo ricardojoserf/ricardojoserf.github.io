@@ -221,17 +221,13 @@ Now, what can we get from this RCE, apart from running any command in the EC2 in
 
 ## Conclusion
 
-After almost a month since I reported this vulnerability, AWS VDP decided to close the report and lower the severity from "High" to "Low" arguing that it is a "low-risk" vulnerability. How could a RCE vulnerability have a low severity? First, the risk is not exactly low - is it uncommon to find AWS credentials with write access to a S3 bucket during a Red Team exercise? And even if this were truly a low risk, the impact is high (it is a RCE).
+After almost a month since I reported this vulnerability, AWS VDP decided to close the report and lower the severity from "High" to "Low" arguing that it is a "low-risk" vulnerability. I think that even if the risk could be low, the impact is high (it is a RCE!) so the severity could be different to "low". At the same time, code execution is the whole point of Apache Airflow... but CVE-2024-39877 got a CVSS of 8.8, so I still think this is not the expected way to execute code in these systems! 
 
-At the end of the day this is a VDP (Vulnerability Disclosure Program), so regardless the criticality they could choose not to pay any reward to the researchers, even if the severity is High or Critical.
+At the end of the day this is a VDP (Vulnerability Disclosure Program), so regardless the criticality they could choose not to pay any reward to the researchers, even if the severity is High or Critical. So after spending so many hours with this topic, still I am glad they have stopped offering 3 of the 6 vulnerable versions and applied patches to the other 3 versions. 
 
-So after spending so many hours with this topic, I am glad I could make them understand the vulnerability and stop offering 3 of the 6 vulnerable versions and apply patches to the other 3 versions. 
+However, the reward (40 dollars to spend in the AWS Merch Store) is not worth all the time spent with this topic. To make sure AWS services are secure, it is not a good idea just to rely on researchers' good faith!
 
-However, the reward (40 dollars to spend in the AWS Merch Store) is not worth all the time spent with this topic. In the past, I have reported vulnerabilities to many small and medium organizations which did not offer to pay a reward, and that is totally fine... but AWS is not precisely a small company. To make sure AWS services are secure, it is not a good idea just to rely on researchers' good faith!
-
-And I know code execution is the whole point of Apache airflow... but CVE-2024-39877 got a CVSS of 8.8, so I this is not the expected way to execute code in these systems. 
-
-So, I am happy I could order a cool sweater I hope I will be receiving in the next months (with the 40 dollars of the reward) and that they patched the Apache Airflow versions.
+But still, I am happy I could order a cool sweater I hope I will be receiving in the next months (with the 40 dollars of the reward)... and that they patched the Apache Airflow versions! (nah, I am happier about the sweater)
 
 <br>
 
