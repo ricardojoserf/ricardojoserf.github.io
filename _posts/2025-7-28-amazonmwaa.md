@@ -10,7 +10,7 @@ Amazon Managed Workflows for Apache Airflow (MWAA) is a managed service to run A
 
 This is because Amazon has been offering 8 different versions of Apache Airflow, and 6 of them are vulnerable to CVE-2024-39877. After reporting this problem, 3 of the 6 vulnerable versions are not offered anymore and they have applied patches to the other 3 previously vulnerable versions.
 
-In this post I will explain how incredibly easy it is to exploit this in AWS, which makes this an even more critical vulnerability in my opinion (despite that, as I will explain later, AWS VDP surprisingly considers this a low-severity vulnerability).
+In this post I will explain how incredibly easy it is to exploit this in AWS, which makes this an even more critical vulnerability in my opinion (despite that, as I will explain later, AWS VDP considers this a low-severity vulnerability).
 
 <br>
 
@@ -38,6 +38,8 @@ Then, I created a new DAG file (which are actually Python files with the typical
 ```
 doc_md="""
 `{{ 3*3 }}`
+{% raw %}{{ 3*3 }}{% endraw %}
+&#123;&#123; 3*3 &#125;&#125;
 """
 ```
 
@@ -242,4 +244,5 @@ But still, I am happy I could order a cool sweater I hope I will be receiving in
 - [HackerOne report](https://hackerone.com/reports/3217840)
 
 <br>
+
 
