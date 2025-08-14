@@ -21,7 +21,7 @@ After finding the Apache Airflow used by the AWS MWAA instance I was testing was
 
 CVE-2024-39877 is a vulnerability affecting Apache Airflow versions 2.4.0 to 2.9.2, included. It allows authenticated users with DAG editing permissions to inject malicious Jinja2 templates into the **doc_md field**, leading to RCE. 
 
-It is perfectly explained in this [Securelayer7 blog](https://blog.securelayer7.net/arbitrary-code-execution-in-apache-airflow/), but I still needed to dig a little more in it to actually execute commands.
+The exploit was made public in this [Securelayer7 blog](https://blog.securelayer7.net/arbitrary-code-execution-in-apache-airflow/), but I still needed to dig a little more in it to actually execute commands.
 
 First, I installed the software using Docker. The Amazon MWAA instance was using the 2.9.2 version, so I used the same:
 
@@ -37,7 +37,7 @@ Then, I created a new DAG file (which are actually Python files with the typical
 
 ```
 doc_md="""
-{{ 3*3 }}
+`{{ 3*3 }}`
 """
 ```
 
@@ -49,7 +49,7 @@ Next, the list of classes using the same payload from the Securelayer7 blog:
 
 ```
 doc_md="""
-{{ ''.__class__.__mro__[1].__subclasses__() }}
+`{{ ''.__class__.__mro__[1].__subclasses__() }}`
 """
 ```
 
@@ -64,7 +64,7 @@ To actually call this class, we need to find the index from the list of classes.
 For example, with this list:
 
 ```
-[<class 'type'>, <class 'async_generator'>, <class 'subProcess.Popen'> ,...]
+`[<class 'type'>, <class 'async_generator'>, <class 'subProcess.Popen'> ,...]`
 ```
 
 The class *subProcess.Popen* is the third element, but in Python the first element has index 0, so the class index we will use is 2.
@@ -73,7 +73,7 @@ In my case it is the index number 309, so I will first print the name of the cla
 
 ```
 doc_md="""
-{{ ''.__class__.__mro__[1].__subclasses__()[309].__name__ }}
+`{{ ''.__class__.__mro__[1].__subclasses__()[309].__name__ }}`
 """
 ```
 
@@ -215,6 +215,8 @@ Now, what can we get from this RCE, apart from running any command in the EC2 in
 
 27/7/25 - Asked the report to be made public.
 
+14/8/25 - After a final meeting with AWS, the report and this post are now public.
+
 <br>
 
 --------------------------
@@ -235,8 +237,9 @@ But still, I am happy I could order a cool sweater I hope I will be receiving in
 
 ## Sources
 
-- [Securelayer7 blog](https://blog.securelayer7.net/arbitrary-code-execution-in-apache-airflow/): Fantastic explanation of the CVE-2024-39877 vulnerability.
+- [Securelayer7 blog](https://blog.securelayer7.net/arbitrary-code-execution-in-apache-airflow/).
 
-- [HackerOne report](https://hackerone.com/reports/3217840): It will hopefully be public soon.
+- [HackerOne report](https://hackerone.com/reports/3217840)
 
 <br>
+
