@@ -5,11 +5,11 @@ permalink: /about/
 ---
 
 
-Hello there! My name is Ricardo and I am a penetration tester based in Madrid, Spain, with 9 years of experience. 
+Hello there! I'm Ricardo, a penetration tester from Madrid passionate about breaking into things, I've been doing this for about 10 years.
 
-I studied Telecommunications Engineering Degree and a Master's Degree in Universidad Politécnica de Madrid, where I worked 2 years as researcher. After that I have worked ~8 years as penetration tester/red teamer in Indra, then Entelgy Innotec and now Siemens Smart Infrastructure (Siemens SI).
+I'm a Telecommunications Engineering graduate from Universidad Politécnica de Madrid, where I also completed a Master's and worked for two years in research. My professional path led me through offensive security roles at Indra and Entelgy Innotec, and I now work as a red teamer at Siemens Smart Infrastructure (Siemens SI).
 
-I will write about open-source tools from [my Github](https://github.com/ricardojoserf) or hacking techniques I learn, to have a reference in the future... because I always forget :)
+On this blog, I write about open-source tools from [my Github](https://github.com/ricardojoserf) (most of the time) and hacking techniques I'm learning, largely to create a future reference for myself… because I always forget :)
 
 <br>
 
@@ -19,7 +19,7 @@ I will write about open-source tools from [my Github](https://github.com/ricardo
 
 LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/in/ricardojoserf/)
 
-Twitter: [https://twitter.com/ricardojoserf](https://twitter.com/ricardojoserf)
+Twitter:  [https://twitter.com/ricardojoserf](https://x.com/ricardojoserf)
 
 Feel free to contact me!
 
@@ -34,11 +34,13 @@ Feel free to contact me!
 
 |  |
 |----------------|
-| - GIAC Exploit Researcher and Advanced Penetration Tester (GXPN) - GIAC | 
-| - GIAC Red Team Professional (GRTP) - GIAC |
-| - GIAC Web Application Penetration Tester (GWAPT) - GIAC |
-| - GIAC Certified Incident Handler Certification (GCIH) - GIAC |
-| - GIAC Cloud Penetration Tester (GCPN) - GIAC |
+| - GIAC Experienced Penetration Tester (GX-PT) - GIAC Certifications | 
+| - GIAC Exploit Researcher and Advanced Penetration Tester (GXPN) - GIAC Certifications |
+| - GIAC Penetration Tester (GPEN) - GIAC Certifications |
+| - GIAC Red Team Professional (GRTP) - GIAC Certifications |
+| - GIAC Web Application Penetration Tester (GWAPT) - GIAC Certifications |
+| - GIAC Certified Incident Handler Certification (GCIH) - GIAC Certifications |
+| - GIAC Cloud Penetration Tester (GCPN) - GIAC Certifications |
 | - Offensive Security Certified Expert 3 (OSCE3) - Offensive Security | 
 | - Offensive Security Experienced Penetration Tester (OSEP) - Offensive Security | 
 | - Offensive Security Exploit Developer (OSED) - Offensive Security | 
@@ -63,7 +65,8 @@ Feel free to contact me!
 | - Hack The Box Pro Labs: Alchemy - Hack The Box | 
 | - Hack The Box Pro Labs: APTLabs - Hack The Box | 
 | - Hack The Box Pro Labs: Cybernetics - Hack The Box | 
-| - Hack The Box Pro Labs: Dante - Hack The Box | 
+| - Hack The Box Pro Labs: Dante - Hack The Box |
+| - Hack The Box Pro Labs: Hailstorm - Hack The Box |
 | - Hack The Box Pro Labs: Offshore - Hack The Box | 
 | - Hack The Box Pro Labs: Rastalabs - Hack The Box | 
 | - Microsoft Certified: Azure Security Engineer Associate (AZ-500) - Microsoft | 
