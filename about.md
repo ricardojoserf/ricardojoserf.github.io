@@ -5,11 +5,11 @@ permalink: /about/
 ---
 
 
-Hello there! I'm Ricardo, a penetration tester from Madrid passionate about breaking into things, I've been doing this for about 10 years.
+Hello there! I'm Ricardo, a penetration tester from Madrid with 10 years of experience.
 
-I'm a Telecommunications Engineering graduate from Universidad Politécnica de Madrid, where I also completed a Master's and worked for two years in research. My professional path led me through offensive security roles at Indra and Entelgy Innotec, and I now work as a red teamer at Siemens Smart Infrastructure (Siemens SI).
+I'm a Telecommunications Engineering graduate from Universidad Politécnica de Madrid, where I also completed a Master's and worked for two years in research. My professional path led me through offensive security roles at Indra and Entelgy Innotec, and I now work as a red teamer at Siemens.
 
-On this blog, I write about open-source tools from [my Github](https://github.com/ricardojoserf) (most of the time) and hacking techniques I'm learning, largely to create a future reference for myself… because I always forget :)
+On this blog, I will mostly write about open-source tools from [my Github](https://github.com/ricardojoserf) but sometimes also about hacking techniques, largely to create a future reference for myself :)
 
 <br>
 
@@ -19,7 +19,7 @@ On this blog, I write about open-source tools from [my Github](https://github.co
 
 LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/in/ricardojoserf/)
 
-Twitter:  [https://twitter.com/ricardojoserf](https://x.com/ricardojoserf)
+Twitter:  [https://x.com/ricardojoserf](https://x.com/ricardojoserf)
 
 Feel free to contact me!
 
@@ -27,10 +27,9 @@ Feel free to contact me!
 
 <br>
 
-
 -------------------------------
 
-##  Some of my certs ...
+##  My certifications
 
 |  |
 |----------------|
@@ -82,6 +81,3 @@ Feel free to contact me!
 | - Hybrid Multi-Cloud Red Team - CyberWarFare Labs |
 | - Multi-Cloud Red Team Analyst - CyberWarFare Labs | 
 | - Practical Industrial Control Systems Penetration Testing - Udemy | 
-
-
-##  ... some of them were even useful!
