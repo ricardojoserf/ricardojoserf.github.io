@@ -13,6 +13,13 @@ Repository: [https://github.com/ricardojoserf/MemorySnitcher](https://github.com
 
 <br>
 
+## Update - 12/2025: Rethinking the Approach
+
+**Important note**: This article was written with the assumption that using `NtReadVirtualMemory` was necessary for stealthy Export Address Table (EAT) traversal. However, this approach has been correctly criticized as unnecessary complexity. When reading your own process's memory, direct pointer access (e.g., `*(DWORD*)(address)`) is not only more efficient but also less suspicious than using `NtReadVirtualMemory`. The technique described here demonstrates creative thinking about API resolution, but simpler alternatives exist that avoid both IAT entries and the overhead of NT system calls for self-process memory reading.
+
+
+<br>
+
 ## TL;DR
 
 - Using dynamic API resolution to avoid functions appearing in the IAT requires only the *NtReadVirtualMemory* address.
@@ -522,3 +529,4 @@ Incorporating this strategy into tools, in this case NativeBypassCredGuard, show
 So... is this useful? I am not sure, but it was fun to write about it :)
 
 <br>
+
