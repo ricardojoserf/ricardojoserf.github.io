@@ -1,10 +1,10 @@
 ---
 layout: post
-title: Getting RCE in an AWS service (Amazon MWAA)
+title: Creating Shadow Copies with VSS API
 excerpt_separator: <!--more-->
 ---
 
-On Windows 11, the built-in *vssadmin* can list, delete or resize Shadow Copies, but Microsoft removed the ability to create them. However, you can create them by interacting directly with the Volume Shadow Copy Service (VSS) API, which I already used in my other tool [SAMDump](https://github.com/ricardojoserf/samdump).
+On Windows 11, the built-in *vssadmin* can list, delete or resize Shadow Copies, but Microsoft removed the ability to create them. However, you can create them by interacting directly with the Volume Shadow Copy Service (VSS) API, which I already used in my other tool SAMDump.
 
 
 <!--more-->
@@ -73,5 +73,6 @@ python manager.py -o delete -s \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy12
 ```
 
 ![python](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/w11shadowcopies/Screenshot_2.png)
+
 
 <br>
