@@ -27,7 +27,7 @@ Create Shadow Copies:
 Create.exe
 ```
 
-<br>
+<div style="margin-bottom: 5px;"></div>
 
 ```
 Manager.exe create
@@ -39,7 +39,7 @@ List Shadow Copies:
 List.exe
 ```
 
-<br>
+<p style="margin: 5px 0;"></p>
 
 ```
 Manager.exe list
@@ -50,8 +50,6 @@ Delete Shadow Copies:
 ```
 Delete.exe \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy12
 ```
-
-
 
 ```
 Manager.exe delete \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy12
@@ -90,6 +88,7 @@ python manager.py -o delete -s \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy12
 ![python](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/w11shadowcopies/Screenshot_2.png)
 
 <br>
+
 
 
 
