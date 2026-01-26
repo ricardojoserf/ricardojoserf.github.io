@@ -13,7 +13,7 @@ Repository: [https://github.com/ricardojoserf/w11_shadow_copies](https://github.
 
 In this repo you can find stand-alone scripts to simply create, list or delete Shadow Copies, along with "manager" scripts which combine the three functionalities. By themselves, they should not be considered malicious by security solutions.
 
-The scripts are implemeneted in C#, C++, Crystal Python, and should work for other Windows versions as well!
+The scripts are implemeneted in C#, C++, Crystal Python, and should also work on other Windows versions.
 
 <br>
 
