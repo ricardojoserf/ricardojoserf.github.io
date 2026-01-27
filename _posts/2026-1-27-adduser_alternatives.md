@@ -9,7 +9,7 @@ This post compiles multiple techniques to create local administrator accounts on
 
 <!--more-->
 
-Repository: [https://github.com/ricardojoserf/AddUserSAMR](https://github.com/ricardojoserf/AddUserSAMR)
+Repository: [https://github.com/ricardojoserf/AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR)
 
 <div style="margin-bottom: 12px;"></div>
 
@@ -19,7 +19,7 @@ However, less sophisticated attackers might add new accounts to your systems, so
 
 To test the detection, this post contains all the ways (I found) to create a local user and add it to a group in a Windows system, so you can test the alarms are raised as expected!
 
-It contains 7 methods from some of the most common ones such as using net.exe to using low-level APIs. In section 7 I will introduce [AddUserSAMR](https://github.com/ricardojoserf/AddUserSAMR), a tool to create the account using the SAMR API implemented in C#, Crystal, Python and Rust.
+It contains 7 methods from some of the most common ones such as using net.exe to using low-level APIs. In section 7 I will introduce [AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR), a tool to create the account using the SAMR API implemented in C#, Crystal, Python and Rust.
 
 Methods such as using wmic are not included because it is already deprecated, and others seemed redundant, but if you know more ways to do this (specially using low-level APIs)... please let me know!
 
@@ -329,3 +329,4 @@ adduser.exe -u testuser -p MyPass123 -g Administrators -v
 For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
 
 <br>
+
