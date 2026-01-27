@@ -9,9 +9,9 @@ This post compiles multiple techniques to create local administrator accounts on
 
 <!--more-->
 
-Repository: [[AddUserSAMR](https://github.com/ricardojoserf/AddUserSAMR)](https://github.com/ricardojoserf/AddUserSAMR)
+Repository: [https://github.com/ricardojoserf/AddUserSAMR](https://github.com/ricardojoserf/AddUserSAMR)
 
-<div style="margin-bottom: 12px;"></div>
+<br>
 
 Creating a local administrator account is one of the easiest persistence methods you can use when you compromise a system. It is also one of the most watched actions so if you are a Red Team operator you will probably avoid to do this if you want to avoid being detected.
 
@@ -59,7 +59,7 @@ Because it is so standard, running `net user /add` is generally easy for defende
 net user testuser MyPass123 /add
 ```
 
-<div style="margin-bottom: 6px;"></div>
+<div style="margin-bottom: 10px;"></div>
 
 ```cmd
 net localgroup Administrators testuser /add
@@ -126,11 +126,11 @@ admins.Add "WinNT://" & strComputer & "/testuser"
 newUser.SetInfo
 ```
 
-<div style="margin-bottom: 6px;"></div>
+<div style="margin-bottom: 10px;"></div>
 
 ![img5](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_5.png)
 
-<div style="margin-bottom: 6px;"></div>
+<div style="margin-bottom: 10px;"></div>
 
 
 Or using Powershell:
@@ -145,7 +145,7 @@ $admins = [ADSI]"WinNT://$env:COMPUTERNAME/Administrators"
 $admins.Add("WinNT://$env:COMPUTERNAME/testuser")
 ```
 
-<div style="margin-bottom: 6px;"></div>
+<div style="margin-bottom: 10px;"></div>
 
 ![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_6.png)
 
@@ -265,15 +265,9 @@ And finally, execute it:
 
 ## 7. SAMR API
 
-The SAMR protocol is the RPC-based interface that Windows uses internally to manage the local accounts database.
+The SAMR protocol is the RPC-based interface that Windows uses internally to manage the local accounts database. By calling SAMR functions directly, you can create a user at the lowest level, so it is generally considered the quietest approach of all (though it is more complex to implement).
 
-By calling SAMR functions directly, you can create a user at the lowest level. 
-
-It leaves less traces and is generally considered the quietest approach of all, though it is more complex to implement.
-
-[AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR) is a group of scripts that demonstrates this technique. 
-
-It requires Administrator privileges and if the user exists, it gets added to the group but the password is not updated.
+[AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR) is a group of scripts that demonstrates this technique. It requires Administrator privileges and if the user exists, it gets added to the group but the password is not updated.
 
 There are 4 implementations in this repo (C#, Python, Rust and Crystal), but there are public versions in other languages such as [C++](https://github.com/M0nster3/RpcsDemo/tree/main/MS-SAMR/AddUser) or [BOF file](https://github.com/AgeloVito/adduserbysamr-bof).
 
@@ -316,6 +310,9 @@ The arguments are:
 
 - `-h, --help` - Show help message
 
+
+<div style="margin-bottom: 10px;"></div>
+
 ```bash
 # Basic usage
 adduser.exe -u <username> -p <password>
@@ -329,7 +326,8 @@ adduser.exe -u test -p ThisIsIt123 -g Administrators -v
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_1.png)
 
-For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)!!!
+<div style="margin-bottom: 10px;"></div>
 
+For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
 
 <br>
