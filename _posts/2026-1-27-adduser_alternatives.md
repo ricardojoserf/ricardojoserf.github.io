@@ -13,6 +13,10 @@ Repository: [https://github.com/ricardojoserf/AddUser-SAMR](https://github.com/r
 
 <br>
 
+-----------------------------------------------------------
+
+## Motivation
+
 Creating a local administrator account is one of the easiest persistence methods you can use when you compromise a system. It is also one of the most watched actions so if you are a Red Team operator you will probably avoid to do this if you want to avoid being detected.
 
 However, less sophisticated attackers might add new accounts to your systems, so from a Purple Team point of view it might be very interesting to find if the Blue Team can always detect it. This is specially the case in huge organizations where only some specific critical systems are monitored for this.
@@ -327,4 +331,3 @@ adduser.exe -u testuser -p MyPass123 -g Administrators -v
 For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
 
 <br>
-
