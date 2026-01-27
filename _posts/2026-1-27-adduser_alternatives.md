@@ -11,7 +11,7 @@ This post compiles multiple techniques to create local administrator accounts on
 
 Repository: [https://github.com/ricardojoserf/AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR)
 
-<div style="margin-bottom: 12px;"></div>
+<br>
 
 Creating a local administrator account is one of the easiest persistence methods you can use when you compromise a system. It is also one of the most watched actions so if you are a Red Team operator you will probably avoid to do this if you want to avoid being detected.
 
@@ -19,7 +19,7 @@ However, less sophisticated attackers might add new accounts to your systems, so
 
 To test the detection, this post contains all the ways (I found) to create a local user and add it to a group in a Windows system, so you can test the alarms are raised as expected!
 
-It contains 7 methods from some of the most common ones such as using net.exe to using low-level APIs. In section 7 I will introduce [AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR), a tool to create the account using the SAMR API implemented in C#, Crystal, Python and Rust.
+It contains 7 methods from some of the most common ones such as using `net.exe` to using low-level APIs. In section 7 I will introduce [AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR), a tool to create the account using the SAMR API implemented in C#, Crystal, Python and Rust.
 
 Methods such as using wmic are not included because it is already deprecated, and others seemed redundant, but if you know more ways to do this (specially using low-level APIs)... please let me know!
 
@@ -72,7 +72,7 @@ net localgroup Administrators testuser /add
 
 ## 2. GUI
 
-It is possible to use the Windows GUI (such as Settings, Local Users and Groups MMC or netplwiz) to create users. Behind the scenes they invoke the same account-creation functionality, but any use of the GUI is obvious: it requires user interaction or automation of UI elements. The process is very noisy because it leaves the same audit trail and also involves visible programs. 
+It is possible to use the Windows GUI (such as `Settings`, `Local Users and Groups MMC` or `netplwiz`) to create users. Behind the scenes they invoke the same account-creation functionality, but any use of the GUI is obvious: it requires user interaction or automation of UI elements. The process is very noisy because it leaves the same audit trail and also involves visible programs. 
 
 An attacker relying on stealth would normally avoid these, since anyone watching the machine (or log streams) will detect it easily.
 
@@ -324,9 +324,8 @@ adduser.exe -u testuser -p MyPass123 -g Administrators -v
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_1.png)
 
-<br>
+<div style="margin-bottom: 12px;"></div>
 
 For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
 
 <br>
-
