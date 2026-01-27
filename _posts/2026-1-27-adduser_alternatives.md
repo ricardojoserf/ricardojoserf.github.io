@@ -311,7 +311,7 @@ The arguments are:
 
 - `-h, --help`: Show help message
 
-<br>
+<div style="margin-bottom: 10px;"></div>
 
 ```bash
 # Basic usage
