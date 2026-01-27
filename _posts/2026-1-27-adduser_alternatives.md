@@ -9,11 +9,6 @@ This post compiles multiple techniques to create local administrator accounts on
 
 <!--more-->
 
-Repository: [https://github.com/ricardojoserf/AddUserSAMR](https://github.com/ricardojoserf/AddUser-SAMR)
-
-
-<br>
-
 Creating a local administrator account is one of the easiest persistence methods you can use when you compromise a system. It is also one of the most watched actions so if you are a Red Team operator you will probably avoid to do this if you want to avoid being detected.
 
 However, less sophisticated attackers might add new accounts to your systems, so from a Purple Team point of view it might be very interesting to find if the Blue Team can always detect it. This is specially the case in huge organizations where only some specific critical systems are monitored for this.
@@ -27,18 +22,27 @@ Methods such as using wmic are not included because it is already deprecated, an
 
 <br>
 
+-----------------------------------------------------------
+
 ## Contents
 
 1. [net.exe](#1-netexe)
+
 2. [GUI](#2-gui)
+
 3. [PowerShell cmdlets](#3-powershell-cmdlets)
+
 4. [ADSI](#4-adsi)
+
 5. [.NET Framework](#5-net-framework)
+
 6. [NetUserAdd API](#6-netuseradd-api)
+
 7. [SAMR API](#7-samr-api)
 
-
 <br>
+
+-----------------------------------------------------------
 
 ## 1. net.exe
 
@@ -90,12 +94,14 @@ Add-LocalGroupMember -Group "Administrators" -Member testuser
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_4.png)
 
+
 <br>
 
 ## 4. ADSI
 
-This method uses the ADSI `WinNT` provider to create the user via a script (in VBScript or directly in PowerShell). In essence, ADSI is doing the exact same operations (create account, set password, add to Administrators) under the hood. 
+This method uses the ADSI `WinNT` provider to create the user via a script. In essence, ADSI is doing the exact same operations (create account, set password, add to Administrators) under the hood. 
 
+You can do this using VBScript:
 
 ```vbscript
 Set computer = GetObject("WinNT://.")
@@ -110,9 +116,14 @@ admins.Add "WinNT://" & strComputer & "/testuser"
 newUser.SetInfo
 ```
 
+<div style="margin-bottom: 6px;"></div>
+
 ![img5](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_5.png)
 
 <div style="margin-bottom: 6px;"></div>
+
+
+Or using Powershell:
 
 ```powershell
 $computer = [ADSI]"WinNT://$env:COMPUTERNAME"
@@ -123,6 +134,8 @@ $newUser.SetInfo()
 $admins = [ADSI]"WinNT://$env:COMPUTERNAME/Administrators"
 $admins.Add("WinNT://$env:COMPUTERNAME/testuser")
 ```
+
+<div style="margin-bottom: 6px;"></div>
 
 ![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_6.png)
 
@@ -169,7 +182,7 @@ class Program
 }
 ```
 
-Then compile it (I recommend using the `x64 Native Tools Command Prompt for VS`):
+Then compile it (I recommend using the `x64 Native Tools Command Prompt for VS` cmd):
 
 ```cmd
 csc /reference:System.DirectoryServices.dll AddUser.cs
@@ -223,7 +236,7 @@ int main() {
 }
 ```
 
-Then compile it (I recommend using the `x64 Native Tools Command Prompt for VS`):
+Then compile it (I recommend using the `x64 Native Tools Command Prompt for VS` cmd):
 
 ```cmd
 cl AddUser.cpp
@@ -245,6 +258,7 @@ It leaves less traces and is generally considered the quietest approach of all, 
 
 [AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR) is a group of scripts that demonstrates this technique in C#, Crystal, Python, and Rust. 
 
+<br>
 
 It uses the following SAMR calls:
 
@@ -268,6 +282,8 @@ It uses the following SAMR calls:
 
 - [SamAddMemberToAlias](https://ntdoc.m417z.com/samaddmembertoalias) - Add user to group  
 
+
+<br>
 
 All versions support the same command-line arguments:
 
@@ -295,5 +311,6 @@ adduser.exe -u test -p ThisIsIt123 -g Administrators -v
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_1.png)
 
 For more information about compiling each implementation, please check the [AddUser-SAMR repository](https://github.com/ricardojoserf/AddUser-SAMR)!
+
 
 <br>
