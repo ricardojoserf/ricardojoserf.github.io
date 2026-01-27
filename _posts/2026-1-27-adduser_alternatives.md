@@ -9,6 +9,10 @@ This post compiles multiple techniques to create local administrator accounts on
 
 <!--more-->
 
+Repository: [[AddUserSAMR](https://github.com/ricardojoserf/AddUserSAMR)](https://github.com/ricardojoserf/AddUserSAMR)
+
+<div style="margin-bottom: 12px;"></div>
+
 Creating a local administrator account is one of the easiest persistence methods you can use when you compromise a system. It is also one of the most watched actions so if you are a Red Team operator you will probably avoid to do this if you want to avoid being detected.
 
 However, less sophisticated attackers might add new accounts to your systems, so from a Purple Team point of view it might be very interesting to find if the Blue Team can always detect it. This is specially the case in huge organizations where only some specific critical systems are monitored for this.
@@ -66,6 +70,8 @@ net localgroup Administrators testuser /add
 
 <br>
 
+-----------------------------------------------------------
+
 ## 2. GUI
 
 It is possible to use the Windows GUI (such as Settings, Local Users and Groups MMC or netplwiz) to create users. Behind the scenes they invoke the same account-creation functionality, but any use of the GUI is obvious: it requires user interaction or automation of UI elements. The process is very noisy because it leaves the same audit trail and also involves visible programs. 
@@ -76,6 +82,8 @@ An attacker relying on stealth would normally avoid these, since anyone watching
 
 
 <br>
+
+-----------------------------------------------------------
 
 ## 3. PowerShell cmdlets
 
@@ -96,6 +104,8 @@ Add-LocalGroupMember -Group "Administrators" -Member testuser
 
 
 <br>
+
+-----------------------------------------------------------
 
 ## 4. ADSI
 
@@ -139,8 +149,9 @@ $admins.Add("WinNT://$env:COMPUTERNAME/testuser")
 
 ![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_6.png)
 
-
 <br>
+
+-----------------------------------------------------------
 
 ## 5. .NET Framework
 
@@ -195,6 +206,8 @@ And finally, execute it:
 
 <br>
 
+-----------------------------------------------------------
+
 ## 6. NetUserAdd API
 
 Calling `NetUserAdd` (and `NetLocalGroupAddMembers`) directly is a lower-level approach. Instead of launching a built-in tool, you execute a function inside `netapi32.dll` from your code. 
@@ -246,17 +259,23 @@ And finally, execute it:
 
 ![img8](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_8.png)
 
-
 <br>
 
+-----------------------------------------------------------
 
 ## 7. SAMR API
 
-The SAMR protocol is the RPC-based interface that Windows uses internally to manage the local accounts database. By calling SAMR functions directly, you can create a user at the lowest level. 
+The SAMR protocol is the RPC-based interface that Windows uses internally to manage the local accounts database.
+
+By calling SAMR functions directly, you can create a user at the lowest level. 
 
 It leaves less traces and is generally considered the quietest approach of all, though it is more complex to implement.
 
-[AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR) is a group of scripts that demonstrates this technique in C#, Crystal, Python, and Rust. 
+[AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR) is a group of scripts that demonstrates this technique. 
+
+It requires Administrator privileges and if the user exists, it gets added to the group but the password is not updated.
+
+There are 4 implementations in this repo (C#, Python, Rust and Crystal), but there are public versions in other languages such as [C++](https://github.com/M0nster3/RpcsDemo/tree/main/MS-SAMR/AddUser) or [BOF file](https://github.com/AgeloVito/adduserbysamr-bof).
 
 <br>
 
@@ -285,7 +304,7 @@ It uses the following SAMR calls:
 
 <br>
 
-All versions support the same command-line arguments:
+The arguments are:
 
 - `-u, --username` - Username to create (required)
 
@@ -310,7 +329,7 @@ adduser.exe -u test -p ThisIsIt123 -g Administrators -v
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_1.png)
 
-For more information about compiling each implementation, please check the [AddUser-SAMR repository](https://github.com/ricardojoserf/AddUser-SAMR)!
+For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)!!!
 
 
 <br>
