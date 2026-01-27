@@ -11,7 +11,7 @@ This post compiles multiple techniques to create local administrator accounts on
 
 Repository: [https://github.com/ricardojoserf/AddUserSAMR](https://github.com/ricardojoserf/AddUserSAMR)
 
-<br>
+<div style="margin-bottom: 12px;"></div>
 
 Creating a local administrator account is one of the easiest persistence methods you can use when you compromise a system. It is also one of the most watched actions so if you are a Red Team operator you will probably avoid to do this if you want to avoid being detected.
 
@@ -296,22 +296,22 @@ It uses the following SAMR calls:
 - [SamAddMemberToAlias](https://ntdoc.m417z.com/samaddmembertoalias) - Add user to group  
 
 
-<br>
+
+<div style="margin-bottom: 12px;"></div>
 
 The arguments are:
 
-- `-u, --username` - Username to create (required)
+- `-u, --username`: Username to create (required)
 
-- `-p, --password` - Password for the user (required)
+- `-p, --password`: Password for the user (required)
 
-- `-g, --group` - Group name (default: "Administrators")
+- `-g, --group`: Group name (default: "Administrators")
 
-- `-v, --verbose` - Enable verbose output
+- `-v, --verbose`: Enable verbose output
 
-- `-h, --help` - Show help message
+- `-h, --help`: Show help message
 
-
-<div style="margin-bottom: 10px;"></div>
+<div style="margin-bottom: 12px;"></div>
 
 ```bash
 # Basic usage
@@ -321,12 +321,12 @@ adduser.exe -u <username> -p <password>
 adduser.exe -u <username> -p <password> -g <group>
 
 # Verbose output
-adduser.exe -u test -p ThisIsIt123 -g Administrators -v
+adduser.exe -u testuser -p MyPass123 -g Administrators -v
 ```
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_1.png)
 
-<div style="margin-bottom: 10px;"></div>
+<div style="margin-bottom: 12px;"></div>
 
 For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
 
