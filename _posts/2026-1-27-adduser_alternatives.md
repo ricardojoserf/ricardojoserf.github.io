@@ -23,7 +23,6 @@ It contains 7 methods from some of the most common ones such as using net.exe to
 
 Methods such as using wmic are not included because it is already deprecated, and others seemed redundant, but if you know more ways to do this (specially using low-level APIs)... please let me know!
 
-
 <br>
 
 -----------------------------------------------------------
@@ -42,7 +41,7 @@ Methods such as using wmic are not included because it is already deprecated, an
 
 6. [NetUserAdd API](#6-netuseradd-api)
 
-7. [SAMR API](#7-samr-api)
+7. [SAMR API and AddUser-SAMR](#7-samr-api-and-adduser-samr)
 
 <br>
 
@@ -66,7 +65,6 @@ net localgroup Administrators testuser /add
 ```
 
 ![img2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_2.png)
-
 
 <br>
 
@@ -263,13 +261,14 @@ And finally, execute it:
 
 -----------------------------------------------------------
 
-## 7. SAMR API
+## 7. SAMR API and AddUser-SAMR
 
 The SAMR protocol is the RPC-based interface that Windows uses internally to manage the local accounts database. By calling SAMR functions directly, you can create a user at the lowest level, so it is generally considered the quietest approach of all (though it is more complex to implement).
 
 [AddUser-SAMR](https://github.com/ricardojoserf/AddUser-SAMR) is a group of scripts that demonstrates this technique. It requires Administrator privileges and if the user exists, it gets added to the group but the password is not updated.
 
 There are 4 implementations in this repo (C#, Python, Rust and Crystal), but there are public versions in other languages such as [C++](https://github.com/M0nster3/RpcsDemo/tree/main/MS-SAMR/AddUser) or [BOF file](https://github.com/AgeloVito/adduserbysamr-bof).
+
 
 <br>
 
@@ -296,8 +295,7 @@ It uses the following SAMR calls:
 - [SamAddMemberToAlias](https://ntdoc.m417z.com/samaddmembertoalias) - Add user to group  
 
 
-
-<div style="margin-bottom: 12px;"></div>
+<br>
 
 The arguments are:
 
@@ -311,7 +309,7 @@ The arguments are:
 
 - `-h, --help`: Show help message
 
-<div style="margin-bottom: 12px;"></div>
+<br>
 
 ```bash
 # Basic usage
@@ -326,7 +324,7 @@ adduser.exe -u testuser -p MyPass123 -g Administrators -v
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/addusersamr/Screenshot_1.png)
 
-<div style="margin-bottom: 12px;"></div>
+<br>
 
 For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
 
