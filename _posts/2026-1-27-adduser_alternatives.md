@@ -56,13 +56,13 @@ The `net.exe` approach is the most universal way to create a user. It uses a bui
 
 Because it is so standard, running `net user /add` is generally easy for defenders to spot: the system's security logs will record the creation of the new account and the change to the Administrators group. In other words, this method is very noisy and produces obvious events.
 
-```cmd
+```bash
 net user testuser MyPass123 /add
 ```
 
 <div style="margin-bottom: 10px;"></div>
 
-```cmd
+```bash
 net localgroup Administrators testuser /add
 ```
 
@@ -113,7 +113,7 @@ This method uses the ADSI `WinNT` provider to create the user via a script. In e
 
 You can do this using VBScript:
 
-```vbscript
+```powershell
 Set computer = GetObject("WinNT://.")
 Set newUser = computer.Create("User", "testuser")
 newUser.SetPassword "MyPass123"
@@ -195,7 +195,7 @@ class Program
 
 Then compile it (I recommend using the `x64 Native Tools Command Prompt for VS` cmd):
 
-```cmd
+```bash
 csc /reference:System.DirectoryServices.dll AddUser.cs
 ```
 
@@ -251,7 +251,7 @@ int main() {
 
 Then compile it (I recommend using the `x64 Native Tools Command Prompt for VS` cmd):
 
-```cmd
+```bash
 cl AddUser.cpp
 ```
 
@@ -331,3 +331,4 @@ adduser.exe -u testuser -p MyPass123 -g Administrators -v
 For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
 
 <br>
+
