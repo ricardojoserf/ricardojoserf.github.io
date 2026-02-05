@@ -1,0 +1,87 @@
+---
+layout: post
+title: AutoPtT - Automated Pass-The-Ticket attack
+excerpt_separator: <!--more-->
+---
+
+AutoPtT enumerates Kerberos tickets and performs Pass-the-Ticket (PtT) attacks interactively or step by step. It is a standalone alternative to Rubeus or Mimikatz.
+
+<!--more-->
+
+
+You can use the following options:
+
+- **`auto`** - Automated Pass-the-Ticket attack
+
+- **`sessions`** - List logon sessions. Similar to running `klist sessions`
+
+- **`klist`** - List tickets in the current session. Similar to running `klist`
+
+- **`tickets`** - List tickets in all sessions (not only TGTs). Similar to running `Rubeus.exe dump`
+
+- **`export`** - Export a TGT given the LogonId. Similar to running `Rubeus.exe dump`
+
+- **`ptt`** - Import a ticket file given the file name. Similar to running `Rubeus.exe ptt`
+
+<br>
+
+-----------------------------------------------
+
+## Examples
+
+#### Automated Pass-the-Ticket
+
+Choose the index for one of the available TGTs, it gets dumped and imported into your session:
+
+```
+autoptt.exe auto
+```
+
+![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_6.png)
+
+
+#### List logon sessions
+
+```
+autoptt.exe sessions
+```
+
+![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_1.png)
+
+
+#### List tickets in the current session
+
+```
+autoptt.exe klist
+```
+
+![img2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_2.png)
+
+
+#### List tickets in all sessions
+
+```
+autoptt.exe tickets
+```
+
+![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_3.png)
+
+
+#### Export TGT given the LogonId (in this case, 0x5f7d0)
+
+```
+autoptt.exe export 0x5f7d0
+```
+
+![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_4.png)
+
+
+#### Import ticket file given the file name
+
+```
+autoptt.exe ptt 0x5f7d0_Administrator.kirbi
+```
+
+![img5](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_5.png)
+
+<br>
