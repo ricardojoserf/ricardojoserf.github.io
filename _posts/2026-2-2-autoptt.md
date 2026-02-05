@@ -1,6 +1,6 @@
 ---
 layout: post
-title: AutoPtT - Automated Pass-The-Ticket attack
+title: Automating the Pass-The-Ticket attack
 excerpt_separator: <!--more-->
 ---
 
@@ -39,6 +39,7 @@ autoptt.exe auto
 
 ![img6](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_6.png)
 
+<br>
 
 #### List logon sessions
 
@@ -48,6 +49,7 @@ autoptt.exe sessions
 
 ![img1](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_1.png)
 
+<br>
 
 #### List tickets in the current session
 
@@ -57,6 +59,7 @@ autoptt.exe klist
 
 ![img2](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_2.png)
 
+<br>
 
 #### List tickets in all sessions
 
@@ -66,6 +69,7 @@ autoptt.exe tickets
 
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_3.png)
 
+<br>
 
 #### Export TGT given the LogonId (in this case, 0x5f7d0)
 
@@ -75,6 +79,7 @@ autoptt.exe export 0x5f7d0
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/autoptt/Screenshot_4.png)
 
+<br>
 
 #### Import ticket file given the file name
 
