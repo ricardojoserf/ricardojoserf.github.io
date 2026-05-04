@@ -29,8 +29,8 @@ The result is a command-line scanner that handles both protocol variants, works 
 
 ## Features
 
-- **BACnet/IP** — raw UDP Who-Is probe, no external dependencies required
-- **BACnet/SC** — three-step check: TCP reachability → TLS handshake → mTLS detection, plus optional WebSocket upgrade probe
+- **BACnet/IP**: raw UDP Who-Is probe, no external dependencies required
+- **BACnet/SC** three-step check: TCP reachability → TLS handshake → mTLS detection, plus optional WebSocket upgrade probe
 - Single IP, broadcast address, CIDR subnet (`/24`, `/16`, …), or comma-separated target list
 - Flexible port specification: single port, comma list, range, or a mix
 - Concurrent scanning via a configurable thread pool
@@ -60,7 +60,9 @@ python BACnet-scan.py --help
 At least one of `--port-ip` or `--port-sc` must be supplied.
 
 - `--port-ip` only: BACnet/IP probed only
+
 - `--port-sc` only: BACnet/SC probed only
+
 - Both: Both probed, combined summary shown
 
 ```
@@ -92,7 +94,7 @@ python bacnet_check.py --target TARGET --port-ip PORT [--port-sc PORT] [options]
 
 ## Examples
 
-#### BACnet/IP scan — `172.18.10.0/24` on port `47818`
+#### BACnet/IP scan only
 
 ![BACnet/IP scan](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_2.png)
 
@@ -100,22 +102,20 @@ Devices that respond to the UDP Who-Is probe are listed with their object type, 
 
 <br>
 
-#### BACnet/SC scan — `172.21.10.0/24` on port `47821`
+#### BACnet/SC scan only
 
 ![BACnet/SC scan](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_3.png)
 
 Each host is classified as one of:
 
-| Label | Meaning |
-|---|---|
-| `CONFIRMED` | TCP ✓  TLS ✓  mTLS required — full BACnet/SC endpoint |
-| `POTENTIAL` | TCP ✓  TLS ✓  mTLS not detected at handshake level |
-| `NO TLS` | TCP reachable but TLS not supported |
-| `CLOSED` | Port unreachable or filtered |
+- `CONFIRMED`: TCP ✓  TLS ✓  mTLS required — full BACnet/SC endpoint
+- `POTENTIAL`: TCP ✓  TLS ✓  mTLS not detected at handshake level
+- `NO TLS`: TCP reachable but TLS not supported
+- `CLOSED`: Port unreachable or filtered
 
 <br>
 
-#### Both protocols — `172.21.10.0/24` on ports `47818` (IP) and `47821` (SC)
+#### Both protocols
 
 ![Combined scan](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_4.png)
 
@@ -123,7 +123,7 @@ When both `--port-ip` and `--port-sc` are supplied the tool runs both probes con
 
 <br>
 
-#### BACnet/SC detail — single host
+#### BACnet/SC detail in single host
 
 When a single target and port are given for `--port-sc`, the tool prints a step-by-step diagnostic instead of a summary table:
 
