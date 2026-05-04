@@ -4,12 +4,13 @@ title: BACnet-scan - Tool for BACnet/IP and BACnet/SC discovery
 excerpt_separator: <!--more-->
 ---
 
-A command-line tool for discovering and fingerprinting BACnet devices on a network supporting **BACnet/IP** (UDP Who-Is probes) and **BACnet/SC** (TCP + TLS + mTLS detection), with concurrent subnet scanning and a combined summary report.
+A command-line tool for discovering and fingerprinting BACnet devices on a network supporting BACnet/IP (UDP Who-Is probes) and BACnet/SC (TCP + TLS detection), with concurrent subnet scanning and a combined summary report.
 
 <!--more-->
 
 
 <br>
+
 
 ---
 
@@ -22,6 +23,7 @@ BACnet/IP has been around for decades, but BACnet/SC (the newer TLS-based varian
 The result is a command-line scanner that handles both protocol variants, works on single hosts or full subnets, and provides enough detail (vendor ID, TLS version, mTLS enforcement) to quickly characterise what is actually running on the network. Built in a couple of days using Claude, but hopefully useful beyond it!
 
 <br>
+
 
 ---
 
@@ -37,6 +39,7 @@ The result is a command-line scanner that handles both protocol variants, works 
 
 <br>
 
+
 ---
 
 ## Installation
@@ -49,17 +52,16 @@ python BACnet-scan.py --help
 
 <br>
 
+
 ---
 
 ## Usage
 
 At least one of `--port-ip` or `--port-sc` must be supplied.
 
-| Arguments | Behaviour |
-|---|---|
-| `--port-ip` only | BACnet/IP probed only |
-| `--port-sc` only | BACnet/SC probed only |
-| Both | Both probed, combined summary shown |
+- `--port-ip` only: BACnet/IP probed only
+- `--port-sc` only: BACnet/SC probed only
+- Both: Both probed, combined summary shown
 
 ```
 python bacnet_check.py --target TARGET --port-ip PORT [--port-sc PORT] [options]
@@ -67,31 +69,30 @@ python bacnet_check.py --target TARGET --port-ip PORT [--port-sc PORT] [options]
 
 <br>
 
+
 ---
 
 ### Options
 
-| Flag | Description | Default |
-|---|---|---|
-| `--target` | Single IP, CIDR subnet, or comma-separated IPs | `192.168.1.255` |
-| `--port-ip` | UDP port(s) for BACnet/IP | *(required to probe IP)* |
-| `--port-sc` | TCP port(s) for BACnet/SC | *(required to probe SC)* |
-| `--timeout` | Seconds to wait per probe | `2` |
-| `--workers` | Concurrent threads for subnet scans | `30` |
-| `--list-vendors` | Print vendor ID registry and exit | — |
-| `--lookup-vendor ID` | Look up a single vendor ID and exit | — |
-
+- `--target`: Single IP, CIDR subnet, or comma-separated IPs. Default: `192.168.1.255`
+- `--port-ip`: UDP port(s) for BACnet/IP *(required to probe IP)*
+- `--port-sc`: TCP port(s) for BACnet/SC *(required to probe SC)*
+- `--timeout`: Seconds to wait per probe. Default: `2`
+- `--workers`: Concurrent threads for subnet scans. Default: `30`
+- `--list-vendors`: Print vendor ID registry and exit. 
+- `--lookup-vendor ID`: Look up a single vendor ID and exit.
 
 ![Help message](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_1.png)
 
 
 <br>
 
+
 ---
 
 ## Examples
 
-### BACnet/IP scan — `172.18.10.0/24` on port `47818`
+#### BACnet/IP scan — `172.18.10.0/24` on port `47818`
 
 ![BACnet/IP scan](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_2.png)
 
@@ -99,7 +100,7 @@ Devices that respond to the UDP Who-Is probe are listed with their object type, 
 
 <br>
 
-### BACnet/SC scan — `172.21.10.0/24` on port `47821`
+#### BACnet/SC scan — `172.21.10.0/24` on port `47821`
 
 ![BACnet/SC scan](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_3.png)
 
@@ -114,7 +115,7 @@ Each host is classified as one of:
 
 <br>
 
-### Both protocols — `172.21.10.0/24` on ports `47818` (IP) and `47821` (SC)
+#### Both protocols — `172.21.10.0/24` on ports `47818` (IP) and `47821` (SC)
 
 ![Combined scan](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_4.png)
 
@@ -122,7 +123,7 @@ When both `--port-ip` and `--port-sc` are supplied the tool runs both probes con
 
 <br>
 
-### BACnet/SC detail — single host
+#### BACnet/SC detail — single host
 
 When a single target and port are given for `--port-sc`, the tool prints a step-by-step diagnostic instead of a summary table:
 
