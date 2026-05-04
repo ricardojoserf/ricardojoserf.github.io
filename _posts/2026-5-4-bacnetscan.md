@@ -30,11 +30,17 @@ The result is a command-line scanner that handles both protocol variants, works 
 ## Features
 
 - **BACnet/IP**: raw UDP Who-Is probe, no external dependencies required
+
 - **BACnet/SC** three-step check: TCP reachability → TLS handshake → mTLS detection, plus optional WebSocket upgrade probe
+
 - Single IP, broadcast address, CIDR subnet (`/24`, `/16`, …), or comma-separated target list
+
 - Flexible port specification: single port, comma list, range, or a mix
+
 - Concurrent scanning via a configurable thread pool
+
 - Run either protocol independently or both together in one pass
+
 - Built-in vendor ID registry lookup
 
 <br>
@@ -77,11 +83,17 @@ python bacnet_check.py --target TARGET --port-ip PORT [--port-sc PORT] [options]
 ### Options
 
 - `--target`: Single IP, CIDR subnet, or comma-separated IPs. Default: `192.168.1.255`
+
 - `--port-ip`: UDP port(s) for BACnet/IP *(required to probe IP)*
+
 - `--port-sc`: TCP port(s) for BACnet/SC *(required to probe SC)*
+
 - `--timeout`: Seconds to wait per probe. Default: `2`
+
 - `--workers`: Concurrent threads for subnet scans. Default: `30`
+
 - `--list-vendors`: Print vendor ID registry and exit. 
+
 - `--lookup-vendor ID`: Look up a single vendor ID and exit.
 
 ![Help message](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/bacnet/Screenshot_1.png)
@@ -109,8 +121,11 @@ Devices that respond to the UDP Who-Is probe are listed with their object type, 
 Each host is classified as one of:
 
 - `CONFIRMED`: TCP ✓  TLS ✓  mTLS required — full BACnet/SC endpoint
+
 - `POTENTIAL`: TCP ✓  TLS ✓  mTLS not detected at handshake level
+
 - `NO TLS`: TCP reachable but TLS not supported
+
 - `CLOSED`: Port unreachable or filtered
 
 <br>
