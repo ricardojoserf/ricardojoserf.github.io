@@ -48,6 +48,7 @@ Feel free to contact me!
 | - Offensive Security Certified Professional (OSCP) - Offensive Security | 
 | - Offensive Security Wireless Professional (OSWP) - Offensive Security | 
 | - Offensive Security Incident Responder (OSIR) - Offensive Security | 
+| - Offensive Security Threat Hunter (OSTH) - Offensive Security | 
 | - Assessing and Exploiting Control Systems and IIoT - Black Hat | 
 | - Burp Suite Certified Practitioner - PortSwigger | 
 | - Certified Enterprise Security Specialist (PACES) - Pentester Academy | 
