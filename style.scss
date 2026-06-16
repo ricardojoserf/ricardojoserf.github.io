@@ -15,7 +15,7 @@
   --bg:           #0f0f0f;
   --bg-surface:   #1a1a1a;
   --bg-raised:    #222222;
-  --text:         #e8e8e8;
+  --text:         #EDEDED;
   --text-muted:   #888888;
   --accent:       #966fd6;
   --accent-hover: #b899e8;
@@ -40,7 +40,7 @@ html {
 
 body {
   background: var(--bg);
-  font: 17px/1.65 $helvetica;
+  font: 18px/1.65 $helvetica;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
