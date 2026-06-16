@@ -9,47 +9,57 @@
 @import "variables";
 // Syntax highlighting @import is at the bottom of this file
 
+// ─── CUSTOM PROPERTIES ───────────────────────────────────────────────────────
+
+:root {
+  --bg:           #0f0f0f;
+  --bg-surface:   #1a1a1a;
+  --bg-raised:    #222222;
+  --text:         #e8e8e8;
+  --text-muted:   #888888;
+  --accent:       #966fd6;
+  --accent-hover: #b899e8;
+  --border:       #2e2e2e;
+  --border-focus: #966fd6;
+  --code-bg:      #1e1e2e;
+  --code-text:    #cdd6f4;
+  --code-border:  #313244;
+  --table-head:   #1e1a2e;
+  --table-row:    #191919;
+  --table-alt:    #1d1d1d;
+  --radius:       6px;
+}
+
 /**************/
 /* BASE RULES */
 /**************/
 
 html {
   font-size: 100%;
-
 }
 
 body {
-  // background: $white;  
-  // background:#34568B;
-  // background-image: url("images/background.jpg");
-  // background-repeat: repeat;
-  /// background: $white;
-  background: #141414;
-  font: 18px/1.4 $helvetica;
-  /// color: $darkGray;
-  color: #EDFFFFFF;
+  background: var(--bg);
+  font: 17px/1.65 $helvetica;
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  /// background: $white;
-  background: #141414;
-  color: #EDFFFFFF;
-	
+  background: var(--bg);
+  color: var(--text);
   margin: 0 auto;
-  //max-width: 740px;
-  max-width: 1000px;
-  padding: 0 10px;
+  max-width: 980px;
+  padding: 0 20px;
   width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $helvetica;
-  /// color: $darkerGray;
-  color: #EDFFFFFF;
-  font-weight: bold;
-
-  line-height: 1.7;
-  margin: 1em 0 15px;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 1.4em 0 0.5em;
   padding: 0;
 
   @include mobile {
@@ -58,138 +68,153 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 30px;
-  a {
-    color: #EDFFFFFF;
-  }
-  a:hover, a:active {
-    color: #EDFFFFFF;
-    text-decoration: none;
-  }
+  font-size: 28px;
+  a { color: var(--text); }
+  a:hover, a:active { color: var(--text); text-decoration: none; }
 }
 
 h2 {
-  font-size: 24px;
-  a {
-    color: #EDFFFFFF;
-  }
-  a:hover, a:active {
-    color: #EDFFFFFF;
-    text-decoration: none;
-  }
+  font-size: 22px;
+  a { color: var(--text); }
+  a:hover, a:active { color: var(--text); text-decoration: none; }
 }
 
-h3 {
-  font-size: 20px;
-}
-
-h4 {
-  font-size: 18px;
-  color: #EDFFFFFF;
-}
+h3 { font-size: 18px; }
+h4 { font-size: 16px; color: var(--text); }
 
 p {
-  margin: 15px 0;
-  color: #EDFFFFFF;
+  margin: 14px 0;
+  color: var(--text);
 }
 
 a {
-  ///color: $blue;
-  color: #966fd6;
+  color: var(--accent);
   text-decoration: none;
-	cursor: pointer;
+  cursor: pointer;
+  transition: color 0.15s ease;
   &:hover, &:active {
-    /// color: $blue;
-    color: #cab7eb;
-    /// color: #3700b3;
+    color: var(--accent-hover);
     text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }
 
 ul, ol {
   margin: 15px 0;
-  padding-left: 30px;
+  padding-left: 28px;
 }
 
-ul {
-  list-style-type: disc;
-}
+ul  { list-style-type: disc; }
+ol  { list-style-type: decimal; }
 
-ol {
-  list-style-type: decimal;
-}
+ol ul, ul ol, ul ul, ol ol { margin: 0; }
+ul ul, ol ul { list-style-type: circle; }
 
-ol ul, ul ol, ul ul, ol ol {
-  margin: 0;
-}
+em, i  { font-style: italic; }
+strong, b { font-weight: 600; }
 
-ul ul, ol ul {
-  list-style-type: circle;
-}
+img { max-width: 100%; border-radius: var(--radius); }
 
-em, i {
-  font-style: italic;
-}
-
-strong, b {
-  font-weight: bold;
-}
-
-img {
-  max-width: 100%;
-}
-
-// Fixes images in popup boxes from Google Translate
-.gmnoprint img {
-  max-width: none;
-}
+.gmnoprint img { max-width: none; }
 
 .date {
   font-style: italic;
-  color: $gray;
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
-// Specify the color of the selection
-::-moz-selection {
-  color: $black;
-  background: $lightGray;
-}
-::selection {
-  color: $black;
-  background: $lightGray;
-}
+::-moz-selection { color: #0f0f0f; background: var(--accent); }
+::selection      { color: #0f0f0f; background: var(--accent); }
 
-// Nicolas Gallagher's micro clearfix hack
-// http://nicolasgallagher.com/micro-clearfix-hack/
 .clearfix:before,
-.clearfix:after {
-    content: " ";
-    display: table;
+.clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+
+// ─── CODE ────────────────────────────────────────────────────────────────────
+// Inline code
+code {
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.87em;
+  background: var(--code-bg);
+  color: var(--accent-hover);
+  border: 1px solid var(--code-border);
+  border-radius: 4px;
+  padding: 0.15em 0.45em;
 }
 
-.clearfix:after {
-    clear: both;
+// Fenced / block code
+pre {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: var(--radius);
+  padding: 1.1em 1.3em;
+  overflow-x: auto;
+  margin: 1.4em 0;
+  line-height: 1.6;
+
+  code {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    font-size: 0.9em;
+    color: var(--code-text);
+  }
 }
 
-/*********************/
-/* LAYOUT / SECTIONS */
-/*********************/
+// ─── TABLES ──────────────────────────────────────────────────────────────────
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.6em 0;
+  font-size: 0.95em;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;           // clips border-radius on thead
+}
 
-//
-// .masthead
-//
+thead {
+  background: var(--table-head);
+  th {
+    color: var(--accent-hover);
+    font-weight: 600;
+    font-size: 0.88em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+tbody {
+  tr {
+    background: var(--table-row);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s ease;
+
+    &:nth-child(even) { background: var(--table-alt); }
+    &:last-child      { border-bottom: none; }
+    &:hover           { background: #252525; }
+  }
+  td {
+    padding: 9px 14px;
+    color: var(--text);
+    vertical-align: top;
+  }
+}
+
+// ─── LAYOUT / SECTIONS ───────────────────────────────────────────────────────
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  margin-bottom: 48px;
 }
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid var(--border);
 
-  @include mobile {
-    text-align: center;
-  }
+  @include mobile { text-align: center; }
 }
 
 .site-avatar {
@@ -198,88 +223,69 @@ img {
   height: 70px;
   margin-right: 15px;
 
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
+  @include mobile { float: none; display: block; margin: 0 auto; }
 
-  img {
-    border-radius: 5px;
-  }
+  img { border-radius: 50%; }
 }
 
 .site-info {
   float: left;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
+  @include mobile { float: none; display: block; margin: 0 auto; }
 }
 
 .site-name {
   margin: 0;
-  color: $darkGray;
+  color: var(--text);
   cursor: pointer;
   font-family: $helvetica;
   font-weight: 300;
-  font-size: 28px;
+  font-size: 26px;
   letter-spacing: 1px;
 }
 
 .site-description {
-  margin: -5px 0 0 0;
-  color: #EDFFFFFF;
-  font-size: 16px;
+  margin: -4px 0 0 0;
+  color: var(--text-muted);
+  font-size: 15px;
 
-  @include mobile {
-    margin: 3px 0;
-  }
+  @include mobile { margin: 3px 0; }
 }
 
 nav {
   float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
+  margin-top: 23px;
   font-family: $helvetica;
-  font-size: 18px;
-  color: #EDFFFFFF;
-	
+  font-size: 16px;
+
   @include mobile {
     float: none;
     margin-top: 9px;
     display: block;
-    font-size: 16px;
+    font-size: 15px;
   }
 
   a {
-    margin-left: 20px;
-    color: #EDFFFFFF;
+    margin-left: 22px;
+    color: var(--text-muted);
     text-align: right;
-    font-weight: 300;
-    letter-spacing: 1px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: color 0.15s ease;
 
-    @include mobile {
-      margin: 0 10px;
-      //color: $blue;
+    @include mobile { margin: 0 10px; }
+
+    &:hover, &:active {
+      color: var(--accent-hover);
+      text-decoration: none;
     }
-	  
-    a:hover, a:active {
-      color: #3700b3;
-      text-decoration: underline;
-    }
-	  
   }
 }
 
-//
-// .main
-//
+// ─── POSTS ───────────────────────────────────────────────────────────────────
 
 .posts > .post {
   padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  border-bottom: 1px solid var(--border);
 }
 
 .posts > .post:last-child {
@@ -289,42 +295,46 @@ nav {
 
 .post {
   blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 18px;
-    //font-style: italic;
+    margin: 1.6em 0;
+    border-left: 3px solid var(--accent);
+    background: var(--bg-surface);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: 0.7em 1.1em;
+    color: var(--text-muted);
+    font-size: 17px;
     font-style: italic;
   }
 
-  .comments {
-    margin-top: 10px;
-  }
+  .comments { margin-top: 10px; }
 
   .read-more {
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 600;
+
+    &:hover { color: var(--accent-hover); text-decoration: none; }
   }
 }
 
+// ─── FOOTER ──────────────────────────────────────────────────────────────────
+
 .wrapper-footer {
-  margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  /// background-color: $lightGray;
-  /// background-color: $white;
-  background-color: #141414;
-  color: #EDFFFFFF;	
+  margin-top: 60px;
+  border-top: 1px solid var(--border);
+  background-color: var(--bg);
 }
 
 footer {
-  padding: 20px 0;
+  padding: 24px 0;
   text-align: center;
-  background-color: #141414;
+  background-color: var(--bg);
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
-// Settled on moving the import of syntax highlighting to the bottom of the CSS
-// ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
+// ─── SYNTAX HIGHLIGHTING ─────────────────────────────────────────────────────
+
 @import "highlights";
 @import "svg-icons";
