@@ -1,9 +1,7 @@
 ---
 ---
 
-//
 // IMPORTS
-//
 
 @import "reset";
 @import "variables";
@@ -111,6 +109,10 @@ ol ul, ul ol, ul ul, ol ol {
   margin: 0;
 }
 
+li {
+  margin-bottom: 6px;
+}
+
 ul ul, ol ul {
   list-style-type: circle;
 }
@@ -176,14 +178,15 @@ pre {
   padding: 1em 1.2em;
   overflow-x: auto;
   margin: 1.4em 0;
-  line-height: 1.6;
+  line-height: 1.9;
+  white-space: pre;
 
   code {
     background: transparent;
     border: none;
     border-radius: 0;
     padding: 0;
-    font-size: 0.9em;
+    font-size: 1em;
     color: #e8e8e8;
   }
 }
