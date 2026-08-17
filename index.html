@@ -6,11 +6,12 @@ layout: default
   {% for post in paginator.posts %}
     <article class="post">
       <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+      <p class="post-meta">{{ post.date | date: "%B %e, %Y" }}</p>
       <div class="entry">
         {{ post.excerpt }}
       </div>
 
-      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Read More</a>
+      <a href="{{ site.baseurl }}{{ post.url }}" class="read-more">Continue reading &rarr;</a>
     </article>
   {% endfor %}
 
@@ -18,27 +19,27 @@ layout: default
   <br>
 
   {% if paginator.total_pages > 1 %}
-  <div class="posts" style="width:100%;text-align: center">
+  <div class="pagination">
     {% if paginator.previous_page %}
-      <a style="margin-left:3px; margin-right:3px;" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+      <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
     {% else %}
-      <span style="margin-left:3px; margin-right:3px;">&laquo; Prev</span>
+      <span class="page-link disabled">&laquo; Prev</span>
     {% endif %}
 
     {% for page in (1..paginator.total_pages) %}
       {% if page == paginator.page %}
-        <span class="webjeda" style="margin-left:3px; margin-right:3px;">{{ page }}</span>
+        <span class="page-link active">{{ page }}</span>
       {% elsif page == 1 %}
-        <a style="margin-left:3px; margin-right:3px;" href="/">{{ page }}</a>
+        <a class="page-link" href="/">{{ page }}</a>
       {% else %}
-        <a style="margin-left:3px; margin-right:3px;" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+        <a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% endif %}
     {% endfor %}
 
     {% if paginator.next_page %}
-      <a style="margin-left:3px; margin-right:3px;" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+      <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
     {% else %}
-      <span style="margin-left:3px; margin-right:3px;">Next &raquo;</span>
+      <span class="page-link disabled">Next &raquo;</span>
     {% endif %}
   </div>
   {% endif %}
