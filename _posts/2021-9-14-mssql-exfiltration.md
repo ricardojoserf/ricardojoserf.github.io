@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Exfiltrating files using MSSQL
+categories: [Red Team]
 excerpt_separator: <!--more-->
 ---
 

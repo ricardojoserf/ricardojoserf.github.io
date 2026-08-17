@@ -1,6 +1,7 @@
 ---
 layout: post
 title: WiFi Pentesting Guide
+categories: [Red Team]
 excerpt_separator: <!--more-->
 ---
 

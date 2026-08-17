@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Persistence using Startup Folder II - Using Alternate Data Streams
+categories: [Persistence]
 excerpt_separator: <!--more-->
 ---
 

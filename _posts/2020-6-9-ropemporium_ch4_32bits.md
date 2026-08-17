@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ROP Emporium Challenge 4 - Badchars (32 bits)
+categories: [ROP Emporium]
 excerpt_separator: <!--more-->
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Customizing Lsass Dumps with C++
+categories: [Credential Access, Malware Development]
 excerpt_separator: <!--more-->
 ---
 

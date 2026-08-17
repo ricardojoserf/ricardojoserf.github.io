@@ -5,8 +5,18 @@ layout: default
 <div class="posts">
   {% for post in paginator.posts %}
     <article class="post">
+      <a class="card-link" href="{{ site.baseurl }}{{ post.url }}" aria-label="{{ post.title }}"></a>
       <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-      <p class="post-meta">{{ post.date | date: "%B %e, %Y" }}</p>
+      <div class="card-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %e, %Y" }}</time>
+        {% if post.categories.size > 0 %}
+          <span class="post-categories">
+            {% for category in post.categories %}
+              <a class="category-chip" href="{{ site.baseurl }}/categories/#{{ category | slugify }}">{{ category }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
       <div class="entry">
         {{ post.excerpt }}
       </div>

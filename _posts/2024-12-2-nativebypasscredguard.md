@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NativeBypassCredGuard - Bypass Credential Guard using only NTAPIs
+categories: [Credential Access]
 excerpt_separator: <!--more-->
 ---
 

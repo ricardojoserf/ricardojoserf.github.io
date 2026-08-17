@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Using the HTTP protocol version for exfiltration
+categories: [Red Team]
 excerpt_separator: <!--more-->
 ---
 

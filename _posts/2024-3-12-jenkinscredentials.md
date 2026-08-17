@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Dumping Jenkins credentials
+categories: [Credential Access]
 excerpt_separator: <!--more-->
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Can i pwn you?
+categories: [Tools]
 excerpt_separator: <!--more-->
 ---
 

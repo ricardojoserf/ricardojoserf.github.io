@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Solving "Deployment request failed due to in progress deployment."
+categories: [Cloud]
 excerpt_separator: <!--more-->
 ---
 

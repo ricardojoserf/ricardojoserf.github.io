@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Calling C# code from Powershell
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 

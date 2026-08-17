@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Alternatives to whoami
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 

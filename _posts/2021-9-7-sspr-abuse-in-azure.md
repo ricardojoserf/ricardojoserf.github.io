@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Abusing SSPR in Azure to get Domain Admins
+categories: [Cloud, Active Directory]
 excerpt_separator: <!--more-->
 ---
 

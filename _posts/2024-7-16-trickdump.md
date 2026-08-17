@@ -1,6 +1,7 @@
 ---
 layout: post
 title: TrickDump - Dump lsass without generating a Minidump file
+categories: [Credential Access]
 excerpt_separator: <!--more-->
 ---
 

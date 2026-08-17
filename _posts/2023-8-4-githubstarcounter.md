@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Github Star Counter
+categories: [Tools]
 excerpt_separator: <!--more-->
 ---
 

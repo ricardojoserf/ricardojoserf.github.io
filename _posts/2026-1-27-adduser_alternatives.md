@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Local Admin Account Creation and the SAMR API
+categories: [Privilege Escalation]
 excerpt_separator: <!--more-->
 ---
 

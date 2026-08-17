@@ -1,6 +1,7 @@
 ---
 layout: post
 title: covert-control - Control systems with OneDrive, Google Drive, Youtube or Telegram
+categories: [Red Team, Tools]
 excerpt_separator: <!--more-->
 ---
 

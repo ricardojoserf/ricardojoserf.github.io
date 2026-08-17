@@ -1,6 +1,7 @@
 ---
 layout: post
 title: TrickDump update - BOF File and C/C++ ports
+categories: [Credential Access, Malware Development]
 excerpt_separator: <!--more-->
 ---
 

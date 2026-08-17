@@ -1,6 +1,7 @@
 ---
 layout: post
 title: jeringuilla - Process injection framework in C#
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 

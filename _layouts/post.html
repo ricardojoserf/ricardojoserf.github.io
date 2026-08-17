@@ -3,14 +3,20 @@ layout: default
 ---
 
 <article class="post">
-  <h2>{{ page.title }}</h2>
+  <h1 class="post-title">{{ page.title }}</h1>
+
+  <div class="post-meta">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %e, %Y" }}</time>
+    {% if page.categories.size > 0 %}
+      <span class="post-categories">
+        {% for category in page.categories %}
+          <a class="category-chip" href="{{ site.baseurl }}/categories/#{{ category | slugify }}">{{ category }}</a>
+        {% endfor %}
+      </span>
+    {% endif %}
+  </div>
 
   <div class="entry">
     {{ content }}
   </div>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
-
 </article>

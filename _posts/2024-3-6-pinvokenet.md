@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Porting pinvoke.net - A gitbook for P/Invoke definitions
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 

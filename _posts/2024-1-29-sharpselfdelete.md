@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Self-deleting a binary using C# and Alternate Data Streams
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 

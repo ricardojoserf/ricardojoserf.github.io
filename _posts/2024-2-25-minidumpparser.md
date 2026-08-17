@@ -1,6 +1,7 @@
 ---
 layout: post
 title: MinidumpParser
+categories: [Credential Access]
 excerpt_separator: <!--more-->
 ---
 
@@ -62,4 +63,3 @@ Repository: [https://github.com/ricardojoserf/MinidumpParser](https://github.com
 
 ![CommentStreamW](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/minidumpparser/CommentStreamW.png)
 
-<br>

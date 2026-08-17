@@ -1,6 +1,7 @@
 ---
 layout: post
 title: C# implementation of GetModuleHandle  
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 

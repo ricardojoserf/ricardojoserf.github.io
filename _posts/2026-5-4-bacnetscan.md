@@ -1,6 +1,7 @@
 ---
 layout: post
 title: BACnet-scan - Tool for BACnet/IP and BACnet/SC discovery
+categories: [Tools, ICS/OT]
 excerpt_separator: <!--more-->
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DNS Exfiltration
+categories: [Red Team]
 excerpt_separator: <!--more-->
 ---
 
@@ -126,4 +127,3 @@ For the DigitalOcean and GoDaddy set up I used mostly John Woodman's research:
 - [https://john-woodman.com/research/dns-exfiltration-setup/](https://john-woodman.com/research/dns-exfiltration-setup/)
 
 
-<br>

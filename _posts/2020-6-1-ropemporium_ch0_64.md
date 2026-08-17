@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ROP Emporium Challenge 0 - ret2win (64 bits)
+categories: [ROP Emporium]
 excerpt_separator: <!--more-->
 ---
 

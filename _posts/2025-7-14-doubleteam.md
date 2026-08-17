@@ -1,6 +1,7 @@
 ---
 layout: post
 title: DoubleTeam - Python listener based on tmux and socat
+categories: [Red Team, Tools]
 excerpt_separator: <!--more-->
 ---
 
@@ -61,4 +62,3 @@ If you list the windows you will see one for each reverse shell:
 
 Now you can close the Python listener if you want, the reverse shells will still be available in the tmux session!
 
-<br>

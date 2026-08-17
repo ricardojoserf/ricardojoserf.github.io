@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Playing with particles.js
+categories: [Tools]
 excerpt_separator: <!--more-->
 ---
 

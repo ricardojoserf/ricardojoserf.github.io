@@ -1,6 +1,7 @@
 ---
 layout: post
 title: C# implementation of GetProcAddress 
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 

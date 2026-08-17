@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Ntds-Analyzer - Tool to analyze Ntds.dit files
+categories: [Active Directory, Tools]
 ---
 
 Ntds-analyzer is a tool to extract and analyze the hashes in Ntds.dit files after cracking the LM and NTLM hashes in it. It offers relevant information about the Active Directory’s passwords, such as the most common used ones or which accounts use the username as password.

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ROP Emporium Challenge 1 - Split (64 bits)
+categories: [ROP Emporium]
 excerpt_separator: <!--more-->
 ---
 

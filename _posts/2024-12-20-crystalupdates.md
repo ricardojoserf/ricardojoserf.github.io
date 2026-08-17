@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Exploring Crystal language
+categories: [Tools]
 excerpt_separator: <!--more-->
 ---
 

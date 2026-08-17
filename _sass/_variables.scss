@@ -1,20 +1,64 @@
 
 //
-// VARIABLES
+// VARIABLES — design tokens
 //
 
-// Grays
+// ── Color palette (dark) ──────────────────────────────
+$bg:            #141414;  // page background
+$bg-elevated:   #1c1c1c;  // cards / code / table cells
+$bg-elevated-2: #242424;  // hover / alternating rows
+$border:        #2a2a2a;  // hairlines
+$border-strong: #3a3a3a;
+
+$text:          #d7d7d7;  // body copy (soft off-white, easier on the eyes than pure white)
+$text-strong:   #f4f4f4;  // headings / emphasis
+$text-muted:    #8c8c8c;  // metadata, captions, dates
+
+$accent:        #966fd6;  // purple
+$accent-light:  #cab7eb;  // hover / highlights
+$accent-dim:    #2a2340;  // subtle purple background for chips
+
+// Legacy grays (still referenced in a couple of spots)
 $black: #000;
-$darkerGray: #222;
 $darkGray: #333;
 $gray: #666;
 $lightGray: #eee;
 $white: #fff;
 
-// Font stacks
-$helvetica: 'Inter', Helvetica, Arial, sans-serif;
+// ── Typography ────────────────────────────────────────
+$font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+$font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+$helvetica: $font-sans; // alias kept for backward compatibility
 
-// Mobile breakpoints
+// Type scale
+$text-xs:   0.78rem;   // ~12px  chips, small meta
+$text-sm:   0.875rem;  // ~14px  meta, captions
+$text-base: 1.0625rem; // ~17px  body
+$text-md:   1.15rem;   // ~18px  h4
+$text-lg:   1.35rem;   // ~22px  h3 / card titles
+$text-xl:   1.65rem;   // ~26px  h2
+$text-2xl:  2.15rem;   // ~34px  h1 / post title
+
+// ── Spacing scale (8px rhythm) ────────────────────────
+$space-1: 0.25rem; //  4px
+$space-2: 0.5rem;  //  8px
+$space-3: 0.75rem; // 12px
+$space-4: 1rem;    // 16px
+$space-5: 1.5rem;  // 24px
+$space-6: 2rem;    // 32px
+$space-7: 3rem;    // 48px
+$space-8: 4rem;    // 64px
+
+// ── Layout ────────────────────────────────────────────
+$page-width:    1200px; // outer shell (masthead, footer, post index)
+$content-width: 1080px; // reading measure for articles/pages
+$radius:        8px;
+$radius-sm:     5px;
+
+// ── Motion ────────────────────────────────────────────
+$transition: 0.18s ease;
+
+// Mobile breakpoint
 @mixin mobile {
   @media screen and (max-width: 640px) {
     @content;

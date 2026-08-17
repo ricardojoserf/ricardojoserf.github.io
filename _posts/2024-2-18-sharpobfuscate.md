@@ -1,6 +1,7 @@
 ---
 layout: post
 title: SharpObfuscate - Payload obfuscation in C#
+categories: [Malware Development]
 excerpt_separator: <!--more-->
 ---
 
@@ -60,4 +61,3 @@ The result is a variable containing the obfuscated strings and the bytes decoded
 
 ![img4](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/sharpobfuscate/Screenshot_8.png)
 
-<br>

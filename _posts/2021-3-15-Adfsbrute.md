@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ADFSbrute - Test passwords against ADFS 
+categories: [Active Directory, Tools]
 ---
 
 Adfsbrute is a script to test credentials against Active Directory Federation Services (ADFS), calculating the ADFS url of an organization and allowing password spraying or bruteforce attacks. In case the company does not use a custom ADFS sign-in page, it will carry out the attack against Office 365's Microsoft Server Active Sync url.

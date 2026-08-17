@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Portswigger Labs Writeups
+categories: [Web Exploitation]
 excerpt_separator: <!--more-->
 ---
 
