@@ -4,8 +4,6 @@ title: Categories
 permalink: /categories/
 ---
 
-Browse posts by topic — {{ site.categories | size }} categories across the blog.
-
 <div class="category-cloud" id="category-cloud">
 {% assign sorted_cats = site.categories | sort %}
 {% for category in sorted_cats %}
