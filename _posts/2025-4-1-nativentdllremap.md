@@ -61,5 +61,3 @@ Finally, press any key so the ".text" section protections are restored and the p
 <br>
 
 **NOTE**: Comment lines 451 and 453 in the *ReplaceNtdllTxtSection* function to prevent the program from pausing until a key is pressed.
-
-<br>

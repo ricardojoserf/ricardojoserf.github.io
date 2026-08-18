@@ -97,5 +97,3 @@ nim c --cpu:amd64 --opt:size --d:release --os:windows --gcc.exe:x86_64-w64-mingw
 - This is a port of NativeDump so it only works if PPL is not enabled
 
 - It works fine on the latest versions of Windows 10 and 11, and has been tested successfully against common AV and EDR solutions.
-
-<br>

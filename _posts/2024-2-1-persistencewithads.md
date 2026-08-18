@@ -191,5 +191,3 @@ $Shortcut.Save()
 echo "File created in path $Dir\$File"
 Get-Item -Stream * $Dir\$File | select Stream,Length
 ```
-
-<br>

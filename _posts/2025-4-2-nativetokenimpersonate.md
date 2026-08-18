@@ -241,6 +241,3 @@ As an alternative, you can try the second type of impersonation (using the *-thr
 - [NativeNtdllRemap](https://github.com/ricardojoserf/NativeNtdllRemap) - Template for ntdll.dll remapping using only NTAPI functions.
 
 - [T1134.001 - Token Impersonation/Theft](https://attack.mitre.org/techniques/T1134/001/) by MITRE.
-
-
-<br>

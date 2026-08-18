@@ -47,5 +47,3 @@ C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
 ```
 
 Similar mechanisms are documented in the MITRE ATT&CK framework under [technique T1547](https://attack.mitre.org/techniques/T1547/).
-
-<br>

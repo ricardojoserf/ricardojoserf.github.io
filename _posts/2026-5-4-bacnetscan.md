@@ -167,5 +167,3 @@ When a single target and port are given for `--port-sc`, the tool prints a step-
           issued by the hub's CA (see hub config directory).
 ==============================================================
 ```
-
-<br>

@@ -224,5 +224,3 @@ crystal build barrel.cr --release
 ```
 crystal build trick.cr --release
 ```
-
-<br>

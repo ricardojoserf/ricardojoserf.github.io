@@ -96,6 +96,3 @@ NativeBypassCredGuard.exe patch true
 - [WDigest: Digging the dead from the grave](https://neuralhax.github.io/wdigest-digging-the-dead-from-the-grave) by [neuralhax](https://twitter.com/neuralhax) - An amazing blog that proves it is possible to use other values for *g_fParameter_UseLogonCredential*, I didn't test it yet but you can play with the variable *useLogonCredential_Value*
 
 - [Exploring Mimikatz - Part 1 - WDigest](https://blog.xpnsec.com/exploring-mimikatz-part-1/) by [xpn](https://x.com/_xpn_) - Fantastic blog post reverse-engineering and explaining WDigest credential caching
-
-
-<br>

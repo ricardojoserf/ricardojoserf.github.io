@@ -528,6 +528,3 @@ By embedding the address leak inside a seemingly benign, large application, eith
 Incorporating this strategy into tools, in this case NativeBypassCredGuard, shows how this could help to make API resolution stealthier because common APIs needed for it such as *GetProcAddress*, *GetModuleHandle* and *LoadLibrary* are not present in the Import Address Table of the binary.
 
 So... is this useful? I am not sure, but it was fun to write about it :)
-
-<br>
-

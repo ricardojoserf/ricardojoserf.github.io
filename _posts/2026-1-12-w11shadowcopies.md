@@ -108,5 +108,3 @@ python manager.py -o delete -s \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy12
 <div style="margin-bottom: 6px;"></div>
 
 ![python](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/refs/heads/master/images/w11shadowcopies/Screenshot_2.png)
-
-<br>

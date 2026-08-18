@@ -330,6 +330,3 @@ adduser.exe -u testuser -p MyPass123 -g Administrators -v
 <div style="margin-bottom: 12px;"></div>
 
 For more information about compiling each implementation, please check [the repository](https://github.com/ricardojoserf/AddUser-SAMR)! ;)
-
-<br>
-

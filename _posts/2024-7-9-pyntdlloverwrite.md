@@ -71,5 +71,3 @@ python pyNtdllOverwrite.py -o debugproc [-p PATH]
 - .NET implementation: [SharpNtdllOverwrite](https://github.com/ricardojoserf/SharpNtdllOverwrite)
 
 - Golang implementation: [goNtdllOverwrite](https://github.com/ricardojoserf/goNtdllOverwrite)
-
-<br>

@@ -27,5 +27,3 @@ GetModuleHandleRemote.exe PROCESS_PID DLL_NAME.dll
 For example, to get the base address of gpapi.dll from Process Hacker:
 
 ![img](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/getmodulehandleremote/Screenshot_1.png)
-
-<br>

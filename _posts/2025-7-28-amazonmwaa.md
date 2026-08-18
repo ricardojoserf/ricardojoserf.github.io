@@ -242,5 +242,3 @@ But still, I am happy I could order a cool sweater I hope I will be receiving in
 - [Securelayer7 blog](https://blog.securelayer7.net/arbitrary-code-execution-in-apache-airflow/)
 
 - [HackerOne report](https://hackerone.com/reports/3217840)
-
-<br>

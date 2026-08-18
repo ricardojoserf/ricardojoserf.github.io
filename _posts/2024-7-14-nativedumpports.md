@@ -109,5 +109,3 @@ In this example, the ntdll.dll library is overwritten from a debug process, the 
 The Netcat listener receives the file correctly:
 
 ![dumpfile](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/Screenshot_Golang4.png)
-
-<br>

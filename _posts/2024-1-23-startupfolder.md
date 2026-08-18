@@ -180,5 +180,3 @@ Before deleting these files the program must be stopped if it is already running
 tasklist | findstr notmalicious.exe
 taskkill /f /pid <PID>
 ```
-
-<br>

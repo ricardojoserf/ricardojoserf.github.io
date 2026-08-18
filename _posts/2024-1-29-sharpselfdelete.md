@@ -236,5 +236,3 @@ namespace SharpSelfDelete
 ### Source
 
 This is a port from code in one lesson of [Maldev Academy](https://maldevacademy.com/), which was originally written in C, but I needed it in C#.
-
-<br>

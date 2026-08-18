@@ -196,5 +196,3 @@ You can follow the instructions in [NPPSpy](https://github.com/gtworek/PSBits/tr
 - [NPPSpy2](https://github.com/gtworek/PSBits/tree/master/PasswordStealing/NPPSpy2) by [gtworek](https://github.com/gtworek) - Again, these programs are just adding some functionality to NPPSpy(2) code.
 
 - [T1556.008: Network Provider DLL](https://attack.mitre.org/techniques/T1556/008/)
-  
-<br>

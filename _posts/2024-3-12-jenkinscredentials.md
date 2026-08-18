@@ -61,6 +61,3 @@ Invoke-WebRequest -Uri http://IP_ADDRESS:8081 -Method POST -Body $postParams
 Finally, set up a listener and run the task, you should get the credential: 
 
 ![img3](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/jenkinscredentials/Screenshot_3.png)
-
-
-<br>

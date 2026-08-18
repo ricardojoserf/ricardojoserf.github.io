@@ -255,5 +255,3 @@ public class NonMsBinaries
 
     }
 ```
-
-<br>
