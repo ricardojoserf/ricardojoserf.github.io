@@ -371,8 +371,10 @@ nav {
     font-size: $text-sm;
     color: $accent;
     font-weight: 500;
+    position: relative;
+    z-index: 2;
 
-    &:hover { color: $accent-light; text-decoration: none; }
+    &:hover { color: $accent-light; text-decoration: underline; }
   }
 }
 
