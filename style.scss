@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 { font-size: $text-2xl; }
-h2 { font-size: $text-xl; }
+h2 { font-size: $text-xl; margin-bottom: $space-5; }
 h3 { font-size: $text-lg; }
 
 h4 {
@@ -284,11 +284,11 @@ tbody td {
 
 nav {
   flex-shrink: 0;
-  font-size: $text-sm;
+  font-size: $text-base;
 
   @include mobile {
     margin-top: $space-3;
-    font-size: $text-sm;
+    font-size: $text-base;
   }
 
   a {
