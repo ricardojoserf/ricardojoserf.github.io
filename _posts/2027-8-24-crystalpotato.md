@@ -9,7 +9,7 @@ CrystalPotato is a Crystal port of GodPotato, a local privilege escalation tool 
 
 <!--more-->
 
-<p align="center"><img src="https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/CrystalPotato/Screenshot_1.png" alt="RangerZone logo" width="420"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/CrystalPotato/Screenshot_1.png" alt="CrystalPotato" width="420"></p>
 
 <br>
 
@@ -33,6 +33,8 @@ I ported it to Crystal to produce a binary with a smaller forensic footprint.
 - **Native binaries**: Crystal compiles to a single PE on Windows with no interpreter, VM or runtime to deploy alongside it.
 
 - **Compile-time macros**: Crystal's macro system executes arbitrary logic at compile time, which can be used for string obfuscation, code generation and other transformations that happen before the binary is produced.
+
+- **Inline assembly**: Crystal supports LLVM inline assembly with AT&T syntax, register constraints and clobber lists, which enables implementing indirect syscall stubs and PEB walking entirely within Crystal source files.
 
 - **Direct C interop**: Crystal can call C functions and Windows API functions directly through its `lib` FFI bindings, with no wrapper libraries needed.
 
@@ -66,7 +68,42 @@ The entire chain runs in-process with no child process spawned until the final c
 
 ## OPSEC Hardening
 
-The main contribution of this port beyond the language change is a set of OPSEC improvements designed to reduce the binary's signature surface. Running `strings` against the compiled executable should reveal very little about the tool's purpose.
+The main contribution of this port beyond the language change is a set of OPSEC improvements designed to reduce the binary's signature surface.
+
+<br>
+
+### Indirect Syscalls
+
+CrystalPotato does not call `Nt*` functions through ntdll's exports. Instead, it resolves each syscall's System Service Number (SSN) at runtime using the Exception Directory technique described by [MDSec](https://www.mdsec.co.uk/2022/04/resolving-system-service-numbers-using-the-exception-directory/):
+
+1. Walk the PEB's `InLoadOrderModuleList` to find ntdll's base address.
+2. Read ntdll's Exception Directory (`IMAGE_DATA_DIRECTORY[3]`), which lists every function's start address in order.
+3. For each runtime function entry, look up the matching export name. Functions prefixed with `Zw` are syscall stubs; their position in the sorted exception table determines their SSN.
+4. When the target hash matches, record the SSN and the function's address.
+
+With the SSN in hand, a 21-byte stub is written to a `PAGE_EXECUTE_READWRITE` region (allocated once during init):
+
+```nasm
+mov r10, rcx          ; standard syscall ABI
+mov eax, <SSN>        ; system service number
+mov r11, <ntdll+0x12> ; jump target inside ntdll's syscall stub
+jmp r11               ; indirect jump — the syscall instruction executes inside ntdll
+```
+
+The `jmp` lands at `ntdll!NtXxx+0x12`, which is the `syscall` instruction inside the legitimate stub. This means the actual `syscall` executes from ntdll's `.text` section, making the call indistinguishable from a normal ntdll invocation from the kernel's perspective. Unlike direct syscalls, this approach does not trigger EDR detections based on the return address being outside ntdll.
+
+The ten syscalls resolved this way are: `NtClose`, `NtQuerySystemInformation`, `NtOpenProcess`, `NtOpenProcessToken`, `NtOpenThreadToken`, `NtDuplicateToken`, `NtQueryInformationToken`, `NtDuplicateObject`, `NtWaitForSingleObject` and `NtProtectVirtualMemory`.
+
+
+<br>
+
+### Dynamic API Resolution
+
+Beyond syscalls, CrystalPotato also resolves all sensitive Win32 API functions dynamically at runtime instead of linking them statically. This keeps function names like `CreateNamedPipeW`, `ImpersonateNamedPipeClient`, `CreateProcessWithTokenW` and `ConvertStringSecurityDescriptorToSecurityDescriptorW` out of the binary's Import Address Table entirely.
+
+Resolution works by walking the PEB to find each DLL's base address, then parsing its export table and matching function names against precomputed DJB2 hashes. The DJB2 hash function uses uppercase normalization (`h = 5381; h = ((h << 5) + h) + upper(c)`) so comparisons are case-insensitive.
+
+The only functions that remain in the IAT are those needed for COM marshaling (ole32), memory management (GlobalAlloc/Lock/Unlock), pipe creation for stdout capture (CreatePipe), and thread creation — none of which are individually suspicious.
 
 
 <br>
@@ -75,8 +112,7 @@ The main contribution of this port beyond the language change is a set of OPSEC 
 
 All strings that reveal the tool's behavior are XOR-obfuscated at compile time using a Crystal macro. The `obf()` macro takes a string literal, XORs each byte with a fixed key at compile time, and emits the encoded bytes as a constant array. At runtime, the bytes are decoded back to a string. This means the plaintext strings never appear in the binary's `.rdata` section.
 
-The obfuscated strings include: DLL names (`combase.dll`), named pipe paths, protocol identifiers (`ncacn_ip_tcp`, `ncacn_np`), SDDL security descriptors, well-known SIDs (`S-1-5-18`), IP addresses (`127.0.0.1`), all debug and error messages, and all exception strings.
-
+The obfuscated strings include: named pipe paths, protocol identifiers (`ncacn_ip_tcp`, `ncacn_np`), SDDL security descriptors, well-known SIDs (`S-1-5-18`), IP addresses (`127.0.0.1`), command-line flag definitions, all debug and error messages, and all exception strings.
 
 Usage is transparent:
 
@@ -94,7 +130,7 @@ Crystal embeds struct and class names as RTTI metadata in the compiled binary. N
 
 ### Silent by Default
 
-By default, the tool produces no output other than the executed command's stdout. All diagnostic messages (hook status, pipe events, token search progress, DCOM trigger details) are suppressed unless the `-d` / `--debug` flag is passed. This means a successful execution leaves no console artifacts beyond the command output itself.
+By default, the tool produces no output other than the executed command's stdout. Diagnostic messages are gated behind two debug levels: `-d` shows operational progress (hook status, pipe events, token search result), while `-d -d` adds the full internal trace (SSN resolution, handle table walks, syscall return codes). A successful execution with no flags leaves no console artifacts beyond the command output itself.
 
 <br>
 
@@ -122,7 +158,7 @@ CrystalPotato.exe -c <COMMAND>
 |---|---|
 | `-c CMD` | Command to execute as SYSTEM (required) |
 | `-p NAME` | Custom pipe name (default: `Crystal`) |
-| `-d` | Verbose debug output |
+| `-d` | Debug output (repeat for full trace: `-d -d`) |
 | `-h` | Show help |
 
 <img src="https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/CrystalPotato/Screenshot_2.png" alt="CrystalPotato" width="720">
