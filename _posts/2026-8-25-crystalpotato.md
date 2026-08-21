@@ -137,7 +137,7 @@ By default, the tool produces no output other than the executed command's stdout
 
 ## Build
 
-CrystalPotato compiles to a single file with no dependencies. Cross-compilation from Linux to Windows is supported by Crystal's toolchain:
+CrystalPotato compiles to a single file with no dependencies. I recommend using [Crystal on Windows](https://crystal-lang.org/install/on_windows/) instead of cross-compilation:
 
 ```
 crystal build CrystalPotato.cr -o CrystalPotato.exe --release --static
