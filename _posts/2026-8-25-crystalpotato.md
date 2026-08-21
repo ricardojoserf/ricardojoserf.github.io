@@ -19,7 +19,7 @@ CrystalPotato is a Crystal port of GodPotato, a local privilege escalation tool 
 
 [GodPotato](https://github.com/BeichenDream/GodPotato) is a well-known privilege escalation technique that works across a wide range of Windows versions (8 through 11, Server 2012 through 2022). It targets any process running with `SeImpersonatePrivilege`, which includes IIS application pools, MSSQL service accounts, Network Service and Local Service. The original tool is written in C# and, while effective, carries the usual .NET trade-offs: it requires the CLR, is easy to decompile, and its strings and class names are trivially visible in the assembly metadata.
 
-I ported it to Crystal to produce a binary with a smaller forensic footprint.
+I ported it to Crystal to produce a binary with a smaller forensic footprint, and I tested it on Windows 10, 11 and Server 2025.
 
 
 <br>
@@ -177,6 +177,6 @@ CrystalPotato.exe -u <USER> -pw <PASS>
 
 ## Sources
 
-- [GodPotato](https://github.com/BeichenDream/GodPotato) — Original C# implementation by BeichenDream.
-- [RustPotato](https://github.com/safedv/RustPotato) — Rust implementation by safedv.
-- [SigmaPotato](https://github.com/tylerdotrar/SigmaPotato): Implementation by [tylerdotrar](https://github.com/tylerdotrar).
+- [GodPotato](https://github.com/BeichenDream/GodPotato) - Original C# implementation by [BeichenDream](https://github.com/BeichenDream).
+- [RustPotato](https://github.com/safedv/RustPotato) - Rust implementation by [safedv](https://github.com/safedv).
+- [SigmaPotato](https://github.com/tylerdotrar/SigmaPotato) - C# implementation with extra functionalities by [tylerdotrar](https://github.com/tylerdotrar).
