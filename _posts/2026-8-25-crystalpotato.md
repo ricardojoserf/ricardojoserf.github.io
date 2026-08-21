@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CrystalPotato - A GodPotato in Crystal
+title: CrystalPotato - GodPotato in Crystal
 categories: [Red Team, Malware Development]
 excerpt_separator: <!--more-->
 ---
@@ -149,7 +149,7 @@ crystal build CrystalPotato.cr -o CrystalPotato.exe --release --static
 
 ## Usage
 
-Execute a command, start a reverse shell, or create a local admin — all as SYSTEM.
+Execute a command, start a reverse shell, or create a local admin:
 
 ```
 CrystalPotato.exe -c <COMMAND>
@@ -160,10 +160,10 @@ CrystalPotato.exe -u <USER> -pw <PASS>
 | Flag | Description |
 |---|---|
 | `-c CMD` | Command to execute as SYSTEM, or shell for reverse shell (default: `cmd.exe`) |
-| `-H HOST` | Reverse shell listener host |
-| `-P PORT` | Reverse shell listener port |
-| `-u USER` | Create local admin — username |
-| `-pw PASS` | Create local admin — password |
+| `-H HOST` | Reverse shell listener Host |
+| `-P PORT` | Reverse shell listener Port |
+| `-u USER` | Create local admin - Username |
+| `-pw PASS` | Create local admin - Password |
 | `-p NAME` | Custom pipe name (default: `Crystal`) |
 | `-d` | Debug output |
 | `-dd` | Full trace |
