@@ -179,3 +179,4 @@ CrystalPotato.exe -u <USER> -pw <PASS>
 
 - [GodPotato](https://github.com/BeichenDream/GodPotato) — Original C# implementation by BeichenDream.
 - [RustPotato](https://github.com/safedv/RustPotato) — Rust implementation by safedv.
+- [SigmaPotato](https://github.com/tylerdotrar/SigmaPotato): Implementation by [tylerdotrar](https://github.com/tylerdotrar).
