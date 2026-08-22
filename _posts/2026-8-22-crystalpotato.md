@@ -7,6 +7,8 @@ excerpt_separator: <!--more-->
 
 CrystalPotato is a Crystal port of GodPotato, a local privilege escalation tool that abuses the DCOM OXID Resolver and named pipe impersonation to escalate from service accounts with `SeImpersonatePrivilege` to `NT AUTHORITY\SYSTEM`.
 
+Repository: [https://github.com/ricardojoserf/CrystalPotato](https://github.com/ricardojoserf/CrystalPotato)
+
 <!--more-->
 
 <p align="center"><img src="https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/CrystalPotato/Screenshot_1.png" alt="CrystalPotato" width="420"></p>
