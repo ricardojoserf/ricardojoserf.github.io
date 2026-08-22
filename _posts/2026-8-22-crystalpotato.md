@@ -7,11 +7,12 @@ excerpt_separator: <!--more-->
 
 CrystalPotato is a Crystal port of GodPotato, a local privilege escalation tool that abuses the DCOM OXID Resolver and named pipe impersonation to escalate from service accounts with `SeImpersonatePrivilege` to `NT AUTHORITY\SYSTEM`.
 
-Repository: [https://github.com/ricardojoserf/CrystalPotato](https://github.com/ricardojoserf/CrystalPotato)
-
 <!--more-->
 
+Repository: [https://github.com/ricardojoserf/CrystalPotato](https://github.com/ricardojoserf/CrystalPotato)
+
 <p align="center"><img src="https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/CrystalPotato/Screenshot_1.png" alt="CrystalPotato" width="420"></p>
+
 
 <br>
 
@@ -133,6 +134,7 @@ Crystal embeds struct and class names as RTTI metadata in the compiled binary. N
 
 By default, the tool produces no output other than the executed command's stdout. Diagnostic messages are gated behind two debug levels: `-d` shows operational progress (hook status, pipe events, token search result), while `-dd` adds the full internal trace (SSN resolution, handle table walks, syscall return codes). A successful execution with no flags leaves no console artifacts beyond the command output itself.
 
+
 <br>
 
 ---
@@ -144,6 +146,7 @@ CrystalPotato compiles to a single file with no dependencies. I recommend using 
 ```
 crystal build CrystalPotato.cr -o CrystalPotato.exe --release --static
 ```
+
 
 <br>
 
@@ -172,6 +175,7 @@ CrystalPotato.exe -u <USER> -pw <PASS>
 | `-h` | Show help |
 
 <img src="https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/CrystalPotato/Screenshot_2.png" alt="CrystalPotato" width="720">
+
 
 <br>
 
