@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CrystalPotato - GodPotato in Crystal
-categories: [Red Team, Malware Development]
+categories: [Tools, Red Team, Malware Development]
 excerpt_separator: <!--more-->
 ---
 
