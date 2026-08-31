@@ -1,7 +1,7 @@
 ---
 layout: post
 title: My first post
-categories: [Tools]
+categories: []
 excerpt_separator: <!--more-->
 ---
 
