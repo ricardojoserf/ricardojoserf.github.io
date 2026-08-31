@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Getting RCE in an AWS service (Amazon MWAA)
-categories: [Cloud, Web Exploitation]
+categories: [Cloud, Web Exploitation, Tools]
 excerpt_separator: <!--more-->
 ---
 

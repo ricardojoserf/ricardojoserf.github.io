@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NativeDump update - Python and Golang ports
-categories: [Credential Access, Malware Development]
+categories: [Credential Access, Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

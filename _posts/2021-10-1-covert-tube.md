@@ -1,7 +1,7 @@
 ---
 layout: post
 title: covert-tube - Control systems with Youtube
-categories: [Red Team]
+categories: [Red Team, Tools]
 excerpt_separator: <!--more-->
 ---
 

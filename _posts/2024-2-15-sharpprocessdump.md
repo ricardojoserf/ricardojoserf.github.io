@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SharpProcessDump - Dump processes using C#
-categories: [Credential Access, Malware Development]
+categories: [Credential Access, Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

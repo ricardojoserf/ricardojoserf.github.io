@@ -1,7 +1,7 @@
 ---
 layout: post
 title: DNS Exfiltration
-categories: [Red Team]
+categories: [Red Team, Tools]
 excerpt_separator: <!--more-->
 ---
 

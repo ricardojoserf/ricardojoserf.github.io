@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SharpCovertTube - Using Youtube as covert channel
-categories: [Red Team]
+categories: [Red Team, Tools]
 excerpt_separator: <!--more-->
 ---
 

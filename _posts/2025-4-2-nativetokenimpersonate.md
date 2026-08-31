@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NativeTokenImpersonate - Token Impersonation using only NTAPIs
-categories: [Malware Development, Privilege Escalation]
+categories: [Malware Development, Privilege Escalation, Tools]
 excerpt_separator: <!--more-->
 ---
 

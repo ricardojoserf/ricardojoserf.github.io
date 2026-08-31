@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Playing with malicious Network Provider DLLs
-categories: [Credential Access]
+categories: [Credential Access, Tools]
 excerpt_separator: <!--more-->
 ---
 

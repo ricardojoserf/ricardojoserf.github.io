@@ -1,7 +1,7 @@
 ---
 layout: post
 title: FakeRebootAlert - Deceive users to reboot a system upon login
-categories: [Red Team]
+categories: [Red Team, Tools]
 excerpt_separator: <!--more-->
 ---
 

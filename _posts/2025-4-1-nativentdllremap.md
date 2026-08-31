@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NativeNtdllRemap - Stealthy ntdll.dll Remapping
-categories: [Malware Development]
+categories: [Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

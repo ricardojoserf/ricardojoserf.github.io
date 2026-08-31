@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Customizing Lsass Dumps with C#
-categories: [Credential Access, Malware Development]
+categories: [Credential Access, Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

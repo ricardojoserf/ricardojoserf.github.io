@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Get process handles from process name in Go
-categories: [Malware Development]
+categories: [Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

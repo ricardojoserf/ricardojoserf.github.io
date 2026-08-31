@@ -1,7 +1,7 @@
 ---
 layout: post
 title: StealthyEnv - Get environment variables from PEB structure
-categories: [Malware Development]
+categories: [Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MemorySnitcher and the power of NtReadVirtualMemory
-categories: [Credential Access]
+categories: [Credential Access, Tools]
 excerpt_separator: <!--more-->
 ---
 

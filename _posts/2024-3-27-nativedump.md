@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Dumping lsass using only NTAPIs by hand-crafting Minidump files
-categories: [Credential Access, Malware Development]
+categories: [Credential Access, Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

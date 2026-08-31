@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Avoiding EDRs creating a new process
-categories: [Malware Development]
+categories: [Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

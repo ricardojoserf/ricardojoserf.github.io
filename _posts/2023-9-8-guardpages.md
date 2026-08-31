@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Guard Pages Hooking
-categories: [Malware Development]
+categories: [Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

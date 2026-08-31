@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NimDump - Stealthy LSASS Dumping Using Only NTAPIs in Nim
-categories: [Credential Access, Malware Development]
+categories: [Credential Access, Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

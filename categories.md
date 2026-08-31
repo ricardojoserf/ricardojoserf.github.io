@@ -28,17 +28,18 @@ permalink: /categories/
 <script>
 var activeCategory = null;
 
-function toggleCategory(btn) {
-  var cat = btn.getAttribute('data-category');
+function filterByCategory(cat) {
   var allBtns = document.querySelectorAll('.category-chip');
   var allSections = document.querySelectorAll('.category-section');
 
   if (activeCategory === cat) {
     activeCategory = null;
+    window.history.replaceState(null, '', window.location.pathname);
     allBtns.forEach(function(b) { b.classList.remove('active'); });
     allSections.forEach(function(s) { s.style.display = ''; });
   } else {
     activeCategory = cat;
+    window.history.replaceState(null, '', '#' + cat);
     allBtns.forEach(function(b) {
       b.classList.toggle('active', b.getAttribute('data-category') === cat);
     });
@@ -47,4 +48,13 @@ function toggleCategory(btn) {
     });
   }
 }
+
+function toggleCategory(btn) {
+  filterByCategory(btn.getAttribute('data-category'));
+}
+
+(function() {
+  var hash = window.location.hash.replace('#', '');
+  if (hash) filterByCategory(hash);
+})();
 </script>

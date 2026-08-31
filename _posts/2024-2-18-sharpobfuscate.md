@@ -1,7 +1,7 @@
 ---
 layout: post
 title: SharpObfuscate - Payload obfuscation in C#
-categories: [Malware Development]
+categories: [Malware Development, Tools]
 excerpt_separator: <!--more-->
 ---
 

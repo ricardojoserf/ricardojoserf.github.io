@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MinidumpParser
-categories: [Credential Access]
+categories: [Credential Access, Tools]
 excerpt_separator: <!--more-->
 ---
 

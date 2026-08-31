@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Creating Shadow Copies with VSS API
-categories: [Credential Access]
+categories: [Credential Access, Tools]
 excerpt_separator: <!--more-->
 ---
 
