@@ -18,11 +18,13 @@ My professional path started as a Researcher at Universidad Politécnica de Madr
 
 Some open-source tools I've built, available on [my GitHub](https://github.com/ricardojoserf):
 
-- **NativeDump** – Dump lsass using only NTAPIs, optionally remapping ntdll
-- **TrickDump** – Dump lsass generating JSON/ZIP instead of a Minidump file
-- **SAMDump** – Extract SAM/SYSTEM via Volume Shadow Copy (VSS) API
-- **NativeBypassCredGuard** – Bypass Credential Guard patching WDigest.dll via NTAPI
-- **SharpCovertTube** – YouTube as C2 channel using QR codes in videos
+- **NativeDump** - Dump lsass using only NTAPIs, optionally remapping ntdll
+- **TrickDump** - Dump lsass generating JSON/ZIP instead of a Minidump file
+- **SAMDump** - Extract SAM/SYSTEM via Volume Shadow Copy (VSS) API
+- **AutoPtT** - Automated Pass-the-Ticket (PtT) attack
+- **AddUser-SAMR** - Create local administrators in Windows using the SAMR API
+- **NativeBypassCredGuard** - Bypass Credential Guard patching WDigest.dll via NTAPI
+- **SharpCovertTube** - YouTube as C2 channel using QR codes in videos
 
 <br>
 
@@ -94,8 +96,6 @@ LinkedIn: [https://www.linkedin.com/in/ricardojoserf/](https://www.linkedin.com/
 
 Twitter: [https://x.com/ricardojoserf](https://x.com/ricardojoserf)
 
-Feel free to reach out about security research, tool development, or anything offensive security related!
-
-<br>
+Feel free to reach out! ;)
 
 ![i](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNjliNTk4NTM3MjExZGQ4YzVlOGQ0MmQzNTFjYTFkNjYyMjYzNTVkOSZjdD1n/13HBDT4QSTpveU/giphy.gif)
