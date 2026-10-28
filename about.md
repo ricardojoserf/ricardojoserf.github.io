@@ -51,6 +51,8 @@ Some open-source tools I've built, available on [my GitHub](https://github.com/r
 | Offensive Security Incident Responder (OSIR) | Offensive Security |
 | Offensive Security Threat Hunter (OSTH) | Offensive Security |
 | OffSec AI Red Teamer (OSAI) | Offensive Security |
+| OffSec CyberCore Certified (OSCC-SEC) | Offensive Security |
+| OffSec CyberCore Certified - Secure Java Development (OSCC-SJD) | Offensive Security |
 | Assessing and Exploiting Control Systems and IIoT | Black Hat |
 | Burp Suite Certified Practitioner | PortSwigger |
 | Certified Enterprise Security Specialist (PACES) | Pentester Academy |
