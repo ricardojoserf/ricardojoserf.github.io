@@ -34,6 +34,8 @@ Some open-source tools I've built, available on [my GitHub](https://github.com/r
 
 | Certification | Issuer |
 |---------------|--------|
+| GIAC Security Professional (GSP) | GIAC Certifications |
+| GIAC Experienced Incident Handler Certification (GX-IH) | GIAC Certifications |
 | GIAC Experienced Penetration Tester (GX-PT) | GIAC Certifications |
 | GIAC Exploit Researcher and Advanced Penetration Tester (GXPN) | GIAC Certifications |
 | GIAC Penetration Tester (GPEN) | GIAC Certifications |
